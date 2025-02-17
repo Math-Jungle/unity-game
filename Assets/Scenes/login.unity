@@ -147,7 +147,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1701898874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8570333267349218136, guid: cf66599620822f14a9b07767a2f8f312, type: 3}
+  m_Sprite: {fileID: 649223268058989734, guid: b821f8973478c9343873b3e454050bd9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -779,16 +779,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906481966}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.49, y: 1.49, z: 1.49}
+  m_LocalScale: {x: 1.4304001, y: 1.4304001, z: 1.4304001}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1018223335}
+  m_Father: {fileID: 1377797435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: -120}
+  m_AnchoredPosition: {x: 39.199993, y: 459.8001}
   m_SizeDelta: {x: 500, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906481968
@@ -1059,7 +1059,7 @@ GameObject:
   - component: {fileID: 1018223337}
   - component: {fileID: 1018223336}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: forgot pw Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1074,15 +1074,14 @@ RectTransform:
   m_GameObject: {fileID: 1018223334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.96, y: 0.96, z: 0.96}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 906481967}
+  m_Children: []
   m_Father: {fileID: 1377797435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 575}
+  m_AnchoredPosition: {x: 280, y: 100}
   m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1018223336
@@ -1105,7 +1104,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Let's get you setup
+  m_text: Forgot password ?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9c7bb69942efe4057a5cab00528c98c9, type: 2}
   m_sharedMaterial: {fileID: -6714793299344148342, guid: 9c7bb69942efe4057a5cab00528c98c9, type: 2}
@@ -1132,8 +1131,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
-  m_fontSizeBase: 55
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1488,6 +1487,7 @@ RectTransform:
   m_LocalScale: {x: 1.07, y: 1.07, z: 1.07}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 906481967}
   - {fileID: 1018223335}
   m_Father: {fileID: 241727523}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1672,7 +1672,7 @@ GameObject:
   - component: {fileID: 1591816131}
   - component: {fileID: 1591816130}
   m_Layer: 5
-  m_Name: Child's age
+  m_Name: Password
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1901,7 +1901,7 @@ GameObject:
   - component: {fileID: 2076662441}
   - component: {fileID: 2076662440}
   m_Layer: 5
-  m_Name: Child's name
+  m_Name: Email
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
