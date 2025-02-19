@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.EventSystems; // Required for IPointerClickHandler
 
-public class SignUpClickHandler : MonoBehaviour
+public class SignUpClickHandler : MonoBehaviour, IPointerClickHandler
 {
-    private void Start()
+    public void OnPointerClick(PointerEventData eventData)
     {
         // Get the TextMeshPro component and add a click listener
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
@@ -20,4 +21,7 @@ public class SignUpClickHandler : MonoBehaviour
         Debug.Log("Sign Up clicked! Loading acc creation scene...");
         SceneManager.LoadScene("acc creation");
     }
+
+  
+        
 }
