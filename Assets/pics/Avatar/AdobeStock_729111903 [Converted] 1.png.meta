@@ -117,6 +117,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -309,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AdobeStock_729111903 [Converted] 1_0: -6770828603203499620
+      AdobeStock_729111903 [Converted] 1_1: 3328760023176360207
+      AdobeStock_729111903 [Converted] 1_2: -4308011985378311643
+      AdobeStock_729111903 [Converted] 1_3: 8027734518241290412
+      AdobeStock_729111903 [Converted] 1_4: -7697403661348645326
+      AdobeStock_729111903 [Converted] 1_5: 3430545257925004364
+      AdobeStock_729111903 [Converted] 1_6: -874063004096469681
+      AdobeStock_729111903 [Converted] 1_7: -7942782576206634118
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

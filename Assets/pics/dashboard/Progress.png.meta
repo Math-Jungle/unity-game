@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e4764365b9c64435a96ea660a0f7c089
+guid: af11c1ce152a49c4aa869deb96d8f8c4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7275747150402431968
-    second: Group 44_0
+      213: -6603872570819887401
+    second: Progress_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Group 44_0
+      name: Progress_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 121
-        height: 121
+        width: 176
+        height: 344
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 024d3b8e38a570b90800000000000000
-      internalID: -7275747150402431968
+      spriteID: 7deb55ab2e45a54a0800000000000000
+      internalID: -6603872570819887401
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Group 44_0: -7275747150402431968
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
