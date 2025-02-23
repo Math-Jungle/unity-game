@@ -770,14 +770,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6156863, g: 0.8509804, b: 0.5921569, a: 1}
+  m_Color: {r: 0.9356775, g: 1, b: 0.9292453, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5993112012373322873, guid: a0a9750965214b5428069ecdd82a2a65, type: 3}
+  m_Sprite: {fileID: -1780866706899357541, guid: 1f336e614bf2df8458f8c268ae4e9dba, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
