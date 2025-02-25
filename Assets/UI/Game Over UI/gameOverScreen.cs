@@ -19,4 +19,9 @@ public class gameOverScreen : MonoBehaviour
     {
         SceneManager.LoadScene("Game1");
     }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene("Game1");
+    }
 }
