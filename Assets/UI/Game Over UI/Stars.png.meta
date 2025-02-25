@@ -166,7 +166,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -1138,7 +1138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -1147,7 +1147,48 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stars_0: 8903608049025104197
+      Stars_1: -7678458166956771760
+      Stars_10: 6976608375314921165
+      Stars_11: 5218432558667699530
+      Stars_12: 2635194071972507443
+      Stars_13: 2434053896325560149
+      Stars_14: -6496578650881425696
+      Stars_15: 8497903717021780433
+      Stars_16: 5261382250960468193
+      Stars_17: -4422740967006600327
+      Stars_18: 6183606860243970708
+      Stars_19: -3253588033481309088
+      Stars_2: 1222489850116747820
+      Stars_20: -4337058819220850669
+      Stars_21: -8005987826629069438
+      Stars_22: 3718855627647862584
+      Stars_23: -7852347698333694229
+      Stars_24: -4618523927395195335
+      Stars_25: 3214173149308870804
+      Stars_26: -4646203785342723704
+      Stars_27: -6372464179242632543
+      Stars_28: -1270371028168156409
+      Stars_29: -3854969205684013212
+      Stars_3: 908394461399428893
+      Stars_30: -4682746956038050320
+      Stars_31: -6178395123851564676
+      Stars_32: 3946028267783365670
+      Stars_33: -1897443263461493654
+      Stars_34: -460420868909500154
+      Stars_35: 7209041456365123044
+      Stars_36: 3724749853126047435
+      Stars_37: 3552011708857185142
+      Stars_38: 2143431676190761029
+      Stars_39: -5010240172747261569
+      Stars_4: 6356170700173641542
+      Stars_40: 280212018690672229
+      Stars_5: -7166871409661841802
+      Stars_6: 5552329641660927838
+      Stars_7: 3303582094287134650
+      Stars_8: 8135986748720822029
+      Stars_9: -5614400832416863116
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
