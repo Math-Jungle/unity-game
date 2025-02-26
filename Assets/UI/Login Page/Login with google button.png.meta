@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Login with google button_0: 1122146888735541046
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

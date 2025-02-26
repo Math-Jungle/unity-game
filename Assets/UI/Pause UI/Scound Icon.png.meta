@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scound Icon_0: -4375220532429904631
+      Scound Icon_1: 2707664461921759641
+      Scound Icon_2: 5887969847350990107
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
