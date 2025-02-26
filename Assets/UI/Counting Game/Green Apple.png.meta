@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 37ed904cfa5e6cb46a30fc2cfc65ea4a
+guid: 2d9983c7f7c516e44a0b01475a6d030c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7293598183456022363
-    second: Apple_0
+      213: -1192541474057205494
+    second: Green Apple_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Apple_0
+      name: Green Apple_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1924
+        width: 1925
         height: 2222
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5f945b97e0183560800000000000000
-      internalID: 7293598183456022363
+      spriteID: a0946e209dd337fe0800000000000000
+      internalID: -1192541474057205494
       vertices: []
       indices: 
       edges: []
