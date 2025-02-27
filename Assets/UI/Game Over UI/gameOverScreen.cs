@@ -12,6 +12,8 @@ public class gameOverScreen : MonoBehaviour
     private Animator star_3_animator;
     private string animationTriggerName = "PlayAnim";
 
+    public Scene scene;
+
     private TextMeshProUGUI gameScoreUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
