@@ -17,6 +17,8 @@ public class gameOverScreen : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Debug.Log($"Score: {score}");
+
         if (star_1_animator == null)
         {
             star_1_animator = GameObject.Find("Star_1")?.GetComponent<Animator>();
@@ -67,11 +69,27 @@ public class gameOverScreen : MonoBehaviour
         if (gameScoreUI != null)
         {
             gameScoreUI.text = score.ToString();
+            Debug.Log($"Score set to: {score}");
         }
         else
         {
             Debug.LogError("GameScoreUI TextMeshProUGUI component not found!");
         }
+    }
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        // if (gameScoreUI != null)
+        // {
+        //     gameScoreUI.text = score.ToString();
+        // }
+        // else
+        // {
+        //     Debug.LogError("GameScoreUI TextMeshProUGUI component not found!");
+        // }
     }
 
     private IEnumerator PlayAnimation()
@@ -100,13 +118,6 @@ public class gameOverScreen : MonoBehaviour
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void NextLevel()
     {
         SceneManager.LoadScene("Game1");
@@ -115,5 +126,10 @@ public class gameOverScreen : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene("Game1");
+    }
+
+    public void Home()
+    {
+        SceneManager.LoadScene("Home");
     }
 }

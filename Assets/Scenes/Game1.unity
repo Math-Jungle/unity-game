@@ -2100,7 +2100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 312366333920076265, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1011379563983047643, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
       propertyPath: m_SortingOrder
@@ -2134,6 +2134,10 @@ PrefabInstance:
       propertyPath: star_3_animator
       value: 
       objectReference: {fileID: 868125553}
+    - target: {fileID: 5334285633109040718, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6753680939396171442, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
       propertyPath: m_Pivot.x
       value: 0
