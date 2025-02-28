@@ -13,11 +13,22 @@ public class AppleFallGame3 : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!hasFallen) // Only fall once
+        if (!hasFallen)
         {
-            rb.gravityScale = 1; // Enable gravity to make apple fall
+            rb.gravityScale = 1; // Enable gravity
             hasFallen = true;
+
+            // Ignore collisions with other apples
+            Collider2D myCollider = GetComponent<Collider2D>();
+            Collider2D[] allApples = FindObjectsOfType<Collider2D>();
+
+            foreach (Collider2D apple in allApples)
+            {
+                if (apple.gameObject.CompareTag("Apple")) // Ensure all apples have this tag
+                {
+                    Physics2D.IgnoreCollision(myCollider, apple);
+                }
+            }
         }
     }
 }
-
