@@ -1,18 +1,17 @@
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
 
 public class AppleBehaviorScriptForGame2 : MonoBehaviour
 {
     public Rigidbody2D rigidbody2D;
     private static int applesTouched = 0; // Track the apples touched
-    private static int applesToEndGameLevel = 6; // Number of apples need to be touched to finish the game level
+    private static int applesToEndGameLevel = 6; // Number of apples needed to finish the game level
     public GameObject gameOverScreen; // Reference to the GameOver UI
     private static bool gameEnded = false; // Flag to prevent further interactions
     private Collider2D appleCollider;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool isDragging = false;
+    private Vector2 touchOffset;
+
+    // Start is called before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -25,23 +24,45 @@ public class AppleBehaviorScriptForGame2 : MonoBehaviour
     {
         if (gameEnded) return; // Stop processing touches after game over
 
-        foreach (Touch touch in Input.touches)
+        if (Input.touchCount > 0)
         {
-            if (touch.phase == TouchPhase.Began)
+            Touch touch = Input.GetTouch(0);
+            Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+
+            switch (touch.phase)
             {
-                Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
-
-                if (hit.collider != null && hit.collider.gameObject == gameObject)
-                {
-                    rigidbody2D.gravityScale = 1;
-                    applesTouched++;
-                    Debug.Log("Apple Touched Total: " + applesTouched);
-
-                    if (applesTouched >= applesToEndGameLevel){
-                        EndGame();
+                case TouchPhase.Began:
+                    RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+                    if (hit.collider != null && hit.collider.gameObject == gameObject)
+                    {
+                        isDragging = true;
+                        touchOffset = (Vector2)transform.position - touchPosition;
+                        rigidbody2D.gravityScale = 0; // Disable gravity while dragging
+                        rigidbody2D.linearVelocity = Vector2.zero; // Stop any existing movement
                     }
-                }
+                    break;
+
+                case TouchPhase.Moved:
+                    if (isDragging)
+                    {
+                        transform.position = touchPosition + touchOffset; // Move the apple with the touch
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                    if (isDragging)
+                    {
+                        isDragging = false;
+                        rigidbody2D.gravityScale = 1; // Re-enable gravity when released
+                        applesTouched++;
+                        Debug.Log("Apple Touched Total: " + applesTouched);
+
+                        if (applesTouched >= applesToEndGameLevel)
+                        {
+                            EndGame();
+                        }
+                    }
+                    break;
             }
         }
     }
@@ -52,11 +73,12 @@ public class AppleBehaviorScriptForGame2 : MonoBehaviour
         gameEnded = true; // Set flag to prevent further interactions
 
         // Disable all apple colliders in the scene
-        AppleBehaviourScript[] apples = FindObjectsOfType<AppleBehaviourScript>();
-        foreach (AppleBehaviourScript apple in apples)
+        AppleBehaviorScriptForGame2[] apples = FindObjectsOfType<AppleBehaviorScriptForGame2>();
+        foreach (AppleBehaviorScriptForGame2 apple in apples)
         {
             Collider2D appleCol = apple.GetComponent<Collider2D>();
-            if (appleCol != null){
+            if (appleCol != null)
+            {
                 appleCol.enabled = false; // Disable apple colliders
             }
         }
