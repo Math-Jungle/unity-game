@@ -8,7 +8,7 @@ public class BasketScript : MonoBehaviour
     private int currentApples = 0; // Current number of apples in the basket
     public TextMeshProUGUI appleCountText; // Reference to the TextMeshPro component
     public GameObject tryAgainButton; // Reference to the Try Again button
-    private AppleBehaviourScript[] apples; // Array to store all apples in the scene
+    private AppleScript[] apples; // Array to store all apples in the scene
 
     private void Start()
     {
@@ -16,7 +16,7 @@ public class BasketScript : MonoBehaviour
         UpdateAppleCountText();
 
         // Find all apples in the scene
-        apples = FindObjectsOfType<AppleBehaviourScript>();
+        apples = FindObjectsOfType<AppleScript>();
 
         // Hide the Try Again button initially
         if (tryAgainButton != null)
@@ -58,7 +58,7 @@ public class BasketScript : MonoBehaviour
         UpdateAppleCountText(); // Update the UI text
 
         // Restore all apples to their initial positions
-        foreach (AppleBehaviourScript apple in apples)
+        foreach (AppleScript apple in apples)
         {
             apple.ResetApple();
         }
