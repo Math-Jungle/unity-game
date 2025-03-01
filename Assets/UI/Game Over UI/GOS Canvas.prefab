@@ -560,6 +560,7 @@ GameObject:
   - component: {fileID: 3931166504113721995}
   - component: {fileID: 4219975886646255257}
   - component: {fileID: 3006472730285843281}
+  - component: {fileID: 8055242304677470706}
   m_Layer: 5
   m_Name: Game Over Screen
   m_TagString: Untagged
@@ -646,6 +647,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 6000
+--- !u!114 &8055242304677470706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2626804777414727960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b2607f3b4e8d846bc2b01cab970ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: login
 --- !u!1 &3126549379977259329
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,8 +1221,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3931166504113721995}
-        m_TargetAssemblyTypeName: gameOverScreen, Assembly-CSharp
+      - m_Target: {fileID: 8055242304677470706}
+        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
         m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
@@ -1549,8 +1563,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3006472730285843281}
-        m_TargetAssemblyTypeName: gameOverScreen, Assembly-CSharp
+      - m_Target: {fileID: 8055242304677470706}
+        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
         m_MethodName: Home
         m_Mode: 1
         m_Arguments:
@@ -1681,8 +1695,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3931166504113721995}
-        m_TargetAssemblyTypeName: gameOverScreen, Assembly-CSharp
+      - m_Target: {fileID: 8055242304677470706}
+        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
         m_MethodName: NextLevel
         m_Mode: 1
         m_Arguments:
@@ -1692,4 +1706,4 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1

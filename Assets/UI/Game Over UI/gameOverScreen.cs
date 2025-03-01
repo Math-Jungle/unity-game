@@ -12,7 +12,6 @@ public class gameOverScreen : MonoBehaviour
     private Animator star_3_animator;
     private string animationTriggerName = "PlayAnim";
 
-    public Scene scene;
 
     private TextMeshProUGUI gameScoreUI;
 
@@ -120,18 +119,7 @@ public class gameOverScreen : MonoBehaviour
         }
     }
 
-    public void NextLevel()
-    {
-        SceneManager.LoadScene("Game1");
-    }
 
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene("Game1");
-    }
 
-    public void Home()
-    {
-        SceneManager.LoadScene("Home");
-    }
+
 }
