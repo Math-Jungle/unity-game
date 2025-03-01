@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 96210988}
   m_Layer: 0
   m_Name: Green Apple_0
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 184424153}
   m_Layer: 0
   m_Name: Green Apple_0
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -743,6 +743,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Apple
       objectReference: {fileID: 0}
+    - target: {fileID: 9176186454319722188, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
+      propertyPath: m_TagString
+      value: Apple
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9196851376870884678, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
     m_RemovedGameObjects: []
@@ -819,7 +823,7 @@ GameObject:
   - component: {fileID: 486286709}
   m_Layer: 0
   m_Name: Green Apple_0
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -984,7 +988,7 @@ GameObject:
   - component: {fileID: 634571618}
   m_Layer: 0
   m_Name: Red Apple
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1222,6 +1226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Apple
       objectReference: {fileID: 0}
+    - target: {fileID: 9176186454319722188, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
+      propertyPath: m_TagString
+      value: Apple
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9196851376870884678, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
     m_RemovedGameObjects: []
@@ -1246,7 +1254,7 @@ GameObject:
   - component: {fileID: 725000453}
   m_Layer: 0
   m_Name: Red Apple
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1585,7 +1593,7 @@ GameObject:
   - component: {fileID: 877425911}
   m_Layer: 0
   m_Name: Green Apple_0
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1887,7 +1895,7 @@ GameObject:
   - component: {fileID: 1031480923}
   m_Layer: 0
   m_Name: Green Apple_0
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2083,7 +2091,7 @@ GameObject:
   - component: {fileID: 1095588634}
   m_Layer: 0
   m_Name: Green Apple_0
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2248,7 +2256,7 @@ GameObject:
   - component: {fileID: 1116310629}
   m_Layer: 0
   m_Name: Green Apple_0
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2489,6 +2497,10 @@ PrefabInstance:
     - target: {fileID: 9176186454319722188, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
       propertyPath: m_Name
       value: Red Apple
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176186454319722188, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
+      propertyPath: m_TagString
+      value: Apple
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9196851376870884678, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
@@ -2800,6 +2812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Apple
       objectReference: {fileID: 0}
+    - target: {fileID: 9176186454319722188, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
+      propertyPath: m_TagString
+      value: Apple
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9196851376870884678, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
     m_RemovedGameObjects: []
@@ -2824,7 +2840,7 @@ GameObject:
   - component: {fileID: 1324271908}
   m_Layer: 0
   m_Name: Red Apple
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2989,7 +3005,7 @@ GameObject:
   - component: {fileID: 1324657428}
   m_Layer: 0
   m_Name: Green Apple_0
-  m_TagString: Untagged
+  m_TagString: Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3226,6 +3242,10 @@ PrefabInstance:
     - target: {fileID: 9176186454319722188, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
       propertyPath: m_Name
       value: Red Apple
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176186454319722188, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
+      propertyPath: m_TagString
+      value: Apple
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9196851376870884678, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
@@ -3950,6 +3970,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Apple
       objectReference: {fileID: 0}
+    - target: {fileID: 9176186454319722188, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
+      propertyPath: m_TagString
+      value: Apple
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9196851376870884678, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
     m_RemovedGameObjects: []
@@ -4046,6 +4070,10 @@ PrefabInstance:
     - target: {fileID: 9176186454319722188, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
       propertyPath: m_Name
       value: Red Apple
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176186454319722188, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
+      propertyPath: m_TagString
+      value: Apple
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9196851376870884678, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
