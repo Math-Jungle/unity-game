@@ -820,6 +820,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &559619530
 Transform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -884,7 +885,7 @@ SpriteRenderer:
   m_Size: {x: 2.31, y: 4.82}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!1 &581621953
@@ -2070,7 +2071,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1645, y: -1243}
+  m_AnchoredPosition: {x: -0.0000047684, y: -534.48}
   m_SizeDelta: {x: 1700, y: 1700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1736027507
