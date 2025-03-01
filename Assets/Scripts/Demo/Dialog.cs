@@ -29,10 +29,10 @@ public class Dialog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dialogText.text == events[eventIndex].messages[messageIndex])
-        {
-            NextLine();
-        }
+        // if (dialogText.text == events[eventIndex].messages[messageIndex])
+        // {
+        //     NextLine();
+        // }
     }
 
     void StartDialog()
@@ -74,6 +74,8 @@ public class Dialog : MonoBehaviour
             dialogText.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
+        yield return new WaitForSeconds(postTextDelay);
+        NextLine();
     }
 
     void NextLine()
@@ -86,15 +88,16 @@ public class Dialog : MonoBehaviour
         }
         else
         {
-            StartCoroutine(DeactivateAfterDelay());
+            // StartCoroutine(DeactivateAfterDelay());
+            gameObject.SetActive(false);
         }
     }
 
-    private IEnumerator DeactivateAfterDelay()
-    {
-        yield return new WaitForSeconds(postTextDelay);
-        gameObject.SetActive(false);
-    }
+    // private IEnumerator DeactivateAfterDelay()
+    // {
+    //     yield return new WaitForSeconds(postTextDelay);
+    //     gameObject.SetActive(false);
+    // }
 
     void PlayAnimation()
     {
