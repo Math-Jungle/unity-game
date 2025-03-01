@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: f48bccb8e85d00345bb15dd37f3b02e2
+guid: 482d0b396321dd542bde05c31c311dd9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2517650027287720851
-    second: Login Button_0
+      213: 7916486254569040269
+    second: Or line_0
+  - first:
+      213: -4402726838466884188
+    second: Or line_1
+  - first:
+      213: -2863084184859681285
+    second: Or line_2
+  - first:
+      213: 6498888892427533102
+    second: Or line_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Login Button_0
+      name: Or line_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 2206
-        height: 750
+        y: 59
+        width: 1681
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 393bc395c5d70f220800000000000000
-      internalID: 2517650027287720851
+      spriteID: d89a9d02e420ddd60800000000000000
+      internalID: 7916486254569040269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Or line_1
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 0
+        width: 144
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ad4a1e544f56e2c0800000000000000
+      internalID: -4402726838466884188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Or line_2
+      rect:
+        serializedVersion: 2
+        x: 1973
+        y: 0
+        width: 85
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfd56676a184448d0800000000000000
+      internalID: -2863084184859681285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Or line_3
+      rect:
+        serializedVersion: 2
+        x: 2173
+        y: 59
+        width: 1771
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2bffdbd301b03a50800000000000000
+      internalID: 6498888892427533102
       vertices: []
       indices: 
       edges: []
@@ -147,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Or line_0: 7916486254569040269
+      Or line_1: -4402726838466884188
+      Or line_2: -2863084184859681285
+      Or line_3: 6498888892427533102
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

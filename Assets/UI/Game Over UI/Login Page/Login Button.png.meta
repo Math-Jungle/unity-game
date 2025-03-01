@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c33cae16327e24f4a8e76de7136d0f78
+guid: f48bccb8e85d00345bb15dd37f3b02e2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1122146888735541046
-    second: Login with google button_0
+      213: 2517650027287720851
+    second: Login Button_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Login with google button_0
+      name: Login Button_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 3875
-        height: 765
+        width: 2206
+        height: 750
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 63744e066aaa29f00800000000000000
-      internalID: 1122146888735541046
+      spriteID: 393bc395c5d70f220800000000000000
+      internalID: 2517650027287720851
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Login Button_0: 2517650027287720851
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
