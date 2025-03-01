@@ -4,11 +4,13 @@ public class AppleFallGame3 : MonoBehaviour
 {
     private Rigidbody2D rb;
     private bool hasFallen = false;
+    private Vector2 initialPosition; // Store the original position
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0; // Keep apple still at start
+        initialPosition = transform.position; // Store initial position
     }
 
     void OnMouseDown()
@@ -30,5 +32,14 @@ public class AppleFallGame3 : MonoBehaviour
                 }
             }
         }
+    }
+
+    // Reset method to return apple to its initial state
+    public void ResetApple()
+    {
+        transform.position = initialPosition; // Move apple back to start
+        rb.gravityScale = 0; // Stop gravity
+        rb.linearVelocity = Vector2.zero; // Stop any movement
+        hasFallen = false;
     }
 }
