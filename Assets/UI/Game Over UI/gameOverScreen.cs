@@ -1,100 +1,65 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class gameOverScreen : MonoBehaviour
 {
-
-    public int score = 6000;
+    private int score; // Default score (now private)
     private Animator star_1_animator;
     private Animator star_2_animator;
     private Animator star_3_animator;
     private string animationTriggerName = "PlayAnim";
 
-
     private TextMeshProUGUI gameScoreUI;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    // Method to set the score and calculate stars
+    public void SetScore(int playerScore)
     {
-        Debug.Log($"Score: {score}");
-
-        if (star_1_animator == null)
-        {
-            star_1_animator = GameObject.Find("Star_1")?.GetComponent<Animator>();
-        }
-        if (star_2_animator == null)
-        {
-            star_2_animator = GameObject.Find("Star_2")?.GetComponent<Animator>();
-        }
-        if (star_3_animator == null)
-        {
-            star_3_animator = GameObject.Find("Star_3")?.GetComponent<Animator>();
-        }
-
-        // Debug if animators were found
-        Debug.Log($"Star 1 Animator: {star_1_animator}");
-        Debug.Log($"Star 2 Animator: {star_2_animator}");
-        Debug.Log($"Star 3 Animator: {star_3_animator}");
-
-        if (star_1_animator == null || star_2_animator == null || star_3_animator == null)
-        {
-            Debug.LogError("One or more star animators are still not assigned!");
-            return;
-        }
-
-        Debug.Log("Animators assigned successfully.");
-
-        StartCoroutine(PlayAnimation());
-
-        // if (score >= 3000)
-        // {
-        //     Debug.Log("Score is greater than 3000, 1st animation will be played.");
-        //     star_1_animator.SetTrigger(animationTriggerName);
-        // }
-        // if (score >= 5000)
-        // {
-        //     star_2_animator.SetTrigger(animationTriggerName);
-        // }
-        // if (score >= 7000)
-        // {
-        //     star_3_animator.SetTrigger(animationTriggerName);
-        // }
-        // else
-        // {
-        //     Debug.Log("Score is less than 3000, no animation will be played.");
-        // }
-
-        gameScoreUI = GameObject.Find("Score")?.GetComponent<TextMeshProUGUI>();
+        Debug.Log("SetScore() called. Updating score and starting animations.");
+        score = playerScore;
+        StartCoroutine(PlayAnimation(playerScore));
+        Debug.Log(gameScoreUI == null);
+        // Update the score UI
         if (gameScoreUI != null)
         {
             gameScoreUI.text = score.ToString();
-            Debug.Log($"Score set to: {score}");
+            Debug.Log("gameScoreUI.text occured");
+        }
+    }
+
+   public void Start()
+{
+
+    Debug.Log("Start() called. Initializing references.");
+    // Initialize animators
+    star_1_animator = GameObject.Find("Star_1")?.GetComponent<Animator>();
+    star_2_animator = GameObject.Find("Star_2")?.GetComponent<Animator>();
+    star_3_animator = GameObject.Find("Star_3")?.GetComponent<Animator>();
+
+    // Initialize score UI
+    GameObject scoreGameObject = GameObject.Find("Score");
+    if (scoreGameObject != null)
+    {
+        Debug.Log("Found GameObject named 'Score'.");
+        gameScoreUI = scoreGameObject.GetComponent<TextMeshProUGUI>();
+        if (gameScoreUI != null)
+        {
+            Debug.Log("Found TextMeshProUGUI component on 'Score' GameObject.");
         }
         else
         {
-            Debug.LogError("GameScoreUI TextMeshProUGUI component not found!");
+            Debug.LogError("TextMeshProUGUI component not found on 'Score' GameObject.");
         }
     }
-
-
-
-    // Update is called once per frame
-    void Update()
+    else
     {
-        // if (gameScoreUI != null)
-        // {
-        //     gameScoreUI.text = score.ToString();
-        // }
-        // else
-        // {
-        //     Debug.LogError("GameScoreUI TextMeshProUGUI component not found!");
-        // }
+        Debug.LogError("GameObject named 'Score' not found in the scene.");
     }
+}
 
-    private IEnumerator PlayAnimation()
+    private IEnumerator PlayAnimation(int playerScore)
     {
+        score = playerScore;
         yield return new WaitForSeconds(1);
 
         if (score >= 3000)
@@ -113,13 +78,9 @@ public class gameOverScreen : MonoBehaviour
             yield return new WaitForSeconds(0.6f);
             star_3_animator.SetTrigger(animationTriggerName);
         }
-        else
+        else if(score < 3000 && score >= 0)
         {
             Debug.Log("Score is less than 3000, no animation will be played.");
         }
     }
-
-
-
-
 }
