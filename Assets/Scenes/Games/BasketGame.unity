@@ -1033,7 +1033,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 4582967775939725394, guid: 15a759bf013566542bd6ff8db8439e44, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1135,7 +1135,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6853316077166303748, guid: 821261bb2f43e7b47b7e8a14c41e9878, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1284,6 +1284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameWinUI: {fileID: 761759871}
+  gameOverScreen: {fileID: 1347083739}
 --- !u!4 &1014721746
 Transform:
   m_ObjectHideFlags: 0
@@ -1325,14 +1326,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029121670}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.005323218, y: 0, z: 0, w: 0.9999859}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.68, y: 5.68, z: 5.68}
+  m_LocalScale: {x: 5.09, y: 5.09, z: 5.09}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1189537635}
   m_Father: {fileID: 1993555766}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.61, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1273, y: 683.3}
@@ -1759,6 +1760,8 @@ MonoBehaviour:
   requiredApples: 0
   appleCountText: {fileID: 1200418992}
   tryAgainButton: {fileID: 0}
+  gameManager: {fileID: 1014721745}
+  gameOverScreen: {fileID: 1347083739}
 --- !u!61 &1077392169
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2478,9 +2481,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1014721745}
-        m_TargetAssemblyTypeName: gameManagement, Assembly-CSharp
-        m_MethodName: GameWin
+      - m_Target: {fileID: 1077392168}
+        m_TargetAssemblyTypeName: BasketScript, Assembly-CSharp
+        m_MethodName: OnConfirmButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2603,7 +2606,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6853316077166303748, guid: 821261bb2f43e7b47b7e8a14c41e9878, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2976,6 +2979,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1296933729}
   m_SourcePrefab: {fileID: 100100000, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
+--- !u!114 &1347083739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3931166504113721995, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
+  m_PrefabInstance: {fileID: 1674427704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab830c7ea97ccee4184bb321f69bbcfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1353749200
 GameObject:
   m_ObjectHideFlags: 0
@@ -3557,6 +3571,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1011379563983047643, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2626804777414727960, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3006472730285843281, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
