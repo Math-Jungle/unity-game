@@ -3,10 +3,14 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using System.Collections;
+using Unity.VisualScripting;
+using Rive;
+using Rive.Components;
 
 public class Dialog : MonoBehaviour
 {
     public TextMeshProUGUI dialogText;
+    public RectTransform dialogBox;
     // public string[] lines;
 
     public DialogEvent[] events;
@@ -14,7 +18,11 @@ public class Dialog : MonoBehaviour
     public float preTextDelay;
     public float postTextDelay;
 
-    public Animator animator;
+    // public Animator animator;
+    [SerializeField] public RiveWidget riveWidget;
+    private Rive.StateMachine riveStateMachine;
+
+
 
     private int eventIndex;
     private int messageIndex;
@@ -24,6 +32,10 @@ public class Dialog : MonoBehaviour
     {
         dialogText.text = string.Empty;
         // StartDialog();
+        dialogBox.transform.localScale = Vector3.zero;
+
+        //Wait for the Rive widget to load before getting the state machine
+        StartCoroutine(LoadRiveStateMachine());
     }
 
     // Update is called once per frame
@@ -33,6 +45,16 @@ public class Dialog : MonoBehaviour
         // {
         //     NextLine();
         // }
+    }
+
+    private IEnumerator LoadRiveStateMachine()
+    {
+        while (riveWidget.Status != WidgetStatus.Loaded)
+        {
+            yield return null; // Wait for the Rive widget to load
+        }
+
+        riveStateMachine = riveWidget.StateMachine;
     }
 
     void StartDialog()
@@ -52,6 +74,7 @@ public class Dialog : MonoBehaviour
         }
 
         gameObject.SetActive(true);
+        dialogBox.LeanScale(Vector3.one, 0.6f);
         eventIndex = newEventIndex;
         messageIndex = 0;
         dialogText.text = string.Empty;
@@ -88,23 +111,35 @@ public class Dialog : MonoBehaviour
         }
         else
         {
-            // StartCoroutine(DeactivateAfterDelay());
-            gameObject.SetActive(false);
+
+            dialogBox.LeanScale(Vector3.zero, 0.6f);
+            // gameObject.SetActive(false);
+            StartCoroutine(DeactivateAfterDelay());
         }
     }
 
-    // private IEnumerator DeactivateAfterDelay()
-    // {
-    //     yield return new WaitForSeconds(postTextDelay);
-    //     gameObject.SetActive(false);
-    // }
+    private IEnumerator DeactivateAfterDelay()
+    {
+        yield return new WaitForSeconds(0.6f);
+        gameObject.SetActive(false);
+    }
 
     void PlayAnimation()
     {
-        if (animator != null)
+        // if (animator != null)
+        // {
+        //     animator.SetTrigger(events[eventIndex].animationTrigger);
+        // }
+
+        if (riveStateMachine == null) return;
+
+        SMITrigger riveTrigger = riveStateMachine.GetTrigger(events[eventIndex].animationTrigger);
+        if (riveTrigger != null)
         {
-            animator.SetTrigger(events[eventIndex].animationTrigger);
+            riveTrigger.Fire(); // Fire the trigger
         }
+
+
     }
 
 
