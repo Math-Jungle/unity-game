@@ -14,12 +14,25 @@ public class AppleFallGame3 : MonoBehaviour
 
     public string appleColor; // "Red" or "Green"
 
+    public static int requiredRedApples;
+    public static int requiredGreenApples;
+
+    // Flag to check if the question has been shown already
+    private static bool questionDisplayed = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         initialPosition = transform.position;
         allApples.Add(this);
+
+        // Only display the question once at the beginning
+        if (!questionDisplayed)
+        {
+            StartNewRound();
+            questionDisplayed = true;
+        }
     }
 
     void OnDestroy()
@@ -28,34 +41,44 @@ public class AppleFallGame3 : MonoBehaviour
     }
 
     void OnMouseDown()
-{
-    if (!hasFallen)
     {
-        rb.gravityScale = 1;
-        hasFallen = true;
-
-        // Update counters based on apple color
-        if (appleColor == "Red")
-            redAppleClickedCount++;
-        else if (appleColor == "Green")
-            greenAppleClickedCount++;
-
-        // Print the updated counters
-        Debug.Log($"Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
-
-        // Ignore collision with other apples
-        Collider2D myCollider = GetComponent<Collider2D>();
-        foreach (AppleFallGame3 apple in allApples)
+        if (!hasFallen)
         {
-            if (apple != this) // Ignore itself
+            rb.gravityScale = 1;
+            hasFallen = true;
+
+            // Update counters based on apple color
+            if (appleColor == "Red")
+                redAppleClickedCount++;
+            else if (appleColor == "Green")
+                greenAppleClickedCount++;
+
+            // Print the updated counters
+            Debug.Log($"Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
+
+            // Check if player has selected the correct number of apples
+            if (redAppleClickedCount == requiredRedApples && greenAppleClickedCount == requiredGreenApples)
             {
-                Collider2D otherCollider = apple.GetComponent<Collider2D>();
-                Physics2D.IgnoreCollision(myCollider, otherCollider);
+                Debug.Log("Good job! You picked the right number of apples.");
+                #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false; // Stops the game in the Unity editor
+                #else
+                    Application.Quit(); // Quits the game in a built version
+                #endif
+            }
+
+            // Ignore collisions with other apples
+            Collider2D myCollider = GetComponent<Collider2D>();
+            foreach (AppleFallGame3 apple in allApples)
+            {
+                if (apple != this) // Ignore itself
+                {
+                    Collider2D otherCollider = apple.GetComponent<Collider2D>();
+                    Physics2D.IgnoreCollision(myCollider, otherCollider, true); // Ignore collision between apples
+                }
             }
         }
     }
-}
-
 
     public void ResetApple()
     {
@@ -71,5 +94,16 @@ public class AppleFallGame3 : MonoBehaviour
         redAppleClickedCount = 0;
         greenAppleClickedCount = 0;
         Debug.Log($"Game Reset: Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
+    }
+
+    // Start a new round with new random numbers
+    public static void StartNewRound()
+    {
+        // Randomly generate numbers of red and green apples to pick
+        requiredRedApples = Random.Range(1, 9);  // 1 to 8 red apples
+        requiredGreenApples = Random.Range(1, 8); // 1 to 7 green apples
+
+        // Display the new question in the console
+        Debug.Log($"Pick {requiredRedApples} red apples and {requiredGreenApples} green apples.");
     }
 }

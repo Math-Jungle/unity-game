@@ -11,5 +11,8 @@ public class ReplayManager : MonoBehaviour
 
         // Reset click counters
         AppleFallGame3.ResetCounts();
+
+        
     }
 }
+
