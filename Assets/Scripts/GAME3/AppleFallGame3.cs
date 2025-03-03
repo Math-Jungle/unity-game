@@ -56,17 +56,6 @@ public class AppleFallGame3 : MonoBehaviour
             // Print the updated counters
             Debug.Log($"Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
 
-            // Check if player has selected the correct number of apples
-            if (redAppleClickedCount == requiredRedApples && greenAppleClickedCount == requiredGreenApples)
-            {
-                Debug.Log("Good job! You picked the right number of apples.");
-                #if UNITY_EDITOR
-                    UnityEditor.EditorApplication.isPlaying = false; // Stops the game in the Unity editor
-                #else
-                    Application.Quit(); // Quits the game in a built version
-                #endif
-            }
-
             // Ignore collisions with other apples
             Collider2D myCollider = GetComponent<Collider2D>();
             foreach (AppleFallGame3 apple in allApples)
