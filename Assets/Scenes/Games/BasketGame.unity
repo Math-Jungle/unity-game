@@ -1284,7 +1284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameWinUI: {fileID: 761759871}
-  gameOverScreen: {fileID: 1347083739}
+  gameOverScreen: {fileID: 1719440069}
 --- !u!4 &1014721746
 Transform:
   m_ObjectHideFlags: 0
@@ -1761,7 +1761,7 @@ MonoBehaviour:
   appleCountText: {fileID: 1200418992}
   tryAgainButton: {fileID: 0}
   gameManager: {fileID: 1014721745}
-  gameOverScreen: {fileID: 1347083739}
+  gameOverScreen: {fileID: 1719440069}
 --- !u!61 &1077392169
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2979,17 +2979,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1296933729}
   m_SourcePrefab: {fileID: 100100000, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
---- !u!114 &1347083739 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3931166504113721995, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
-  m_PrefabInstance: {fileID: 1674427704}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab830c7ea97ccee4184bb321f69bbcfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1353749200
 GameObject:
   m_ObjectHideFlags: 0
@@ -3438,6 +3427,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1654756990}
   m_SourcePrefab: {fileID: 100100000, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
+--- !u!1 &1560245995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4456709715302343590, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
+  m_PrefabInstance: {fileID: 1674427704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1611044263 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3965374829575030220, guid: e8123773b3647634ba22dcf20346e5c6, type: 3}
@@ -3594,6 +3588,10 @@ PrefabInstance:
       value: Star_3
       objectReference: {fileID: 0}
     - target: {fileID: 3006472730285843281, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
+      propertyPath: inputBlocker
+      value: 
+      objectReference: {fileID: 1560245995}
+    - target: {fileID: 3006472730285843281, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
       propertyPath: star_1_animator
       value: 
       objectReference: {fileID: 1196843268}
@@ -3605,6 +3603,10 @@ PrefabInstance:
       propertyPath: star_3_animator
       value: 
       objectReference: {fileID: 868125553}
+    - target: {fileID: 4219975886646255257, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5334285633109040718, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
       propertyPath: m_isRightToLeft
       value: 0
@@ -3865,6 +3867,17 @@ Transform:
   - {fileID: 1178918767}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1719440069 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3006472730285843281, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
+  m_PrefabInstance: {fileID: 1674427704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab830c7ea97ccee4184bb321f69bbcfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1729815665
 GameObject:
   m_ObjectHideFlags: 0
