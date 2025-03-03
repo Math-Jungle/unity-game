@@ -1,32 +1,44 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AppleFallGame3 : MonoBehaviour
 {
     private Rigidbody2D rb;
     private bool hasFallen = false;
-    private Vector2 initialPosition; // Store the original position
+    private Vector2 initialPosition;
+
+    // Static list to track all apples
+    public static List<AppleFallGame3> allApples = new List<AppleFallGame3>();
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0; // Keep apple still at start
-        initialPosition = transform.position; // Store initial position
+        rb.gravityScale = 0;
+        initialPosition = transform.position;
+
+        // Register this apple in the list
+        allApples.Add(this);
+    }
+
+    void OnDestroy()
+    {
+        // Remove apple from the list when destroyed
+        allApples.Remove(this);
     }
 
     void OnMouseDown()
     {
         if (!hasFallen)
         {
-            rb.gravityScale = 1; // Enable gravity
+            rb.gravityScale = 1;
             hasFallen = true;
 
-            // Ignore collisions with other apples
             Collider2D myCollider = GetComponent<Collider2D>();
-            Collider2D[] allApples = FindObjectsOfType<Collider2D>();
+            Collider2D[] allColliders = FindObjectsOfType<Collider2D>();
 
-            foreach (Collider2D apple in allApples)
+            foreach (Collider2D apple in allColliders)
             {
-                if (apple.gameObject.CompareTag("Apple")) // Ensure all apples have this tag
+                if (apple.gameObject.CompareTag("Apple"))
                 {
                     Physics2D.IgnoreCollision(myCollider, apple);
                 }
@@ -34,12 +46,11 @@ public class AppleFallGame3 : MonoBehaviour
         }
     }
 
-    // Reset method to return apple to its initial state
     public void ResetApple()
     {
-        transform.position = initialPosition; // Move apple back to start
-        rb.gravityScale = 0; // Stop gravity
-        rb.linearVelocity = Vector2.zero; // Stop any movement
+        transform.position = initialPosition;
+        rb.gravityScale = 0;
+        rb.linearVelocity = Vector2.zero;
         hasFallen = false;
     }
 }
