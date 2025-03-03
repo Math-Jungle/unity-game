@@ -7,44 +7,55 @@ public class AppleFallGame3 : MonoBehaviour
     private bool hasFallen = false;
     private Vector2 initialPosition;
 
-    // Static list to track all apples
     public static List<AppleFallGame3> allApples = new List<AppleFallGame3>();
+
+    public static int redAppleClickedCount = 0;
+    public static int greenAppleClickedCount = 0;
+
+    public string appleColor; // "Red" or "Green"
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         initialPosition = transform.position;
-
-        // Register this apple in the list
         allApples.Add(this);
     }
 
     void OnDestroy()
     {
-        // Remove apple from the list when destroyed
         allApples.Remove(this);
     }
 
     void OnMouseDown()
+{
+    if (!hasFallen)
     {
-        if (!hasFallen)
+        rb.gravityScale = 1;
+        hasFallen = true;
+
+        // Update counters based on apple color
+        if (appleColor == "Red")
+            redAppleClickedCount++;
+        else if (appleColor == "Green")
+            greenAppleClickedCount++;
+
+        // Print the updated counters
+        Debug.Log($"Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
+
+        // Ignore collision with other apples
+        Collider2D myCollider = GetComponent<Collider2D>();
+        foreach (AppleFallGame3 apple in allApples)
         {
-            rb.gravityScale = 1;
-            hasFallen = true;
-
-            Collider2D myCollider = GetComponent<Collider2D>();
-            Collider2D[] allColliders = FindObjectsOfType<Collider2D>();
-
-            foreach (Collider2D apple in allColliders)
+            if (apple != this) // Ignore itself
             {
-                if (apple.gameObject.CompareTag("Apple"))
-                {
-                    Physics2D.IgnoreCollision(myCollider, apple);
-                }
+                Collider2D otherCollider = apple.GetComponent<Collider2D>();
+                Physics2D.IgnoreCollision(myCollider, otherCollider);
             }
         }
     }
+}
+
 
     public void ResetApple()
     {
@@ -52,5 +63,13 @@ public class AppleFallGame3 : MonoBehaviour
         rb.gravityScale = 0;
         rb.linearVelocity = Vector2.zero;
         hasFallen = false;
+    }
+
+    // Reset counts when replay is clicked
+    public static void ResetCounts()
+    {
+        redAppleClickedCount = 0;
+        greenAppleClickedCount = 0;
+        Debug.Log($"Game Reset: Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
     }
 }

@@ -8,5 +8,8 @@ public class ReplayManager : MonoBehaviour
         {
             apple.ResetApple();
         }
+
+        // Reset click counters
+        AppleFallGame3.ResetCounts();
     }
 }
