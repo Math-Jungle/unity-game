@@ -29,6 +29,7 @@ public class ButtonScript : MonoBehaviour
 
     public void NextLevel()
     {
+        Time.timeScale = 1f;
         Debug.Log($"Next Scene before loading: {nextSceneName}");
         if (string.IsNullOrEmpty(nextSceneName))
         {
@@ -41,12 +42,14 @@ public class ButtonScript : MonoBehaviour
 
     public void RestartLevel()
     {
+        Time.timeScale = 1f;
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
 
     public void Home()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Home");
     }
 }
