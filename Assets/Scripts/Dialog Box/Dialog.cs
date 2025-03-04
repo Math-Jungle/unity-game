@@ -35,7 +35,10 @@ public class Dialog : MonoBehaviour
         dialogBox.transform.localScale = Vector3.zero;
 
         //Wait for the Rive widget to load before getting the state machine
-        StartCoroutine(LoadRiveStateMachine());
+        if (riveWidget != null)
+        {
+            StartCoroutine(LoadRiveStateMachine());
+        }
     }
 
     // Update is called once per frame

@@ -12,6 +12,7 @@ public class BasketScript : MonoBehaviour
 
     public gameManagement gameManager; // Reference to the gameManagement script
     public gameOverScreen gameOverScreen; // Reference to the gameOverScreen script
+    public Dialog dialog; // Reference to the Dialog script
 
     private float startTime; // Track the start time of the level
     private bool levelCompleted = false; // Track if the level is completed
@@ -19,6 +20,23 @@ public class BasketScript : MonoBehaviour
 
     private void Start()
     {
+        if (dialog == null)
+        {
+            dialog = FindObjectOfType<Dialog>();
+            if (dialog == null)
+            {
+                Debug.LogError("Dialog script not found in the scene!");
+            }
+        }
+
+        if(dialog != null){
+            dialog.RunEvent(1);
+            Debug.Log("Dialog started");
+        }
+        else{
+            Debug.LogError("dialogBox is not assigned!");
+        }
+
         // Initialize the UI text
         UpdateAppleCountText();
 
