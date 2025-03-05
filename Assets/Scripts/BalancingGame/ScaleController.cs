@@ -58,7 +58,6 @@ public class ScaleController : MonoBehaviour
                 AddAppleToSide(false);
         }
     }
-   
 
     // Add apple to specified side (true for left, false for right)
     public void AddAppleToSide(bool isLeft)
@@ -80,7 +79,6 @@ public class ScaleController : MonoBehaviour
             rightApples.Add(newApple);
             rightWeight += appleRb.mass;
         }
-        
     }
 
     // Check if scale is balanced
