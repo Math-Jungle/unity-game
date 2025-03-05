@@ -17,6 +17,7 @@ public class Dialog : MonoBehaviour
     public float textSpeed;
     public float preTextDelay;
     public float postTextDelay;
+    public event Action OnDialogComplete;
 
     // public Animator animator;
     [SerializeField] public RiveWidget riveWidget;
@@ -125,6 +126,9 @@ public class Dialog : MonoBehaviour
     {
         yield return new WaitForSeconds(0.6f);
         gameObject.SetActive(false);
+
+        // Invoke the dialog complete event
+        OnDialogComplete?.Invoke();
     }
 
     void PlayAnimation()
@@ -144,6 +148,7 @@ public class Dialog : MonoBehaviour
 
 
     }
+
 
 
 

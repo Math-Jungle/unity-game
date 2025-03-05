@@ -11,12 +11,14 @@ public class BasketScript : MonoBehaviour
     private AppleScript[] apples; // Array to store all apples in the scene
 
     public gameManagement gameManager; // Reference to the gameManagement script
-    public gameOverScreen gameOverScreen; // Reference to the gameOverScreen script
+    public GameOverScreen gameOverScreen; // Reference to the gameOverScreen script
     public Dialog dialog; // Reference to the Dialog script
 
     private float startTime; // Track the start time of the level
     private bool levelCompleted = false; // Track if the level is completed
     private int calculatedScore = 0; // Store the calculated score
+
+
 
     private void Start()
     {
@@ -29,11 +31,15 @@ public class BasketScript : MonoBehaviour
             }
         }
 
-        if(dialog != null){
+        if (dialog != null)
+        {
+            // Subscribe to the dialog complete event
+            dialog.OnDialogComplete += StartGameTimer;
             dialog.RunEvent(1);
             Debug.Log("Dialog started");
         }
-        else{
+        else
+        {
             Debug.LogError("dialogBox is not assigned!");
         }
 
@@ -62,7 +68,7 @@ public class BasketScript : MonoBehaviour
         // Find the gameOverScreen object in the scene
         if (gameOverScreen == null)
         {
-            gameOverScreen = FindObjectOfType<gameOverScreen>();
+            gameOverScreen = FindObjectOfType<GameOverScreen>();
             if (gameOverScreen == null)
             {
                 Debug.LogError("gameOverScreen script not found in the scene!");
@@ -122,88 +128,95 @@ public class BasketScript : MonoBehaviour
 
     // Method to handle the confirm button click
     public void OnConfirmButtonClicked()
-{
-    if (levelCompleted)
     {
-        // Show the scorecard popup
-        if (gameManager != null)
+        if (levelCompleted)
         {
-            gameManager.GameWin(); // Activate the scorecard popup
+            // Show the scorecard popup
+            if (gameManager != null)
+            {
+                gameManager.GameWin(); // Activate the scorecard popup
+            }
+            else
+            {
+                Debug.LogError("gameManager script is not assigned!");
+            }
+
+            // Pass the calculated score to the gameOverScreen script
+            if (gameOverScreen != null)
+            {
+                Debug.Log($"Passing score to gameOverScreen: {calculatedScore}");
+                gameOverScreen.EndGame(calculatedScore);
+            }
+            else
+            {
+                Debug.LogError("gameOverScreen script is not assigned!");
+            }
         }
         else
         {
-            Debug.LogError("gameManager script is not assigned!");
+            // Show the Try Again button
+            if (tryAgainButton != null)
+            {
+                tryAgainButton.SetActive(true);
+            }
         }
+    }
 
-        // Pass the calculated score to the gameOverScreen script
-        if (gameOverScreen != null)
+    public int CalculateScore()
+    {
+        requiredApples = 7; // Change this to the required number of apples as on the text on the basket
+        int baseScore = 0;
+        int timeBonus = 0;
+
+        // Calculate the difference between currentApples and requiredApples
+        int appleDifference = Mathf.Abs(currentApples - requiredApples);
+
+        // Calculate the base score based on the apple difference
+        if (currentApples == requiredApples)
         {
-            Debug.Log($"Passing score to gameOverScreen: {calculatedScore}");
-            gameOverScreen.SetScore(calculatedScore);
+            // Perfect score if the player places exactly the required number of apples
+            baseScore = 7000; // Maximum base score for 3 stars
         }
-        else
+        else if ((0 < currentApples && currentApples < 7) || (7 < currentApples && currentApples <= 12))
         {
-            Debug.LogError("gameOverScreen script is not assigned!");
+            // Reduce the base score based on the gap between currentApples and requiredApples
+            baseScore = Mathf.Max(0, 7000 - (appleDifference * 1000)); // Reduce base score by 1000 points per apple difference
         }
-    }
-    else
-    {
-        // Show the Try Again button
-        if (tryAgainButton != null)
+
+        // Calculate the time bonus only if the player places at least 5 apples
+        if (currentApples >= 5 && currentApples <= 9)
         {
-            tryAgainButton.SetActive(true);
+            timeBonus = CalculateTimeBonus();
         }
+
+        // Total score is the sum of base score and time bonus
+        int totalScore = baseScore + timeBonus;
+
+        Debug.Log($"Current Apples: {currentApples}");
+        Debug.Log($"Apple Difference: {appleDifference}");
+        Debug.Log($"Base Score: {baseScore}");
+        Debug.Log($"Time Bonus: {timeBonus}");
+        Debug.Log($"Total Score: {totalScore}");
+
+        return totalScore;
     }
-}
-
-public int CalculateScore()
-{
-    requiredApples = 7; // Change this to the required number of apples as on the text on the basket
-    int baseScore = 0;
-    int timeBonus = 0;
-
-    // Calculate the difference between currentApples and requiredApples
-    int appleDifference = Mathf.Abs(currentApples - requiredApples);
-
-    // Calculate the base score based on the apple difference
-    if (currentApples == requiredApples)
+    // Method to calculate the time bonus
+    public int CalculateTimeBonus()
     {
-        // Perfect score if the player places exactly the required number of apples
-        baseScore = 7000; // Maximum base score for 3 stars
+        float timeTaken = Time.time - startTime; // Time taken to complete the level
+        int maxTimeBonus = 1000; // Maximum time bonus
+        int minTimeBonus = 100; // Minimum time bonus
+
+        // Time bonus decreases linearly with time taken
+        int timeBonus = Mathf.RoundToInt(Mathf.Lerp(maxTimeBonus, minTimeBonus, timeTaken / 60f)); // Adjust 60f based on your level duration
+        Debug.Log($"Time Bonus: {timeBonus}");
+        return timeBonus;
     }
-    else if ((0 < currentApples && currentApples < 7) || (7 < currentApples && currentApples <= 12))
+
+    private void StartGameTimer()
     {
-        // Reduce the base score based on the gap between currentApples and requiredApples
-        baseScore = Mathf.Max(0, 7000 - (appleDifference * 1000)); // Reduce base score by 1000 points per apple difference
+
     }
 
-    // Calculate the time bonus only if the player places at least 5 apples
-    if (currentApples >= 5 && currentApples <= 9)
-    {
-        timeBonus = CalculateTimeBonus();
-    }
 
-    // Total score is the sum of base score and time bonus
-    int totalScore = baseScore + timeBonus;
-
-    Debug.Log($"Current Apples: {currentApples}");
-    Debug.Log($"Apple Difference: {appleDifference}");
-    Debug.Log($"Base Score: {baseScore}");
-    Debug.Log($"Time Bonus: {timeBonus}");
-    Debug.Log($"Total Score: {totalScore}");
-
-    return totalScore;
-}
-// Method to calculate the time bonus
-public int CalculateTimeBonus()
-{
-    float timeTaken = Time.time - startTime; // Time taken to complete the level
-    int maxTimeBonus = 1000; // Maximum time bonus
-    int minTimeBonus = 100; // Minimum time bonus
-
-    // Time bonus decreases linearly with time taken
-    int timeBonus = Mathf.RoundToInt(Mathf.Lerp(maxTimeBonus, minTimeBonus, timeTaken / 60f)); // Adjust 60f based on your level duration
-    Debug.Log($"Time Bonus: {timeBonus}");
-    return timeBonus;
-}
 }

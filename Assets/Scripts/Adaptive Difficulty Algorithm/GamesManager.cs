@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GamesManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GamesManager : MonoBehaviour
     public List<float> ReactionTimes { get; private set; } = new List<float>();
     public float TotalGameTime { get; private set; } = 0f;
     public string NextLevelDifficulty { get; private set; } = "Normal"; //Default difficulty
+    public static string ActiveScene { get; private set; }
 
     private void Awake()
     {
@@ -21,6 +23,8 @@ public class GamesManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        ActiveScene = SceneManager.GetActiveScene().name;
     }
 
     //Call this method from each game when it finishes to get the game data
@@ -63,5 +67,7 @@ public class GamesManager : MonoBehaviour
         {
             Debug.LogError("GameOverScreen not found in the scene.");
         }
+
+
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour
 {
-    public string nextSceneName = "Home";
+    public string NextSceneName { get; set; } = "Home";
+    public int gameScore;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +20,11 @@ public class ButtonScript : MonoBehaviour
 
     IEnumerator LoadNextScene()
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextSceneName);
+        gameScore = GamesManager.Instance.CurrentScore;
+
+        NextSceneName = (gameScore > 8000) ? $"{NextSceneName}-Hard" : NextSceneName;
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(NextSceneName);
         while (!asyncLoad.isDone)
         {
             Debug.Log("Loading progress: " + (asyncLoad.progress * 100) + "%");
@@ -30,8 +35,8 @@ public class ButtonScript : MonoBehaviour
     public void NextLevel()
     {
         Time.timeScale = 1f;
-        Debug.Log($"Next Scene before loading: {nextSceneName}");
-        if (string.IsNullOrEmpty(nextSceneName))
+        Debug.Log($"Next Scene before loading: {NextSceneName}");
+        if (string.IsNullOrEmpty(NextSceneName))
         {
             Debug.LogError("Next Scene Name is not set!");
             return; // Prevents loading an empty scene
