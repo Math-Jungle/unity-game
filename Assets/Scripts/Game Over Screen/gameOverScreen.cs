@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class gameOverScreen : MonoBehaviour
+public class GameOverScreen : MonoBehaviour
 {
     private int score; // Default score (now private)
     private Animator star_1_animator;
@@ -15,9 +15,9 @@ public class gameOverScreen : MonoBehaviour
     private RectTransform gameOverScreenTransform;
 
     // Method to set the score and calculate stars
-    public void SetScore(int playerScore)
+    public void EndGame(int playerScore)
     {
-        Debug.Log("SetScore() called. Updating score and starting animations.");
+        Debug.Log("EndGame() called. Updating score and starting animations.");
 
         Time.timeScale = 0; // Pause the game
 
