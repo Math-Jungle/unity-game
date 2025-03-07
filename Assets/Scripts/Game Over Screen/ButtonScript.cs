@@ -20,7 +20,7 @@ public class ButtonScript : MonoBehaviour
 
     IEnumerator LoadNextScene()
     {
-        gameScore = GameManager.Instance.CurrentScore;
+        gameScore = GamesManager.Instance.CurrentScore;
 
         NextSceneName = (gameScore > 8000) ? $"{NextSceneName}-Hard" : NextSceneName;
 
