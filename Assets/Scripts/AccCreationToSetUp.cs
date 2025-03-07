@@ -16,7 +16,10 @@ public class AccCreationToSetUp : MonoBehaviour
 
         if (IsValidEmail(email) && password == confirmPassword)
         {
-            SceneManager.LoadScene("setup"); // Ensure "setup" is the correct scene name
+            // Store user data
+            UserDataManager.Instance.SetUserCredentials(email, password);
+
+            SceneManager.LoadScene("setup");
         }
         else
         {
@@ -29,4 +32,3 @@ public class AccCreationToSetUp : MonoBehaviour
         return email.Contains("@");
     }
 }
-

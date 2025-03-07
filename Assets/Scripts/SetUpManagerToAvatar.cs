@@ -14,7 +14,10 @@ public class SetUpManagerToAvatar : MonoBehaviour
 
         if (IsValidInput(childName, childAge))
         {
-            SceneManager.LoadScene("avatar"); // Ensure "avatar" is the correct scene name
+            // Store child info
+            UserDataManager.Instance.SetChildInfo(childName, int.Parse(childAge));
+
+            SceneManager.LoadScene("avatar");
         }
         else
         {
@@ -34,6 +37,6 @@ public class SetUpManagerToAvatar : MonoBehaviour
             return false; // Age must be a valid positive number
         }
 
-        return true; // Ensure the function returns true when valid
+        return true;
     }
 }
