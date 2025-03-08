@@ -81,10 +81,10 @@ public class BackendManager : MonoBehaviour
     public void SendGameData(string gameLevel, int score, float[] reactionTimes, float gameTime)
     {
         // Creating GameData Object
-        GameData data = new GameData(gameLevel, score, reactionTimes, gameTime);
+        GameLevel gameLevelData = new GameLevel(gameLevel, score, reactionTimes, gameTime);
 
         // Convert the GameData Object to Json
-        string jsonData = JsonUtility.ToJson(data);
+        string jsonData = JsonUtility.ToJson(gameLevelData);
 
         //Starting coroutine to send data
         StartCoroutine(SendDataCoroutine(jsonData));
@@ -123,23 +123,4 @@ public class BackendManager : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public class GameData
-{
-    public string gameLevel;
-    public int score;
-    public float[] reactionTimes;
-    public float gameTime;
-    public string timestamp;
 
-    public GameData(string gameLevel, int score, float[] reactionTimes, float gameTime)
-    {
-        this.gameLevel = gameLevel;
-        this.score = score;
-        this.reactionTimes = reactionTimes;
-        this.gameTime = gameTime;
-        this.timestamp = System.DateTime.UtcNow.ToString("o");  // Use ISO8601 format
-
-    }
-
-}
