@@ -10,20 +10,23 @@ public class AccCreationToSetUp : MonoBehaviour
 
     public void OnNextButtonClicked()
     {
-        string email = emailInput.text;
+        string email = emailInput.text.Trim();
         string password = passwordInput.text;
         string confirmPassword = confirmPasswordInput.text;
 
         if (IsValidEmail(email) && password == confirmPassword)
         {
-            // Store user data
-            UserDataManager.Instance.SetUserCredentials(email, password);
+            // Save email and password for later use
+            PlayerPrefs.SetString("UserEmail", email);
+            PlayerPrefs.SetString("UserPassword", password);
+            PlayerPrefs.Save();
 
+            // Ensure "setup" is the exact name of your child details scene.
             SceneManager.LoadScene("setup");
         }
         else
         {
-            Debug.Log("Invalid input! Ensure email is correct and passwords match.");
+            Debug.Log("Invalid input! Ensure the email is valid and both passwords match.");
         }
     }
 

@@ -7,9 +7,7 @@ public class SignUpClickHandler : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData eventData)
     {
-        // Get the TextMeshPro component and add a click listener
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
-        
         if (text != null)
         {
             Debug.Log("Sign Up TMP Found!");
@@ -18,10 +16,8 @@ public class SignUpClickHandler : MonoBehaviour, IPointerClickHandler
 
     private void OnMouseDown()
     {
-        Debug.Log("Sign Up clicked! Loading acc creation scene...");
-        SceneManager.LoadScene("acc creation");
+        Debug.Log("Sign Up clicked! Loading account creation scene...");
+        // Ensure "login" matches your scene name.
+        SceneManager.LoadScene("login");
     }
-
-  
-        
 }

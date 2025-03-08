@@ -28,7 +28,7 @@ public class UserDataManager : MonoBehaviour
     private string _avatarId;
 
     // Backend API URL - replace with your actual backend URL
-    private const string API_URL = "http://your-backend-url.com/api/register";
+    private const string API_URL = "http://localhost:8080/api/register";
 
     void Awake()
     {

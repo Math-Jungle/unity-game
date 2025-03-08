@@ -14,29 +14,27 @@ public class SetUpManagerToAvatar : MonoBehaviour
 
         if (IsValidInput(childName, childAge))
         {
-            // Store child info
-            UserDataManager.Instance.SetChildInfo(childName, int.Parse(childAge));
+            // Save child info for later use
+            PlayerPrefs.SetString("ChildName", childName);
+            int ageValue = int.Parse(childAge);
+            PlayerPrefs.SetInt("ChildAge", ageValue);
+            PlayerPrefs.Save();
 
+            // Ensure "avatar" is the exact name of your avatar selection scene.
             SceneManager.LoadScene("avatar");
         }
         else
         {
-            Debug.Log("Invalid input! Ensure the child's name is entered and the age is a number.");
+            Debug.Log("Invalid input! Please ensure you enter a child's name and a valid, positive age.");
         }
     }
 
     private bool IsValidInput(string name, string age)
     {
         if (string.IsNullOrEmpty(name))
-        {
-            return false; // Name cannot be empty
-        }
-
+            return false;
         if (!int.TryParse(age, out int ageValue) || ageValue <= 0)
-        {
-            return false; // Age must be a valid positive number
-        }
-
+            return false;
         return true;
     }
 }
