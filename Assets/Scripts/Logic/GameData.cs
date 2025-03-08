@@ -13,7 +13,7 @@ public class GameData
     }
 
     // Update an existing level or add a new one
-    public void UpdateGameData(string levelName, int score, float[] reactionTimes, float gameTime)
+    public void UpdateLevelData(string levelName, int score, float[] reactionTimes, float gameTime)
     {
         GameLevel existingLevel = GameLevels.Find(level => level.LevelName == levelName); // Finds the GameLevel object that has the same level name as the one level currently inputting.
 

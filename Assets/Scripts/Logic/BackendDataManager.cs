@@ -40,6 +40,12 @@ public class BackendDataManager : MonoBehaviour
 
     // Fetch game data from the backend
     public IEnumerator FetchGameData(string jwtToken, System.Action<GameData> onFetched)
+
+    /*
+        "System.Action<GameData> onFetched"  is a trigger for an method. When calling the FetchGameData method,
+        we can pass a method that needs the GameData object as a prameter.
+        When the data is fetched from the backend that method executes
+    */
     {
         // string jwtToken = PlayerPrefs.GetString("UserToken", "");
 

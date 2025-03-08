@@ -78,49 +78,20 @@ public class BackendManager : MonoBehaviour
         Debug.Log("Updating user progress.");
     }
 
-    public void SendGameData(string gameLevel, int score, float[] reactionTimes, float gameTime)
-    {
-        // Creating GameData Object
-        GameLevel gameLevelData = new GameLevel(gameLevel, score, reactionTimes, gameTime);
+    // public void SendGameData(string gameLevel, int score, float[] reactionTimes, float gameTime)
+    // {
+    //     // Creating GameData Object
+    //     GameLevel gameLevelData = new GameLevel(gameLevel, score, reactionTimes, gameTime);
 
-        // Convert the GameData Object to Json
-        string jsonData = JsonUtility.ToJson(gameLevelData);
+    //     // Convert the GameData Object to Json
+    //     string jsonData = JsonUtility.ToJson(gameLevelData);
 
-        //Starting coroutine to send data
-        StartCoroutine(SendDataCoroutine(jsonData));
+    //     //Starting coroutine to send data
+    //     StartCoroutine(SendDataCoroutine(jsonData));
 
-    }
+    // }
 
-    private IEnumerator SendDataCoroutine(string jsonData)
-    {
 
-        string jwtToken = PlayerPrefs.GetString("UserToken", "");
-
-        if (string.IsNullOrEmpty(jwtToken))
-        {
-            Debug.LogError("No JWT Token found! Cannot send game data.");
-            yield break;
-        }
-
-        UnityWebRequest request = new UnityWebRequest(backendDataUrl, "POST");
-        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
-        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-        request.downloadHandler = new DownloadHandlerBuffer(); // Need to store recieved response
-        request.SetRequestHeader("Content-Type", "application/json");
-        request.SetRequestHeader("Authorization", "Bearer " + jwtToken);
-
-        yield return request.SendWebRequest(); // Waiting for response
-
-        if (request.result == UnityWebRequest.Result.Success)
-        {
-            Debug.Log("Game data sent successfully: " + request.downloadHandler.text);
-        }
-        else
-        {
-            Debug.LogError("Error sending game data: " + request.error);
-        }
-
-    }
 }
 
 
