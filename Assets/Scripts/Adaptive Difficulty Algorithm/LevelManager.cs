@@ -58,10 +58,10 @@ public class GamesManager : MonoBehaviour
     {
         Debug.Log("Ending current game...");
 
-        GameOverScreen gameOverScreen = FindFirstObjectByType<GameOverScreen>();
+        gameOverScreen gameOverScreen = FindFirstObjectByType<gameOverScreen>();
         if (gameOverScreen != null)
         {
-            gameOverScreen.EndGame(CurrentScore);
+            gameOverScreen.SetScore(CurrentScore);
         }
         else
         {

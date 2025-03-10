@@ -11,14 +11,16 @@ public class BasketScript : MonoBehaviour
     private AppleScript[] apples; // Array to store all apples in the scene
 
     public gameManagement gameManager; // Reference to the gameManagement script
-    public GameOverScreen gameOverScreen; // Reference to the gameOverScreen script
+    public gameOverScreen gameOverScreen; // Reference to the gameOverScreen script
     public Dialog dialog; // Reference to the Dialog script
+
+    public AudioClip appleAddedToBasketSound; // Sound when an apple is added to the basket
+    public AudioClip replaySound; // Sound when the replay button is clicked
+    private AudioSource audioSource; // AudioSource for sound effects
 
     private float startTime; // Track the start time of the level
     private bool levelCompleted = false; // Track if the level is completed
     private int calculatedScore = 0; // Store the calculated score
-
-
 
     private void Start()
     {
@@ -68,11 +70,18 @@ public class BasketScript : MonoBehaviour
         // Find the gameOverScreen object in the scene
         if (gameOverScreen == null)
         {
-            gameOverScreen = FindObjectOfType<GameOverScreen>();
+            gameOverScreen = FindObjectOfType<gameOverScreen>();
             if (gameOverScreen == null)
             {
                 Debug.LogError("gameOverScreen script not found in the scene!");
             }
+        }
+
+        // Initialize AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component not found on the basket!");
         }
 
         // Record the start time of the level
@@ -89,6 +98,9 @@ public class BasketScript : MonoBehaviour
             // Disable the apple so it doesn't interact further
             collision.gameObject.SetActive(false);
 
+            // Play sound when an apple is added to the basket
+            PlaySound(appleAddedToBasketSound);
+
             // Check if the basket has the required number of apples
             if (currentApples >= requiredApples)
             {
@@ -103,7 +115,7 @@ public class BasketScript : MonoBehaviour
     {
         if (appleCountText != null)
         {
-            appleCountText.text = "Apples: " + currentApples;
+            appleCountText.text = "Bananas: " + currentApples;
         }
     }
 
@@ -145,7 +157,7 @@ public class BasketScript : MonoBehaviour
             if (gameOverScreen != null)
             {
                 Debug.Log($"Passing score to gameOverScreen: {calculatedScore}");
-                gameOverScreen.EndGame(calculatedScore);
+                gameOverScreen.SetScore(calculatedScore);
             }
             else
             {
@@ -162,6 +174,17 @@ public class BasketScript : MonoBehaviour
         }
     }
 
+    // Method to handle the replay button click
+    public void OnReplayButtonClicked()
+    {
+        // Play sound when the replay button is clicked
+        PlaySound(replaySound);
+
+        // Restore all apples to their initial positions
+        RestoreApples();
+    }
+
+    // Method to calculate the score
     public int CalculateScore()
     {
         requiredApples = 7; // Change this to the required number of apples as on the text on the basket
@@ -200,6 +223,7 @@ public class BasketScript : MonoBehaviour
 
         return totalScore;
     }
+
     // Method to calculate the time bonus
     public int CalculateTimeBonus()
     {
@@ -215,8 +239,19 @@ public class BasketScript : MonoBehaviour
 
     private void StartGameTimer()
     {
-
+        // Logic to start the game timer (if needed)
     }
 
-
+    // Method to play a sound
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource or AudioClip is missing!");
+        }
+    }
 }

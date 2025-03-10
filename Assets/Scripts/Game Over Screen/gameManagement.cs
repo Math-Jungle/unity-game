@@ -3,7 +3,7 @@ using UnityEngine;
 public class gameManagement : MonoBehaviour
 {
     public GameObject gameWinUI; // Reference to the scorecard popup
-    public GameOverScreen gameOverScreen; // Reference to the gameOverScreen script
+    public gameOverScreen gameOverScreen; // Reference to the gameOverScreen script
 
     // Method to show the scorecard popup
     public void GameWin()
