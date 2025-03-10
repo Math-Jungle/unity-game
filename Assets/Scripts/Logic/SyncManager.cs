@@ -37,8 +37,8 @@ public class SyncManager : MonoBehaviour
             }
             else if (localData != null && backendData != null) // when the back end and the front end both contains gamedata but the version is different.
             {
-                DateTime localTime = DateTime.Parse(localData.LastUpdated);
-                DateTime backendTime = DateTime.Parse(backendData.LastUpdated);
+                DateTime localTime = DateTime.Parse(localData.lastUpdated);
+                DateTime backendTime = DateTime.Parse(backendData.lastUpdated);
 
                 if (localTime > backendTime)// Local storage contains newer data. Most frequent case. when the game isn't connected to the internet and stored data only in local storage
                 {

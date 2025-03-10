@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public BackendDataManager backendDataManager;
     public SyncManager syncManager;
     public GameOverScreen gameOverScreen;
-    public GameData GameData { get; private set; }
+    public GameData gameData;
 
     void Awake()
     {
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Initialize GameData as a singleton
-        GameData = new GameData();
+        gameData = new GameData();
     }
 
     public void SubmitGameResults(int score, List<float> reactionTimes, float gameTime)
@@ -46,24 +46,24 @@ public class GameManager : MonoBehaviour
         Debug.Log("SubmitGameResults called.");
 
         // Update GameData with the latest game results
-        GameData.UpdateLevelData(SceneManager.GetActiveScene().name, score, reactionTimes, gameTime);
+        gameData.UpdateLevelData(SceneManager.GetActiveScene().name, score, reactionTimes, gameTime);
         Debug.Log("Game Data Submitted. Preparing to save and sync.");
 
         // Trigger Game Over
         gameOverScreen.EndGame(score);
 
         // Store locally
-        foreach (GameLevel level in GameData.GameLevels)
+        foreach (GameLevel level in gameData.gameLevels)
         {
-            Debug.Log($"Level: {level.LevelName}, Score: {level.Score}, Time: {level.GameTime}");
+            Debug.Log($"Level: {level.levelName}, Score: {level.score}, Time: {level.gameTime}");
         }
-        Debug.Log(GameData.LastUpdated);
-        localDataManager.SaveGameData(GameData);
+        Debug.Log(gameData.lastUpdated);
+        localDataManager.SaveGameData(gameData);
 
         // Try to store remotely, but don't let errors break the game flow
         if (Application.internetReachability != NetworkReachability.NotReachable)
         {
-            StartCoroutine(backendDataManager.SendGameData(GameData, ""));
+            StartCoroutine(backendDataManager.SendGameData(gameData, ""));
         }
 
         // Sync if online
