@@ -1,4 +1,6 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TestButtonScript : MonoBehaviour
 {
@@ -18,6 +20,6 @@ public class TestButtonScript : MonoBehaviour
     public void Click()
     {
         Debug.Log("SignUp button Clicked");
-        gameOverScreen.EndGame(8000);
+        SceneManager.LoadScene("Game 1");
     }
 }
