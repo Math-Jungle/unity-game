@@ -6,6 +6,10 @@ public class ButtonScript : MonoBehaviour
 {
     public string NextSceneName { get; set; } = "Home";
     public int gameScore;
+    public LoadingScenes loadingScenes;
+    public GameOverScreen gameOverScreen;
+    public GameObject gameOverScreenObject;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +24,7 @@ public class ButtonScript : MonoBehaviour
 
     IEnumerator LoadNextScene()
     {
-        gameScore = GamesManager.Instance.CurrentScore;
+        //gameScore = LManager.Instance.CurrentScore;
 
         NextSceneName = (gameScore > 8000) ? $"{NextSceneName}-Hard" : NextSceneName;
 
@@ -45,6 +49,13 @@ public class ButtonScript : MonoBehaviour
         StartCoroutine(LoadNextScene());
     }
 
+    public void SceneLoader()
+    {
+        gameOverScreenObject.SetActive(false);
+        Time.timeScale = 1f;
+        loadingScenes.LoadNextScene(SceneManager.GetActiveScene().name, gameOverScreen.score);
+    }
+
     public void RestartLevel()
     {
         Time.timeScale = 1f;
@@ -58,3 +69,4 @@ public class ButtonScript : MonoBehaviour
         SceneManager.LoadScene("Home");
     }
 }
+// Move all this code to the gameover screen script

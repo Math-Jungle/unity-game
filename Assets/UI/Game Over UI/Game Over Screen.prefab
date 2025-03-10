@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab830c7ea97ccee4184bb321f69bbcfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   star_1_animator: {fileID: 4196318857282854260}
   star_2_animator: {fileID: 5812832450322239343}
   star_3_animator: {fileID: 2431151248861784522}
@@ -278,6 +279,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScore: 0
+  loadingScenes: {fileID: 0}
+  gameOverScreen: {fileID: 2106108989474671116}
+  gameOverScreenObject: {fileID: 1222460067583471685}
 --- !u!1 &1718323173616100481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,7 +1154,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6578278846138468527}
         m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: NextLevel
+        m_MethodName: SceneLoader
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

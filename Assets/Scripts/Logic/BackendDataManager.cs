@@ -50,6 +50,7 @@ public class BackendDataManager : MonoBehaviour
                 // Log the error but don't throw exceptions
                 HandleRequestError(request);
                 Debug.LogWarning("Failed to send game data to backend, but game will continue.");
+                yield break;
             }
         }
         catch (System.Exception e)

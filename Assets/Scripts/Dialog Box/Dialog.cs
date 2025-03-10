@@ -61,15 +61,18 @@ public class Dialog : MonoBehaviour
         riveStateMachine = riveWidget.StateMachine;
     }
 
-    void StartDialog()
+    public IEnumerator StartDialogCoroutine()
     {
         eventIndex = 0;
         messageIndex = 0;
         PlayAnimation();
         StartCoroutine(TypeLine());
+
+        // Wait untill the dialog is complete (gameObject is inactive)
+        yield return new WaitUntil(() => !gameObject.activeSelf);
     }
 
-    public void RunEvent(int newEventIndex)
+    public void RunEvent(int newEventIndex, Action onComplete = null)
     {
         if (newEventIndex < 0 || newEventIndex >= events.Length)
         {
@@ -82,6 +85,9 @@ public class Dialog : MonoBehaviour
         eventIndex = newEventIndex;
         messageIndex = 0;
         dialogText.text = string.Empty;
+
+        // When dialog finishes, invoke the onComplete callback
+        OnDialogComplete += () => onComplete?.Invoke();
 
         StartCoroutine(StartEaventWithDelay());// Starting the event with a delay to ensure the game object is fully active
     }

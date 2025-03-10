@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PausePanel : MonoBehaviour
 {
     public GameObject pausePanel;
     public RectTransform pausePanelTransform;
     public Volume globalVolume;
+    public Button pauseButton;
 
     public float animationDuration = 0.5f;
 
@@ -29,6 +31,7 @@ public class PausePanel : MonoBehaviour
         pausePanel.SetActive(true);
         LeanTween.scale(pausePanelTransform, Vector3.one, animationDuration).setIgnoreTimeScale(true).setEase(LeanTweenType.easeOutBack);
         Time.timeScale = 0;
+        pauseButton.interactable = false;
     }
 
     public void Resume()
@@ -40,6 +43,7 @@ public class PausePanel : MonoBehaviour
 
         });
         Time.timeScale = 1;
+        pauseButton.interactable = true;
     }
 
     public void Home()

@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+
 
 public class Level_1_GameManager : MonoBehaviour, IGameManager
 {
+    public Dialog dialog;
     private float startTime;
     private float endTime;
     private List<float> reactionTimes = new List<float>();
@@ -17,7 +18,10 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartGame();
+        dialog.RunEvent(0, () =>
+        {
+            StartGame();
+        });
     }
 
     // Update is called once per frame
