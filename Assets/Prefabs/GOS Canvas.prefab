@@ -114,6 +114,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Over Screen
       objectReference: {fileID: 0}
+    - target: {fileID: 1222460067583471685, guid: 2d4cce6ed5e751c408f1261942cc85f5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2320082594332884262, guid: 2d4cce6ed5e751c408f1261942cc85f5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

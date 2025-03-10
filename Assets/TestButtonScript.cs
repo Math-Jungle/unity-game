@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TestButtonScript : MonoBehaviour
 {
+    public GameOverScreen gameOverScreen;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,5 +18,6 @@ public class TestButtonScript : MonoBehaviour
     public void Click()
     {
         Debug.Log("SignUp button Clicked");
+        gameOverScreen.EndGame(8000);
     }
 }

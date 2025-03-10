@@ -35,6 +35,10 @@ public class NewScriptableObjectScript : MonoBehaviour
             case "game6":
                 SceneManager.LoadScene("Home");
                 break;
+
+            default:
+                SceneManager.LoadScene("Home");
+                break;
         }
     }
 

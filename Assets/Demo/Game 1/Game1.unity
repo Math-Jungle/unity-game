@@ -2571,7 +2571,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029918418}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -4459,7 +4459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 312366333920076265, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1011379563983047643, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
       propertyPath: m_SortingOrder
@@ -4585,10 +4585,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7027745390506834573, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
+      propertyPath: m_IsGlobal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027745390506834573, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a807ff400b3f3e459d4c90a89a537bd, type: 2}
     - target: {fileID: 7217037797459306034, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 08022d09b43944241a59be614970e326, type: 2}
+    - target: {fileID: 8033614354230268359, guid: 5383fe0b34b0d7144b1f41f44bbc74bc, type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,20 +1,24 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class GameData
 {
-    private List<GameLevel> GameLevels { get; set; }
+    public List<GameLevel> GameLevels { get; set; }
     public string LastUpdated { get; set; }
 
     public GameData()
     {
         this.GameLevels = new List<GameLevel>();
         this.LastUpdated = System.DateTime.UtcNow.ToString();
+
+        Debug.Log("New GameData created.");
     }
 
     // Update an existing level or add a new one
-    public void UpdateLevelData(string levelName, int score, float[] reactionTimes, float gameTime)
+    public void UpdateLevelData(string levelName, int score, List<float> reactionTimes, float gameTime)
     {
+        Debug.Log($"Updating GameData for level {levelName}");
         GameLevel existingLevel = GameLevels.Find(level => level.LevelName == levelName); // Finds the GameLevel object that has the same level name as the one level currently inputting.
 
         if (existingLevel != null) // If the game level exist replace the data
@@ -31,6 +35,8 @@ public class GameData
         }
 
         LastUpdated = System.DateTime.UtcNow.ToString("o");
+
+        Debug.Log($"GameData updated for level {levelName}");
 
 
     }

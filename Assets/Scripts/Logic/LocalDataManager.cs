@@ -17,6 +17,7 @@ public class LocalDataManager : MonoBehaviour
         try
         {
             File.WriteAllText(filePath, json);
+            Debug.Log("Game data saved to local storage: " + json);
         }
         catch (IOException e)
         {

@@ -32,8 +32,8 @@ public class SyncManager : MonoBehaviour
             else if (localData != null && backendData == null) // when the backend doesn't contain game data that the frontend game contain . Likely won't happen.
             {
                 Debug.Log("No backend data; updating backend with local data.");
-                string json = JsonUtility.ToJson(localData);
-                StartCoroutine(backendDataManager.SendGameData(json, jwtToken));
+
+                StartCoroutine(backendDataManager.SendGameData(localData, jwtToken));
             }
             else if (localData != null && backendData != null) // when the back end and the front end both contains gamedata but the version is different.
             {
@@ -43,8 +43,8 @@ public class SyncManager : MonoBehaviour
                 if (localTime > backendTime)// Local storage contains newer data. Most frequent case. when the game isn't connected to the internet and stored data only in local storage
                 {
                     Debug.Log("Local data is newer. Updating backend.");
-                    string json = JsonUtility.ToJson(localData);
-                    StartCoroutine(backendDataManager.SendGameData(json, jwtToken));
+
+                    StartCoroutine(backendDataManager.SendGameData(localData, jwtToken));
                 }
                 else if (localTime < backendTime)// Backend  storage contains newer data.  In edge cases where user plays the game from a differnt device.
                 {

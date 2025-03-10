@@ -6,18 +6,23 @@ using UnityEngine.UI;
 public class GameOverScreen : MonoBehaviour
 {
     private int score; // Default score (now private)
-    private Animator star_1_animator;
-    private Animator star_2_animator;
-    private Animator star_3_animator;
-    private string animationTriggerName = "PlayAnim";
+    public Animator star_1_animator;
+    public Animator star_2_animator;
+    public Animator star_3_animator;
+    public Animator flareAnimator;
+    public Animator flareStarsAnimator;
+    public Animator blurAnimator;
+    public string animationTriggerName = "PlayAnim";
+    public string startAnimationTriggerName = "start";
 
-    private TextMeshProUGUI gameScoreUI;
-    private RectTransform gameOverScreenTransform;
+    public TextMeshProUGUI gameScoreUI;
+    public RectTransform gameOverScreenTransform;
 
     // Method to set the score and calculate stars
     public void EndGame(int playerScore)
     {
         Debug.Log("EndGame() called. Updating score and starting animations.");
+        gameObject.SetActive(true); // Enable the game over screen
 
         Time.timeScale = 0; // Pause the game
 
@@ -29,6 +34,8 @@ public class GameOverScreen : MonoBehaviour
             Debug.Log("game score updated");
         }
 
+        // Play flare and stars animations
+        PlayFlareAndStarsAnimations();
 
 
         // Animate the game over screen appearance using LeanTween
@@ -38,17 +45,21 @@ public class GameOverScreen : MonoBehaviour
             StartCoroutine(PlayAnimation(playerScore));
         });
 
+
+
     }
 
     public void Start()
     {
+        CheckReferences();
+        gameOverScreenTransform.localScale = Vector3.zero; // Start with the scale set to zero
 
-        Debug.Log("Start() called. Initializing references.");
+    }
 
-        // Initialize animators
-        star_1_animator = GameObject.Find("Star_1")?.GetComponent<Animator>();
-        star_2_animator = GameObject.Find("Star_2")?.GetComponent<Animator>();
-        star_3_animator = GameObject.Find("Star_3")?.GetComponent<Animator>();
+    private void CheckReferences()
+    {
+
+        Debug.Log("Checking references.");
 
         // Set animators to use unscaled time
         if (star_1_animator != null)
@@ -65,28 +76,16 @@ public class GameOverScreen : MonoBehaviour
         }
 
         // Initialize score UI
-        GameObject scoreGameObject = GameObject.Find("Score");
-        if (scoreGameObject != null)
+        if (gameScoreUI != null)
         {
-            Debug.Log("Found GameObject named 'Score'.");
-            gameScoreUI = scoreGameObject.GetComponent<TextMeshProUGUI>();
-            if (gameScoreUI != null)
-            {
-                Debug.Log("Found TextMeshProUGUI component on 'Score' GameObject.");
-            }
-            else
-            {
-                Debug.LogError("TextMeshProUGUI component not found on 'Score' GameObject.");
-            }
+            Debug.Log("Found TextMeshProUGUI component on 'Score' GameObject.");
         }
         else
         {
-            Debug.LogError("GameObject named 'Score' not found in the scene.");
+            Debug.LogError("GameObject named 'Score' not found.");
         }
 
         // Initialize the game over screen transform
-        gameOverScreenTransform = GetComponent<RectTransform>();
-
         if (gameOverScreenTransform != null)
         {
             Debug.Log("Found RectTransform component on 'gameOverScreen' GameObject.");
@@ -96,7 +95,43 @@ public class GameOverScreen : MonoBehaviour
             Debug.LogError("RectTransform component not found on 'gameOverScreen' GameObject.");
         }
 
-        gameOverScreenTransform.localScale = Vector3.zero; // Start with the scale set to zero
+
+    }
+
+    private void PlayFlareAndStarsAnimations()
+    {
+        // Play blur animation
+        if (blurAnimator != null)
+        {
+            Debug.Log("Playing blur animation.");
+            blurAnimator.SetTrigger(startAnimationTriggerName);
+        }
+        else
+        {
+            Debug.LogError("blurAnimator is null.");
+        }
+
+        // Play flare animation
+        if (flareAnimator != null)
+        {
+            Debug.Log("Playing flare animation.");
+            flareAnimator.SetTrigger(startAnimationTriggerName);
+        }
+        else
+        {
+            Debug.LogError("flareAnimator is null.");
+        }
+
+        // Play flare stars animation
+        if (flareStarsAnimator != null)
+        {
+            Debug.Log("Playing flare stars animation.");
+            flareStarsAnimator.SetTrigger(startAnimationTriggerName);
+        }
+        else
+        {
+            Debug.LogError("flareStarsAnimator is null.");
+        }
 
 
     }
@@ -127,4 +162,5 @@ public class GameOverScreen : MonoBehaviour
             Debug.Log("Score is less than 3000, no animation will be played.");
         }
     }
+
 }

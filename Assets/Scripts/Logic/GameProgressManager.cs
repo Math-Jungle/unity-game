@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameProgressManager : MonoBehaviour
 {
-    public void SaveLevelData(string levelName, int score, float[] reactionTimes, float gameTime)
+    public void SaveLevelData(string levelName, int score, List<float> reactionTimes, float gameTime)
     {
         GameData gameData = GameManager.Instance.localDataManager.LoadGameData();
 
