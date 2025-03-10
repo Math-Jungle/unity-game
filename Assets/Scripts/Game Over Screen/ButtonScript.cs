@@ -7,7 +7,7 @@ public class ButtonScript : MonoBehaviour
     public string NextSceneName { get; set; } = "Home";
     public int gameScore;
     public LoadingScenes loadingScenes;
-    public GameOverScreen gameOverScreen;
+    public gameOverScreen gameOverScreen;
     public GameObject gameOverScreenObject;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
