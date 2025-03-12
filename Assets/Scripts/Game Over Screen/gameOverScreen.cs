@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour
 {
-    private int score; // Default score (now private)
+    public int score; // Default score (now private)
     public Animator star_1_animator;
     public Animator star_2_animator;
     public Animator star_3_animator;

@@ -58,24 +58,24 @@ public class BasketScript : MonoBehaviour
         }
 
         // Find the gameManagement object in the scene
-        // if (gameManager == null)
-        // {
-        //     gameManager = FindObjectOfType<gameManagement>();
-        //     if (gameManager == null)
-        //     {
-        //         Debug.LogError("gameManagement script not found in the scene!");
-        //     }
-        // }
-
-        // Find the gameOverScreen object in the scene
-        if (gameOverScreen == null)
+        if (gameManager == null)
         {
-            gameOverScreen = FindObjectOfType<GameOverScreen>();
-            if (gameOverScreen == null)
+            gameManager = FindObjectOfType<gameManagement>();
+            if (gameManager == null)
             {
-                Debug.LogError("gameOverScreen script not found in the scene!");
+                Debug.LogError("gameManagement script not found in the scene!");
             }
         }
+
+        // Find the gameOverScreen object in the scene
+        // if (gameOverScreen == null)
+        // {
+        //     gameOverScreen = FindObjectOfType<GameOverScreen>();
+        //     if (gameOverScreen == null)
+        //     {
+        //         Debug.LogError("gameOverScreen script not found in the scene!");
+        //     }
+        // }
 
         // Initialize AudioSource
         audioSource = GetComponent<AudioSource>();

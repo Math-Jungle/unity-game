@@ -20,6 +20,6 @@ public class TestButtonScript : MonoBehaviour
     public void Click()
     {
         Debug.Log("SignUp button Clicked");
-        gameOverScreen.SetScore(8000);
+        gameOverScreen.EndGame(8000);
     }
 }

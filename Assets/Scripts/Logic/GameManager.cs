@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public BackendDataManager backendDataManager;
     public SyncManager syncManager;
     public GameOverScreen gameOverScreen;
-
     public GameData gameData;
 
     void Awake()
@@ -51,7 +50,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Data Submitted. Preparing to save and sync.");
 
         // Trigger Game Over
-        gameOverScreen.SetScore(score);
+        gameOverScreen.EndGame(score);
 
         // Store locally
         foreach (GameLevel level in gameData.gameLevels)

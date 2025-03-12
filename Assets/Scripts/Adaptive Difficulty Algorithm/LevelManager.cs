@@ -71,7 +71,7 @@ public class GamesManager : MonoBehaviour
         GameOverScreen gameOverScreen = FindFirstObjectByType<GameOverScreen>();
         if (gameOverScreen != null)
         {
-            gameOverScreen.SetScore(CurrentScore);
+            gameOverScreen.EndGame(CurrentScore);
         }
         else
         {
