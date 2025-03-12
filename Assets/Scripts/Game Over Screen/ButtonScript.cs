@@ -7,7 +7,7 @@ public class ButtonScript : MonoBehaviour
     public string NextSceneName { get; set; } = "Home";
     public int gameScore;
     public LoadingScenes loadingScenes;
-    public gameOverScreen gameOverScreen;
+    public GameOverScreen gameOverScreen;
     public GameObject gameOverScreenObject;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,31 +22,24 @@ public class ButtonScript : MonoBehaviour
 
     }
 
-    IEnumerator LoadNextScene()
-    {
-        //gameScore = LManager.Instance.CurrentScore;
+    // IEnumerator LoadNextScene()
+    // {
+    //     //gameScore = LManager.Instance.CurrentScore;
 
-        NextSceneName = (gameScore > 8000) ? $"{NextSceneName}-Hard" : NextSceneName;
+    //     NextSceneName = (gameScore > 8000) ? $"{NextSceneName}-Hard" : NextSceneName;
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(NextSceneName);
-        while (!asyncLoad.isDone)
-        {
-            Debug.Log("Loading progress: " + (asyncLoad.progress * 100) + "%");
-            yield return null;
-        }
-    }
+    //     AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(NextSceneName);
+    //     while (!asyncLoad.isDone)
+    //     {
+    //         Debug.Log("Loading progress: " + (asyncLoad.progress * 100) + "%");
+    //         yield return null;
+    //     }
+    // }
 
-    public void NextLevel()
+    public void NextLevel(string nextSceneName)
     {
         Time.timeScale = 1f;
-        Debug.Log($"Next Scene before loading: {NextSceneName}");
-        if (string.IsNullOrEmpty(NextSceneName))
-        {
-            Debug.LogError("Next Scene Name is not set!");
-            return; // Prevents loading an empty scene
-        }
-
-        StartCoroutine(LoadNextScene());
+        SceneManager.LoadScene(nextSceneName);
     }
 
     public void SceneLoader()

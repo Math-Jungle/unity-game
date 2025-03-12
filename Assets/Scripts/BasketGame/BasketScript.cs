@@ -11,7 +11,7 @@ public class BasketScript : MonoBehaviour
     private AppleScript[] apples; // Array to store all apples in the scene
 
     public gameManagement gameManager; // Reference to the gameManagement script
-    public gameOverScreen gameOverScreen; // Reference to the gameOverScreen script
+    public GameOverScreen gameOverScreen; // Reference to the gameOverScreen script
     public Dialog dialog; // Reference to the Dialog script
 
     public AudioClip appleAddedToBasketSound; // Sound when an apple is added to the basket
@@ -58,19 +58,19 @@ public class BasketScript : MonoBehaviour
         }
 
         // Find the gameManagement object in the scene
-        if (gameManager == null)
-        {
-            gameManager = FindObjectOfType<gameManagement>();
-            if (gameManager == null)
-            {
-                Debug.LogError("gameManagement script not found in the scene!");
-            }
-        }
+        // if (gameManager == null)
+        // {
+        //     gameManager = FindObjectOfType<gameManagement>();
+        //     if (gameManager == null)
+        //     {
+        //         Debug.LogError("gameManagement script not found in the scene!");
+        //     }
+        // }
 
         // Find the gameOverScreen object in the scene
         if (gameOverScreen == null)
         {
-            gameOverScreen = FindObjectOfType<gameOverScreen>();
+            gameOverScreen = FindObjectOfType<GameOverScreen>();
             if (gameOverScreen == null)
             {
                 Debug.LogError("gameOverScreen script not found in the scene!");
@@ -143,26 +143,27 @@ public class BasketScript : MonoBehaviour
     {
         if (levelCompleted)
         {
+            Debug.Log("Level completed!");
             // Show the scorecard popup
-            if (gameManager != null)
-            {
-                gameManager.GameWin(); // Activate the scorecard popup
-            }
-            else
-            {
-                Debug.LogError("gameManager script is not assigned!");
-            }
+            // if (gameManager != null)
+            // {
+            //     gameManager.GameWin(); // Activate the scorecard popup
+            // }
+            // else
+            // {
+            //     Debug.LogError("gameManager script is not assigned!");
+            // }
 
-            // Pass the calculated score to the gameOverScreen script
-            if (gameOverScreen != null)
-            {
-                Debug.Log($"Passing score to gameOverScreen: {calculatedScore}");
-                gameOverScreen.SetScore(calculatedScore);
-            }
-            else
-            {
-                Debug.LogError("gameOverScreen script is not assigned!");
-            }
+            // // Pass the calculated score to the gameOverScreen script
+            // if (gameOverScreen != null)
+            // {
+            //     Debug.Log($"Passing score to gameOverScreen: {calculatedScore}");
+            //     gameOverScreen.SetScore(calculatedScore);
+            // }
+            // else
+            // {
+            //     Debug.LogError("gameOverScreen script is not assigned!");
+            // }
         }
         else
         {

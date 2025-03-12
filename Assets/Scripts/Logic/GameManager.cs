@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     public LocalDataManager localDataManager;
     public BackendDataManager backendDataManager;
     public SyncManager syncManager;
-    public gameOverScreen gameOverScreen;
+    public GameOverScreen gameOverScreen;
+
     public GameData gameData;
 
     void Awake()

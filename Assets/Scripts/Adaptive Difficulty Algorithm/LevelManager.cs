@@ -35,7 +35,17 @@ public class GamesManager : MonoBehaviour
         TotalGameTime = gameTime;
         NextLevelDifficulty = (score > 8000) ? "Hard" : "Normal"; // If (score > 8000) = true, "Hard" or "Normal"
 
-        Debug.Log($"Game results submitted: {score} points, {gameTime} seconds. \n Next level difficulty is: {NextLevelDifficulty}");
+        Debug.Log("Ending current game...");
+
+        GameOverScreen gameOverScreen = FindFirstObjectByType<GameOverScreen>();
+        if (gameOverScreen != null)
+        {
+            //gameOverScreen.EndGame(CurrentScore);
+        }
+        else
+        {
+            Debug.LogError("GameOverScreen not found in the scene.");
+        }
     }
 
     //This method stores game data locally using PlayerPrefs
@@ -58,7 +68,7 @@ public class GamesManager : MonoBehaviour
     {
         Debug.Log("Ending current game...");
 
-        gameOverScreen gameOverScreen = FindFirstObjectByType<gameOverScreen>();
+        GameOverScreen gameOverScreen = FindFirstObjectByType<GameOverScreen>();
         if (gameOverScreen != null)
         {
             gameOverScreen.SetScore(CurrentScore);
