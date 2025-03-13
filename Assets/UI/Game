@@ -1,0 +1,67 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class gameOverScreen : MonoBehaviour
+{
+    public int score = 0;
+    public string star1Name = "Star1";
+    public string star2Name = "Star2";
+    public string star3Name = "Star3";
+    public string animationTriggerName = "PlayAnim";
+
+    private Animator star_1_animator;
+    private Animator star_2_animator;
+    private Animator star_3_animator;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        star_1_animator = GameObject.Find(star1Name).GetComponent<Animator>();
+        star_2_animator = GameObject.Find(star2Name).GetComponent<Animator>();
+        star_3_animator = GameObject.Find(star3Name).GetComponent<Animator>();
+
+        if (star_1_animator == null || star_2_animator == null || star_3_animator == null)
+        {
+            Debug.LogError("One or more star animators are not assigned!");
+            return;
+        }
+
+        Debug.Log("Animators assigned successfully.");
+
+        if (score >= 7000)
+        {
+            Debug.Log("Setting trigger for star 3.");
+            star_3_animator.SetTrigger(animationTriggerName);
+        }
+        else if (score >= 5000)
+        {
+            Debug.Log("Setting trigger for star 2.");
+            star_2_animator.SetTrigger(animationTriggerName);
+        }
+        else if (score >= 3000)
+        {
+            Debug.Log("Setting trigger for star 1.");
+            star_1_animator.SetTrigger(animationTriggerName);
+        }
+        else
+        {
+            Debug.Log("Score is less than 3000, no animation will be played.");
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene("Game1");
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene("Game1");
+    }
+}

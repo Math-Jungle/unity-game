@@ -1,0 +1,556 @@
+fileFormatVersion: 2
+guid: f0883038ab796064887d067831b73fd5
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 57c6918fb083ea146975a3ace300bcc7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: 'Girl '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 1987
+      height: 757
+    spriteID: 7b7b3327250f1164193a68926085eb7c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 225, y: 622}
+  - name: Girl Selected
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 769
+      width: 1987
+      height: 757
+    spriteID: 55435372ea590b648a802806486b579f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 769}
+    spritePosition: {x: 225, y: 1613}
+  - name: Boy Selected
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1534
+      width: 1987
+      height: 757
+    spriteID: f60eddc4222a544479456d638af7757c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1534}
+    spritePosition: {x: 2803, y: 1613}
+  - name: Boy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2299
+      width: 1987
+      height: 757
+    spriteID: e313c240ea539ff49924caf13a358017
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2299}
+    spritePosition: {x: 2819, y: 622}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: 'Girl '
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 2eb81e41aa8bc7245b1eb2ab922e0aea
+    layerID: 114
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Female symbol
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 793cd8a6ebdc36e408e1e26c206f8b18
+    layerID: 113
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Line 2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 7fe2461db83ddfd4cbc8e3a59a2e084b
+    layerID: 112
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Line 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 1
+    spriteID: a58fdb6522012b0498dbf09ab1c3eed1
+    layerID: 111
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Ellipse 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 1
+    spriteID: f756f0ae613cc0b4b9b0625a2eb4da19
+    layerID: 110
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Girl
+    spriteName: 
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 6fae8b077105d7e448a631f47ecbffc7
+    layerID: 108
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Rectangle 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 0
+    spriteID: d2954162954e19f4aaace2b0212ebe7e
+    layerID: 107
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Girl Selected
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: c39f28d255aaaf149a3242f07a38d40c
+    layerID: 105
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Female symbol
+    spriteName: 
+    isGroup: 1
+    parentIndex: 7
+    spriteID: 6ecfdd1aeef866b48bef0ffbb36b318e
+    layerID: 104
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Line 2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 8
+    spriteID: fd1fb5ce92d3906469addb49b3059e71
+    layerID: 103
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Line 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 8
+    spriteID: 2567c1c7a2d95904a99d31bb66a5e8c6
+    layerID: 102
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Ellipse 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 8
+    spriteID: 66794155f70604d4da63fb254f50991b
+    layerID: 101
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Girl
+    spriteName: 
+    isGroup: 0
+    parentIndex: 7
+    spriteID: ba5ebd542b95fb94aa89cdb719a28af9
+    layerID: 99
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Rectangle 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 7
+    spriteID: 20da5b06b23bae843b4d438a47d7b496
+    layerID: 98
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Boy Selected
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: bed91904bafc1964fbb4a263c4fe7d59
+    layerID: 96
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Male symbol
+    spriteName: 
+    isGroup: 1
+    parentIndex: 14
+    spriteID: 2af12e7d12a93a041b90da26dac2d871
+    layerID: 95
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Shape 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 15
+    spriteID: 04139c115f2b77f4f8a0bbe85c933805
+    layerID: 94
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Line 3
+    spriteName: 
+    isGroup: 0
+    parentIndex: 15
+    spriteID: 1a52975d464d3ae449a4e71422980817
+    layerID: 93
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Ellipse 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 15
+    spriteID: 911f9d84fda49754084792f0450e555f
+    layerID: 92
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Boy
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: c9ef5c6e5448567488d08598de121934
+    layerID: 90
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Rectangle 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 50cde39b77bbd734da6a9ab3ae13506a
+    layerID: 89
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Boy
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 99268b9df5213974085cedb981886e6f
+    layerID: 87
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Male symbol
+    spriteName: 
+    isGroup: 1
+    parentIndex: 21
+    spriteID: 4c87bfde43d9948478310c84a2c5a096
+    layerID: 86
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Shape 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 22
+    spriteID: 2655eeae74d6e1141a60efde6ce74ba8
+    layerID: 85
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Line 3
+    spriteName: 
+    isGroup: 0
+    parentIndex: 22
+    spriteID: 2ffcda7b5c45ade4c93cbf6a88c9e104
+    layerID: 84
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Ellipse 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 22
+    spriteID: 12191436e407b164299cc329144a50e3
+    layerID: 83
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Boy
+    spriteName: 
+    isGroup: 0
+    parentIndex: 21
+    spriteID: 4b5e71717b8f0a641908b1ab6f33e756
+    layerID: 81
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Rectangle 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 21
+    spriteID: c5c240367bb32c54a9a3726bdaed676f
+    layerID: 80
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: 'Girl '
+    spriteName: 'Girl '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7b7b3327250f1164193a68926085eb7c
+    layerID: 35
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Girl Selected
+    spriteName: Girl Selected
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 55435372ea590b648a802806486b579f
+    layerID: 23
+    mosaicPosition: {x: 4, y: 769}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Boy Selected
+    spriteName: Boy Selected
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f60eddc4222a544479456d638af7757c
+    layerID: 54
+    mosaicPosition: {x: 4, y: 1534}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Boy
+    spriteName: Boy
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e313c240ea539ff49924caf13a358017
+    layerID: 76
+    mosaicPosition: {x: 4, y: 2299}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []

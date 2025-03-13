@@ -1,0 +1,474 @@
+fileFormatVersion: 2
+guid: 8e94c7523495a0e44b7f226bf62926d7
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 3382d7795ca98a24ca9db6f36374828c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: Objects
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 2200
+      y: 4
+      width: 500
+      height: 458
+    spriteID: ebdd175e07a076e4da399bd658dbef71
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2200, y: 4}
+    spritePosition: {x: 1132, y: 1719}
+  - name: Replay
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 2200
+      y: 1487
+      width: 1310
+      height: 387
+    spriteID: 076d8ffcc3cfc074ab217fe98fe87c03
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2200, y: 1487}
+    spritePosition: {x: 1725, y: 1758}
+  - name: Rectangle 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 2188
+      height: 715
+    spriteID: 461dd5d7ed13497409f6ff1b641c929e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3, y: 2}
+    spritePosition: {x: 989, y: 1591}
+  - name: Triangle 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 3166
+      y: 1024
+      width: 310
+      height: 347
+    spriteID: 1da3c637d8a686d4e90d3d2feda1ff9d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3165, y: 1014}
+    spritePosition: {x: 1310, y: 3219}
+  - name: Next
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 3166
+      y: 727
+      width: 899
+      height: 289
+    spriteID: 4a4ac1566316b9e48a1c8f63f8c725f6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3166, y: 727}
+    spritePosition: {x: 1894, y: 3275}
+  - name: Rectangle 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 727
+      width: 2188
+      height: 715
+    spriteID: 9ecca783feb45854c816aa7b2622363b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3, y: 725}
+    spritePosition: {x: 989, y: 3035}
+  - name: Home icon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 3518
+      y: 1487
+      width: 521
+      height: 491
+    spriteID: b041356206b08d74bb44f889f1d127c1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3518, y: 1487}
+    spritePosition: {x: 1728, y: 450}
+  - name: Rectangle 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 2200
+      y: 727
+      width: 958
+      height: 752
+    spriteID: 032553c23dd51344e8255fa9050a5d09
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2198, y: 725}
+    spritePosition: {x: 1509, y: 319}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: Replay Button
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: a78a2b26150dfd14dad91793105b0487
+    layerID: 11
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Objects
+    spriteName: Objects
+    isGroup: 0
+    parentIndex: 0
+    spriteID: ebdd175e07a076e4da399bd658dbef71
+    layerID: 16
+    mosaicPosition: {x: 2200, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Replay
+    spriteName: Replay
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 076d8ffcc3cfc074ab217fe98fe87c03
+    layerID: 9
+    mosaicPosition: {x: 2200, y: 1487}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Rectangle 1
+    spriteName: Rectangle 1
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 461dd5d7ed13497409f6ff1b641c929e
+    layerID: 17
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Rectangle 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 2a84d7ecb77aba74aa1d7adfe61b7ed2
+    layerID: 8
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Next Button
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 341d39ac3b742664ba7b437d5127b0b6
+    layerID: 4
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Triangle 1
+    spriteName: Triangle 1
+    isGroup: 0
+    parentIndex: 5
+    spriteID: 1da3c637d8a686d4e90d3d2feda1ff9d
+    layerID: 6
+    mosaicPosition: {x: 3166, y: 1024}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Next
+    spriteName: Next
+    isGroup: 0
+    parentIndex: 5
+    spriteID: 4a4ac1566316b9e48a1c8f63f8c725f6
+    layerID: 3
+    mosaicPosition: {x: 3166, y: 727}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Rectangle 1
+    spriteName: Rectangle 1
+    isGroup: 0
+    parentIndex: 5
+    spriteID: 9ecca783feb45854c816aa7b2622363b
+    layerID: 2
+    mosaicPosition: {x: 4, y: 727}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Home Button
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: c6c002124c5462b42ab96b050c37f983
+    layerID: 31
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Home icon
+    spriteName: Home icon
+    isGroup: 0
+    parentIndex: 9
+    spriteID: b041356206b08d74bb44f889f1d127c1
+    layerID: 25
+    mosaicPosition: {x: 3518, y: 1487}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Triangle 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 9
+    spriteID: b654d96a06daa3b419fbf3bf4aac04c0
+    layerID: 30
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Next
+    spriteName: 
+    isGroup: 0
+    parentIndex: 9
+    spriteID: 52b7410de3405324982388e2a47124fb
+    layerID: 29
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Rectangle 1
+    spriteName: Rectangle 1
+    isGroup: 0
+    parentIndex: 9
+    spriteID: 032553c23dd51344e8255fa9050a5d09
+    layerID: 28
+    mosaicPosition: {x: 2200, y: 727}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Layer 0
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 3666949ab1346ec4a99c0343ade26e81
+    layerID: 18
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
