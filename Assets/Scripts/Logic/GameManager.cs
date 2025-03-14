@@ -2,36 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.tvOS;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public LocalDataManager localDataManager;
-    public BackendDataManager backendDataManager;
-    public SyncManager syncManager;
-    public GameOverScreen gameOverScreen;
+    [Header("Data Managers")]
+
+    // [SerializeField] makes private variables visible in the Inspector
+    [SerializeField] private LocalDataManager localDataManager;
+    [SerializeField] private BackendDataManager backendDataManager;
+    [SerializeField] private SyncManager syncManager;
+
     public GameData gameData;
+    private bool isSubmittingResults = false;
 
     void Awake()
     {
         if (Instance == null)
         {
+            Debug.Log("GameManager instance created.");
             Instance = this;
             DontDestroyOnLoad(gameObject); // Keeps GameManager alive across scenes
         }
         else
         {
+            Debug.Log($"Duplicate GameManger detected in scene: {SceneManager.GetActiveScene().name}. Destroying duplicate.");
             Destroy(gameObject); // Prevents duplicate GameManagers
             return;
         }
 
-        // Ensure managers are assigned
-        localDataManager = GetComponent<LocalDataManager>();
-        backendDataManager = GetComponent<BackendDataManager>();
-        syncManager = GetComponent<SyncManager>();
-
+        // Check for missing components
         if (localDataManager == null || backendDataManager == null || syncManager == null)
         {
             Debug.LogError("One or more manager components are missing on GameManager!");
@@ -43,27 +44,33 @@ public class GameManager : MonoBehaviour
 
     public void SubmitGameResults(int score, List<float> reactionTimes, float gameTime)
     {
+        if (isSubmittingResults)
+        {
+            Debug.LogWarning("Already submitting game results. Ignoring duplicate request.");
+            return;
+        }
+
+        isSubmittingResults = true;
         Debug.Log("SubmitGameResults called.");
 
         // Update GameData with the latest game results
         gameData.UpdateLevelData(SceneManager.GetActiveScene().name, score, reactionTimes, gameTime);
         Debug.Log("Game Data Submitted. Preparing to save and sync.");
 
-        // Trigger Game Over
-        gameOverScreen.EndGame(score);
+        // Show the game over screen
+        UIManager.instance.ShowGameOverScreen(score);
 
         // Store locally
-        foreach (GameLevel level in gameData.gameLevels)
-        {
-            Debug.Log($"Level: {level.levelName}, Score: {level.score}, Time: {level.gameTime}");
-        }
-        Debug.Log(gameData.lastUpdated);
         localDataManager.SaveGameData(gameData);
 
-        // Try to store remotely, but don't let errors break the game flow
+        // Store remotely
         if (Application.internetReachability != NetworkReachability.NotReachable)
         {
-            StartCoroutine(backendDataManager.SendGameData(gameData, ""));
+            StartCoroutine(SendDatAndResetFlag(gameData));
+        }
+        else
+        {
+            isSubmittingResults = false;
         }
 
         // Sync if online
@@ -71,5 +78,17 @@ public class GameManager : MonoBehaviour
         {
             // FindObjectOfType<BackendDataManager>().SyncGameData(gameData);
         }
+    }
+
+    private IEnumerator SendDatAndResetFlag(GameData gameData)
+    {
+        yield return StartCoroutine(backendDataManager.SendGameData(gameData, ""));
+        isSubmittingResults = false;
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quitting game...");
+        Application.Quit();
     }
 }

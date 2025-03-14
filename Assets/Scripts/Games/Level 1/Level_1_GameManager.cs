@@ -18,6 +18,8 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        UIManager.instance.ShowUIScreens();
+
         dialog.RunEvent(0, () =>
         {
             StartGame();
@@ -55,20 +57,6 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
         }
     }
 
-    public void StartGame()
-    {
-        Debug.Log("Game Started!");
-        startTime = Time.time;
-        lastTouchTime = Time.time;
-        gameScore = 0; // Reset score
-        reactionTimes.Clear(); // Clear previous reaction times
-        applesPicked = 0;
-    }
-
-
-    public void StartGameTimer()
-    { }
-
     public void RegisterAppleTouch()
     {
         if (isGameOver)
@@ -87,6 +75,16 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
         {
             gameScore += 300;
         }
+    }
+
+    public void StartGame()
+    {
+        Debug.Log("Game Started!");
+        startTime = Time.time;
+        lastTouchTime = Time.time;
+        gameScore = 0; // Reset score
+        reactionTimes.Clear(); // Clear previous reaction times
+        applesPicked = 0;
     }
 
     public void EndGame()
