@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class BackendDataManager : MonoBehaviour
 {
     private readonly string sendDataUrl = "http://localhost:8080/dashboard/save-userdata";
     private readonly string fetchDataUrl = "http://localhost:8080/dashboard/get-userdata";
+    private readonly string validateTokenUrl = "http://localhost:8080/dashboard/verify-token";
     private bool isSendingData = false; // Flag to prevent multiple data sends
 
     // Send all of game data to the backend
@@ -144,5 +146,36 @@ public class BackendDataManager : MonoBehaviour
                 Debug.LogError("Unknown error: " + request.error);
                 break;
         }
+    }
+
+    // Legacy method to verify user token
+    public IEnumerator VerifyToken(string jwtToken)
+    {
+        if (string.IsNullOrEmpty(jwtToken))
+        {
+            Debug.LogError("No JWT Token found! Cannot verify user.");
+            yield return false;
+            yield break;
+        }
+
+        UnityWebRequest request = UnityWebRequest.Get(validateTokenUrl + "?jwtToken=" + jwtToken);
+        yield return request.SendWebRequest();
+
+        bool isValid = request.result == UnityWebRequest.Result.Success && request.downloadHandler.text == "valid";
+
+        if (isValid)
+        {
+            Debug.Log("User Verified");
+        }
+        else
+        {
+            Debug.Log("JWT Token invalid or verification failed");
+            // Clear invalid token
+            PlayerPrefs.DeleteKey("AuthToken");
+            PlayerPrefs.Save();
+        }
+
+        yield return isValid;
+
     }
 }

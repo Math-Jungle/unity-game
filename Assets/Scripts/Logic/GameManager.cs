@@ -14,7 +14,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private BackendDataManager backendDataManager;
     [SerializeField] private SyncManager syncManager;
 
-    public GameData gameData;
+    [Header("Startup Data")]
+    // Add a game object to indicate app starting
+    private bool isInitialized = false;
+
+
+    private GameData gameData;
     private bool isSubmittingResults = false;
 
     void Awake()
@@ -40,6 +45,64 @@ public class GameManager : MonoBehaviour
 
         // Initialize GameData as a singleton
         gameData = new GameData();
+    }
+
+    void Start()
+    {
+        // Check if this is the first scene load (Startup)
+        if (!isInitialized && SceneManager.GetActiveScene().name == "Startup")
+        {
+            StartCoroutine(HandleAppStartup());
+        }
+    }
+
+    private IEnumerator HandleAppStartup()
+    {
+        // Show loading indicator if available
+
+        // Mark the app as initialized
+        isInitialized = true;
+
+        // Check if the JWT token is available
+        string jwtToken = PlayerPrefs.GetString("AuthToken", "");
+        bool tokenExists = !string.IsNullOrEmpty(jwtToken);
+
+        Debug.Log($"Authentication check: Token {(tokenExists ? "found" : "not found")}.");
+
+        // Check if the token is valid
+        if (tokenExists && backendDataManager != null)
+        {
+            // Verify the JWT token
+            yield return StartCoroutine(backendDataManager.VerifyToken(jwtToken));
+
+            // After verifying the token, check if the token still exists (it would be deleted if the token is invalid)
+            tokenExists = !string.IsNullOrEmpty(PlayerPrefs.GetString("AuthToken", ""));
+
+        }
+
+
+        // Sync data if authenicated and online
+        if (tokenExists && Application.internetReachability != NetworkReachability.NotReachable)
+        {
+            if (syncManager != null)
+            {
+                syncManager.SyncData(jwtToken);
+
+                // Give sync time to complete
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            // Load the local game data
+            localDataManager.LoadGameData();
+        }
+
+        // Determining which scene to load based on the token status
+        string sceneToLoad = tokenExists ? "Home" : "Splash";
+        Debug.Log($"Starting application: Loading {sceneToLoad} scene.");
+
+        // Load the scene
+        SceneManager.LoadScene(sceneToLoad);
+
     }
 
     public void SubmitGameResults(int score, List<float> reactionTimes, float gameTime)
@@ -85,6 +148,7 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(backendDataManager.SendGameData(gameData, ""));
         isSubmittingResults = false;
     }
+
 
     public void QuitGame()
     {

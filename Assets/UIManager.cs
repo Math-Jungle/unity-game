@@ -124,7 +124,9 @@ public class UIManager : MonoBehaviour
         operation.allowSceneActivation = true;
 
         // Wait for the scene to fully activate
-        yield return new WaitUntil(() => operation.isDone);
+        yield return new WaitForSecondsRealtime(0.1f); // Endure minimum time for the scene to fully load
+        yield return new WaitUntil(() => operation.isDone);  // Double-check if the scene is fully loaded
+        // Both used since  operation.isDone is not always accurate and WaitForSecondsRealtime could be too short
 
         //Hide the loading screen
         loadingScreenObject.SetActive(false);
@@ -133,7 +135,8 @@ public class UIManager : MonoBehaviour
 
     private string GetNextSceneName(string currentScene, int score)
     {
-        string mode = (score > 8000) ? "-Hard" : ""; // If the score is greater than 8000, the next game will be in hard mode
+        //string mode = (score > 8000) ? "-Hard" : ""; // If the score is greater than 8000, the next game will be in hard mode
+        string mode = ""; // Use this untill Hard mde games are implemented
 
         switch (currentScene)
         {
@@ -184,7 +187,5 @@ public class UIManager : MonoBehaviour
         // Important: Unsubscribe to prevent memory leaks
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
-
 
 }
