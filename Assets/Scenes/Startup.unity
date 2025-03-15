@@ -181,7 +181,6 @@ GameObject:
   - component: {fileID: 518157087}
   - component: {fileID: 518157090}
   - component: {fileID: 518157089}
-  - component: {fileID: 518157088}
   m_Layer: 5
   m_Name: Loading Screen
   m_TagString: Untagged
@@ -212,18 +211,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &518157088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518157086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 044781bc22f0ee04aaea83f4d2c1b441, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &518157089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,6 +1003,7 @@ GameObject:
   - component: {fileID: 1999527124}
   - component: {fileID: 1999527123}
   - component: {fileID: 1999527122}
+  - component: {fileID: 1999527125}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1097,6 +1085,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1999527125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999527121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &1894362328470751126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,9 +1164,6 @@ MonoBehaviour:
   localDataManager: {fileID: 5663374727266454711}
   backendDataManager: {fileID: 6481563370086065115}
   syncManager: {fileID: 8989641639989018727}
-  gameData:
-    gameLevels: []
-    lastUpdated: 3/10/2025 11:18:25 AM
 --- !u!114 &5663374727266454711
 MonoBehaviour:
   m_ObjectHideFlags: 0

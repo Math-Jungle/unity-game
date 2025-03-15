@@ -38,6 +38,9 @@ public class UIManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // Configure the orientation of the current scene
+        ConfigureOrientation();
+        // Hide all UI screens when a new scene is loaded
         HideUIScreens();
     }
 
@@ -186,6 +189,40 @@ public class UIManager : MonoBehaviour
     {
         // Important: Unsubscribe to prevent memory leaks
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // Configure the orientation of the current scene that the game is in
+    private void ConfigureOrientation()
+    {
+        // Get the current scene name
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        // Set the orientation of the current scene
+        switch (currentScene)
+        {
+            case "Startup":
+            case "SplashScreen":
+            case "Home":
+            case "login":
+            case "avatar":
+            case "acc creation":
+            case "Congratulation":
+            case "Dashboard":
+            case "game map":
+            case "setup":
+                Screen.orientation = ScreenOrientation.Portrait;
+                break;
+            case "Game 1":
+            case "Sequence Number Game":
+            case "Game 3":
+            case "Game 4":
+                Screen.orientation = ScreenOrientation.LandscapeLeft;
+                break;
+            default:
+                Screen.orientation = ScreenOrientation.AutoRotation;
+                break;
+
+        }
     }
 
 }

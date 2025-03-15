@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Determining which scene to load based on the token status
-        string sceneToLoad = tokenExists ? "Home" : "Splash";
+        string sceneToLoad = tokenExists ? "Home" : "SplashScreen";
         Debug.Log($"Starting application: Loading {sceneToLoad} scene.");
 
         // Load the scene
