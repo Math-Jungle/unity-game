@@ -214,6 +214,7 @@ public class UIManager : MonoBehaviour
                 break;
             case "Game 1":
             case "Sequence Number Game":
+            case "BasketGame":
             case "Game 3":
             case "Game 4":
                 Screen.orientation = ScreenOrientation.LandscapeLeft;

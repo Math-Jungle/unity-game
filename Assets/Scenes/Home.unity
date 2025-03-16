@@ -119,127 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &70901046
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 560318749308387810, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1835118217471166250, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.3665622
-      objectReference: {fileID: 0}
-    - target: {fileID: 1835118217471166250, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -237.99998
-      objectReference: {fileID: 0}
-    - target: {fileID: 1835118217471166250, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 1835118217471166250, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -471
-      objectReference: {fileID: 0}
-    - target: {fileID: 1835118217471166250, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3728988102914479170, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_Name
-      value: Game Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3728988102914479170, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4017097105994827523, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 4017097105994827523, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 4017097105994827523, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 6134446762634496151, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 549.4623
-      objectReference: {fileID: 0}
-    - target: {fileID: 6134446762634496151, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 698.5503
-      objectReference: {fileID: 0}
-    - target: {fileID: 6134446762634496151, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8.092505
-      objectReference: {fileID: 0}
-    - target: {fileID: 6134446762634496151, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6134446762634496151, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6134446762634496151, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6134446762634496151, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6134446762634496151, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6134446762634496151, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6134446762634496151, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6975997147271378848, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1026
-      objectReference: {fileID: 0}
-    - target: {fileID: 7194222373745482569, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 7194222373745482569, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 7194222373745482569, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 7194222373745482569, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 851
-      objectReference: {fileID: 0}
-    - target: {fileID: 8279104043732237363, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f60b9b26a29fa0c459a508c4805abe7c, type: 3}
 --- !u!1 &107894512
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,8 +572,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 433314957}
-        m_TargetAssemblyTypeName: TestButtonScript, Assembly-CSharp
-        m_MethodName: Click
+        m_TargetAssemblyTypeName: HomeLogic, Assembly-CSharp
+        m_MethodName: GameMap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2477,5 +2356,4 @@ SceneRoots:
   - {fileID: 799726925}
   - {fileID: 1342182790}
   - {fileID: 1589061642}
-  - {fileID: 70901046}
   - {fileID: 433314958}

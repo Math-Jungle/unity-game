@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class BackendDataManager : MonoBehaviour
 {
-    private readonly string sendDataUrl = "http://localhost:8080/dashboard/save-userdata";
-    private readonly string fetchDataUrl = "http://localhost:8080/dashboard/get-userdata";
-    private readonly string validateTokenUrl = "http://localhost:8080/dashboard/verify-token";
+    private readonly string sendDataUrl = "https://spring-app-249115746984.asia-south1.run.app/dashboard/save-userdata";
+    private readonly string fetchDataUrl = "https://spring-app-249115746984.asia-south1.run.app/dashboard/get-userdata";
+    private readonly string validateTokenUrl = "https://spring-app-249115746984.asia-south1.run.app/user/verifyJWT";
     private bool isSendingData = false; // Flag to prevent multiple data sends
 
     // Send all of game data to the backend
@@ -148,7 +148,6 @@ public class BackendDataManager : MonoBehaviour
         }
     }
 
-    // Legacy method to verify user token
     public IEnumerator VerifyToken(string jwtToken)
     {
         if (string.IsNullOrEmpty(jwtToken))
@@ -158,10 +157,14 @@ public class BackendDataManager : MonoBehaviour
             yield break;
         }
 
-        UnityWebRequest request = UnityWebRequest.Get(validateTokenUrl + "?jwtToken=" + jwtToken);
+        UnityWebRequest request = UnityWebRequest.Get(validateTokenUrl);
+        request.SetRequestHeader("Authorization", "Bearer " + jwtToken);
+
+        Debug.Log("Verifying user token...");
+
         yield return request.SendWebRequest();
 
-        bool isValid = request.result == UnityWebRequest.Result.Success && request.downloadHandler.text == "valid";
+        bool isValid = request.result == UnityWebRequest.Result.Success;
 
         if (isValid)
         {

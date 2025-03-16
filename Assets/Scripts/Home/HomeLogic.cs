@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TestButtonScript : MonoBehaviour
+public class HomeLogic : MonoBehaviour
 {
     public GameOverScreen gameOverScreen;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,9 +16,9 @@ public class TestButtonScript : MonoBehaviour
 
     }
 
-    public void Click()
+    public void GameMap()
     {
         Debug.Log("SignUp button Clicked");
-        gameOverScreen.EndGame(8000);
+        SceneManager.LoadScene("game map");
     }
 }

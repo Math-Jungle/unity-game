@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        // Temporarily set tht jwt token
+        string jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFqYW5zYS4yMDIzMTEzM0BpaXQuYWMubGsiLCJpYXQiOjE3NDIxMzc2NDUsImV4cCI6MTc0MjIyNDA0NX0.URpZ8SREGZR0Wo8TMVWS4Ud4YkP819zrDrpB1UsPpQw";
+        PlayerPrefs.SetString("AuthToken", jwtToken);
+        PlayerPrefs.Save();
+
         if (Instance == null)
         {
             Debug.Log("GameManager instance created.");
@@ -44,7 +49,12 @@ public class GameManager : MonoBehaviour
         }
 
         // Initialize GameData as a singleton
-        gameData = new GameData();
+        if (gameData == null)
+        {
+            gameData = new GameData();
+            // Checking if the gameData object is already initialized since unity create a object because the  [SerializeField] creates a object in the inspector
+
+        }
     }
 
     void Start()
@@ -145,7 +155,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator SendDatAndResetFlag(GameData gameData)
     {
-        yield return StartCoroutine(backendDataManager.SendGameData(gameData, ""));
+        string jwtToken = PlayerPrefs.GetString("AuthToken", "");
+
+        yield return StartCoroutine(backendDataManager.SendGameData(gameData, jwtToken));
         isSubmittingResults = false;
     }
 

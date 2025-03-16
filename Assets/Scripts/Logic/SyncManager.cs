@@ -10,17 +10,28 @@ public class SyncManager : MonoBehaviour
     // 
     public void SyncData(string jwtToken)
     {
-        GameData localData = localDataManager.LoadGameData();
-
-
         StartCoroutine(backendDataManager.FetchGameData(jwtToken, (backendData) =>
         /* 
             this function executes when the FetchGameData method return backendData As a GameData object.
         */
         {
+            GameData localData = localDataManager.LoadGameData();
+
+
             if (backendData == null)
             {
-                Debug.LogError("Backend Game data wasn't recieved to Sync Data.");
+                Debug.LogWarning("No backend data found. Continuing with local data.");
+
+                if (localData != null)
+                {
+                    Debug.Log("Local data found; updating backend with local data.");
+                    StartCoroutine(backendDataManager.SendGameData(localData, jwtToken));
+                }
+                else
+                {
+                    Debug.LogWarning("No local data found. Nothing to sync.");
+
+                }
                 return;
             }
 
