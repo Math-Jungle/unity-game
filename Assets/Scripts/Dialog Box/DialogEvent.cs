@@ -5,5 +5,15 @@ using UnityEngine;
 public class DialogEvent
 {
     public string[] messages;
-    public string animationTrigger;
+    public AnimationTriggerType animationTrigger;
+}
+
+
+// Trigger Names
+
+public enum AnimationTriggerType
+{
+    DialogBox,
+    WavingAndTalking,
+    Talking
 }
