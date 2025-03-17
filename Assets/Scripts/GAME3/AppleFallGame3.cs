@@ -6,6 +6,10 @@ public class AppleFallGame3 : MonoBehaviour
     private Rigidbody2D rb;
     private bool hasFallen = false;
     private Vector2 initialPosition;
+    
+    public AudioClip redAppleSound;
+    public AudioClip greenAppleSound;
+    private AudioSource audioSource;
 
     public static List<AppleFallGame3> allApples = new List<AppleFallGame3>();
 
@@ -28,6 +32,7 @@ public class AppleFallGame3 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         initialPosition = transform.position;
+        audioSource = GetComponent<AudioSource>();
         allApples.Add(this);
 
         // Find the Dialog script if not assigned
@@ -63,8 +68,14 @@ public class AppleFallGame3 : MonoBehaviour
     }
 
     void OnMouseDown()
+{
+    if (!hasFallen)
     {
-        if (!hasFallen)
+        rb.gravityScale = 1;
+        hasFallen = true;
+
+        // Update counters based on apple color
+        if (appleColor == "Red")
         {
             rb.gravityScale = 1;
             hasFallen = true;
@@ -106,7 +117,20 @@ public class AppleFallGame3 : MonoBehaviour
                 }
             }
         }
+        else if (appleColor == "Green")
+        {
+            greenAppleClickedCount++;
+            Debug.Log("Playing Green Apple Sound");
+            if (greenAppleSound != null && audioSource != null)
+                audioSource.PlayOneShot(greenAppleSound);
+            else
+                Debug.LogError("Green Apple Sound or AudioSource is missing!");
+        }
+
+        Debug.Log($"Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
     }
+}
+
 
     public void ResetApple()
     {
