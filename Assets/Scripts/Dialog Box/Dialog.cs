@@ -130,11 +130,20 @@ public class Dialog : MonoBehaviour
 
     private IEnumerator DeactivateAfterDelay()
     {
+        // Ending Panda animation
+        SMITrigger riveTrigger = riveStateMachine.GetTrigger("Idle");
+        if (riveTrigger != null)
+        {
+            riveTrigger.Fire(); // Fire the trigger
+        }
+
         yield return new WaitForSeconds(0.6f);
         gameObject.SetActive(false);
 
         // Invoke the dialog complete event
         OnDialogComplete?.Invoke();
+
+
     }
 
     void PlayAnimation()
@@ -146,7 +155,7 @@ public class Dialog : MonoBehaviour
 
         if (riveStateMachine == null) return;
 
-        SMITrigger riveTrigger = riveStateMachine.GetTrigger(events[eventIndex].animationTrigger);
+        SMITrigger riveTrigger = riveStateMachine.GetTrigger(events[eventIndex].animationTrigger.ToString());
         if (riveTrigger != null)
         {
             riveTrigger.Fire(); // Fire the trigger
