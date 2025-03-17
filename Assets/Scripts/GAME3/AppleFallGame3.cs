@@ -20,6 +20,11 @@ public class AppleFallGame3 : MonoBehaviour
     // Reference to the Dialog script
     public Dialog dialog;
 
+    // Sound effects for red and green apples
+    public AudioClip redAppleSound;
+    public AudioClip greenAppleSound;
+    private AudioSource audioSource;
+
     // Flag to check if the question has been shown already
     private static bool questionDisplayed = false;
 
@@ -29,6 +34,13 @@ public class AppleFallGame3 : MonoBehaviour
         rb.gravityScale = 0;
         initialPosition = transform.position;
         allApples.Add(this);
+
+        // Initialize AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component not found on the apple!");
+        }
 
         // Find the Dialog script if not assigned
         if (dialog == null)
@@ -68,53 +80,6 @@ public class AppleFallGame3 : MonoBehaviour
         {
             rb.gravityScale = 1;
             hasFallen = true;
-
-            // Update counters based on apple color
-            if (appleColor == "Red")
-                redAppleClickedCount++;
-            else if (appleColor == "Green")
-                greenAppleClickedCount++;
-
-            // Print the updated counters
-            Debug.Log($"Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
-
-            // Check if the player has collected the required number of apples
-            if (redAppleClickedCount >= requiredRedApples && greenAppleClickedCount >= requiredGreenApples)
-            {
-                Debug.Log("Player has collected the required number of apples!");
-
-                // Trigger the dialog for completing the round
-                if (dialog != null)
-                {
-                    dialog.RunEvent(1, () =>
-                    {
-                        Debug.Log("Round completed dialog shown.");
-                        // Optionally, start a new round or end the game
-                        StartNewRound();
-                    });
-                }
-            }
-
-            // Ignore collisions with other apples
-            Collider2D myCollider = GetComponent<Collider2D>();
-            foreach (AppleFallGame3 apple in allApples)
-            {
-                if (apple != this) // Ignore itself
-                {
-                    Collider2D otherCollider = apple.GetComponent<Collider2D>();
-                    Physics2D.IgnoreCollision(myCollider, otherCollider, true); // Ignore collision between apples
-                }
-            }
-        }
-        else if (appleColor == "Green")
-        {
-            greenAppleClickedCount++;
-            Debug.Log("Playing Green Apple Sound");
-            if (greenAppleSound != null && audioSource != null)
-                audioSource.PlayOneShot(greenAppleSound);
-            else
-                Debug.LogError("Green Apple Sound or AudioSource is missing!");
-        }
 
             // Update counters based on apple color
             if (appleColor == "Red")
@@ -197,3 +162,16 @@ public class AppleFallGame3 : MonoBehaviour
             });
         }
     }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource or AudioClip is missing!");
+        }
+    }
+}
