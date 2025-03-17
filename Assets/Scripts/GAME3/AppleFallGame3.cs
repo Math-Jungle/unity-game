@@ -46,39 +46,36 @@ public class AppleFallGame3 : MonoBehaviour
     }
 
     void OnMouseDown()
+{
+    if (!hasFallen)
     {
-        if (!hasFallen)
+        rb.gravityScale = 1;
+        hasFallen = true;
+
+        // Update counters based on apple color
+        if (appleColor == "Red")
         {
-            rb.gravityScale = 1;
-            hasFallen = true;
-
-            // Update counters based on apple color
-            if (appleColor == "Red")
-            {
-                redAppleClickedCount++;
-                audioSource.PlayOneShot(redAppleSound); // Play red apple sound
-            }
-            else if (appleColor == "Green")
-            {
-                greenAppleClickedCount++;
-                audioSource.PlayOneShot(greenAppleSound); // Play green apple sound
-            }
-
-            // Print the updated counters
-            Debug.Log($"Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
-
-            // Ignore collisions with other apples
-            Collider2D myCollider = GetComponent<Collider2D>();
-            foreach (AppleFallGame3 apple in allApples)
-            {
-                if (apple != this) // Ignore itself
-                {
-                    Collider2D otherCollider = apple.GetComponent<Collider2D>();
-                    Physics2D.IgnoreCollision(myCollider, otherCollider, true); // Ignore collision between apples
-                }
-            }
+            redAppleClickedCount++;
+            Debug.Log("Playing Red Apple Sound");
+            if (redAppleSound != null && audioSource != null)
+                audioSource.PlayOneShot(redAppleSound);
+            else
+                Debug.LogError("Red Apple Sound or AudioSource is missing!");
         }
+        else if (appleColor == "Green")
+        {
+            greenAppleClickedCount++;
+            Debug.Log("Playing Green Apple Sound");
+            if (greenAppleSound != null && audioSource != null)
+                audioSource.PlayOneShot(greenAppleSound);
+            else
+                Debug.LogError("Green Apple Sound or AudioSource is missing!");
+        }
+
+        Debug.Log($"Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
     }
+}
+
 
     public void ResetApple()
     {

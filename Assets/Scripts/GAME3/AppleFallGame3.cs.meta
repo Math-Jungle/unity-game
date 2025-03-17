@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: b4d0c28e89c151143ba41271a856c648
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - redAppleSound: {fileID: 8300000, guid: 57741c97ba919cb4992e68f64fa0746e, type: 3}
+  - greenAppleSound: {fileID: 8300000, guid: 5908a5a63cebf2f4ca247dba0678ce94, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
