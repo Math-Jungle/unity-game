@@ -17,6 +17,9 @@ public class AppleFallGame3 : MonoBehaviour
     public static int requiredRedApples;
     public static int requiredGreenApples;
 
+    // Reference to the Dialog script
+    public Dialog dialog;
+
     // Flag to check if the question has been shown already
     private static bool questionDisplayed = false;
 
@@ -27,11 +30,30 @@ public class AppleFallGame3 : MonoBehaviour
         initialPosition = transform.position;
         allApples.Add(this);
 
+        // Find the Dialog script if not assigned
+        if (dialog == null)
+        {
+            dialog = FindObjectOfType<Dialog>();
+            if (dialog == null)
+            {
+                Debug.LogError("Dialog script not found in the scene!");
+            }
+        }
+
         // Only display the question once at the beginning
         if (!questionDisplayed)
         {
             StartNewRound();
             questionDisplayed = true;
+
+            // Trigger the dialog for the game instructions
+            if (dialog != null)
+            {
+                dialog.RunEvent(0, () =>
+                {
+                    Debug.Log("Dialog completed, starting the game.");
+                });
+            }
         }
     }
 
@@ -55,6 +77,23 @@ public class AppleFallGame3 : MonoBehaviour
 
             // Print the updated counters
             Debug.Log($"Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
+
+            // Check if the player has collected the required number of apples
+            if (redAppleClickedCount >= requiredRedApples && greenAppleClickedCount >= requiredGreenApples)
+            {
+                Debug.Log("Player has collected the required number of apples!");
+
+                // Trigger the dialog for completing the round
+                if (dialog != null)
+                {
+                    dialog.RunEvent(1, () =>
+                    {
+                        Debug.Log("Round completed dialog shown.");
+                        // Optionally, start a new round or end the game
+                        StartNewRound();
+                    });
+                }
+            }
 
             // Ignore collisions with other apples
             Collider2D myCollider = GetComponent<Collider2D>();
@@ -94,5 +133,15 @@ public class AppleFallGame3 : MonoBehaviour
 
         // Display the new question in the console
         Debug.Log($"Pick {requiredRedApples} red apples and {requiredGreenApples} green apples.");
+
+        // Optionally, trigger a dialog to show the new requirements
+        Dialog dialog = FindObjectOfType<Dialog>();
+        if (dialog != null)
+        {
+            dialog.RunEvent(2, () =>
+            {
+                Debug.Log("New round instructions shown.");
+            });
+        }
     }
 }

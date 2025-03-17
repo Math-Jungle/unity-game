@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -78.4399, y: 6.0629}
+  m_AnchoredPosition: {x: -118, y: 26.752}
   m_SizeDelta: {x: 1940.5713, y: 347.1568}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8010310393508422717
@@ -234,12 +234,14 @@ MonoBehaviour:
   events:
   - messages:
     - Hello
-    animationTrigger: Trigger 2
+    animationTrigger: 0
   - messages:
     - Hello World
     - In this game we are going to count apples
-    animationTrigger: Trigger 1
+    animationTrigger: 0
   textSpeed: 0.2
   preTextDelay: 0.5
   postTextDelay: 2
   riveWidget: {fileID: 0}
+  ttsService: {fileID: 0}
+  useTTS: 1
