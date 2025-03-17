@@ -6,6 +6,10 @@ public class AppleFallGame3 : MonoBehaviour
     private Rigidbody2D rb;
     private bool hasFallen = false;
     private Vector2 initialPosition;
+    
+    public AudioClip redAppleSound;
+    public AudioClip greenAppleSound;
+    private AudioSource audioSource;
 
     public static List<AppleFallGame3> allApples = new List<AppleFallGame3>();
 
@@ -25,6 +29,7 @@ public class AppleFallGame3 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         initialPosition = transform.position;
+        audioSource = GetComponent<AudioSource>();
         allApples.Add(this);
 
         // Only display the question once at the beginning
@@ -49,9 +54,15 @@ public class AppleFallGame3 : MonoBehaviour
 
             // Update counters based on apple color
             if (appleColor == "Red")
+            {
                 redAppleClickedCount++;
+                audioSource.PlayOneShot(redAppleSound); // Play red apple sound
+            }
             else if (appleColor == "Green")
+            {
                 greenAppleClickedCount++;
+                audioSource.PlayOneShot(greenAppleSound); // Play green apple sound
+            }
 
             // Print the updated counters
             Debug.Log($"Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
