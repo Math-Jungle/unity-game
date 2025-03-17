@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SequenceOftheNumberApplesScript : MonoBehaviour
 {
@@ -7,20 +8,33 @@ public class SequenceOftheNumberApplesScript : MonoBehaviour
     public int appleNumber; // The number displayed on the apple
     private static int currentSequence = 1; // Keep track of the expected number
     private static int score = 0; // Player's score
-    public Text scoreText; // UI Text to display the score
-    public Text feedbackText; // UI Text for feedback messages
+    public TextMeshProUGUI totalScore; // UI Text to display the score
     public AudioClip correctSound;
     public AudioClip wrongSound;
-    public ParticleSystem celebrationEffect;
+    public Dialog dialogBox;
     private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        if (rigidbody2D == null){
+            Debug.LogError("Rigidbody2D is missing");
+        }
         rigidbody2D.gravityScale = 0; // Prevent apples from falling initially
         audioSource = GetComponent<AudioSource>();
+        if (audioSource == null){
+            Debug.LogWarning("AudioSource not found! Adding one.");
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null){
+            Debug.LogError("SpriteRenderer is missing!");
+        }
+        UIManager.instance.ShowUIScreens();
+        dialogBox.RunEvent(0, () =>{
+            StartGame();
+        });
     }
 
     void Update()
@@ -46,36 +60,25 @@ public class SequenceOftheNumberApplesScript : MonoBehaviour
         {
             Debug.Log("Correct apple touched! Number: " + appleNumber);
             rigidbody2D.gravityScale = 1; // This makes the apple fall to the ground
-            score += 10;
+            score += 1000;
             currentSequence++; // Move to the next number
-            ShowFeedback("Good job!", Color.green);
             PlaySound(correctSound);
 
             if (currentSequence > 12)
             {
-                CelebrateVictory();
+                Victory();
             }
         }
         else
         {
             Debug.Log("Wrong apple touched! Number: " + appleNumber);
-            score -= 5; // Deduct points for incorrect touch
+            score -= 500; // Deduct points for incorrect touch
             score = Mathf.Max(score, 0); // Ensure score doesn't go negative
-            ShowFeedback("Try again!", Color.red);
             PlaySound(wrongSound);
             HighlightApple(Color.red, 0.5f);
         }
 
-        UpdateScoreUI();
-    }
-
-    void ShowFeedback(string message, Color color)
-    {
-        if (feedbackText != null)
-        {
-            feedbackText.text = message;
-            feedbackText.color = color;
-        }
+        UpdateScore();
     }
 
     void PlaySound(AudioClip clip)
@@ -102,21 +105,19 @@ public class SequenceOftheNumberApplesScript : MonoBehaviour
         spriteRenderer.color = Color.white;
     }
 
-    void CelebrateVictory()
+    void Victory()
     {
-        if (celebrationEffect != null)
-        {
-            celebrationEffect.Play();
-        }
-        ShowFeedback("You completed the sequence!", Color.yellow);
-        Invoke("ResetGame", 3f);
+        Debug.Log("You have successfully compleated the sequence number game");
+        Invoke(nameof(ResetGame), 3f);
     }
 
-    void UpdateScoreUI()
+    void UpdateScore()
     {
-        if (scoreText != null)
-        {
-            scoreText.text = "Score: " + score;
+        if (totalScore != null){
+            totalScore.text = $"Score - {score}";
+        }
+        else {
+            Debug.LogError("totalScore for TextMeshProUGUI is not assigned");
         }
     }
 
@@ -124,5 +125,14 @@ public class SequenceOftheNumberApplesScript : MonoBehaviour
     {
         currentSequence = 1;
         score = 0;
+        UpdateScore();
+    }
+
+    public void StartGame(){
+
+    }
+
+    public void EndGame(){
+        GameManager.Instance.SubmitGameResults(score, null, 0);
     }
 }
