@@ -23,7 +23,12 @@ public class AppleFallGame3 : MonoBehaviour
     // Sound effects for red and green apples
     public AudioClip redAppleSound;
     public AudioClip greenAppleSound;
+    public AudioClip appleSelectSound; // Sound when the apple is clicked
+    public AudioClip appleReleasedSound; // Sound when the apple is released
+    public AudioClip appleHitSound; // Sound when the apple hits the ground
     private AudioSource audioSource;
+
+    private bool hasHitGround = false; // Track if the apple has hit the ground
 
     // Flag to check if the question has been shown already
     private static bool questionDisplayed = false;
@@ -93,6 +98,9 @@ public class AppleFallGame3 : MonoBehaviour
                 PlaySound(greenAppleSound); // Play sound for green apple
             }
 
+            // Play sound when the apple is clicked
+            PlaySound(appleSelectSound);
+
             // Print the updated counters
             Debug.Log($"Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
 
@@ -126,12 +134,23 @@ public class AppleFallGame3 : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Play sound when the apple hits the ground
+        if (!hasHitGround && collision.gameObject.CompareTag("Ground"))
+        {
+            PlaySound(appleHitSound);
+            hasHitGround = true; // Ensure the sound plays only once
+        }
+    }
+
     public void ResetApple()
     {
         transform.position = initialPosition;
         rb.gravityScale = 0;
         rb.linearVelocity = Vector2.zero;
         hasFallen = false;
+        hasHitGround = false; // Reset ground hit flag
     }
 
     // Reset counts when replay is clicked
