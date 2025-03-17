@@ -806,6 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b126d528fbf834193a3762db4444e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverScreen: {fileID: 0}
 --- !u!1 &402521018
 GameObject:
   m_ObjectHideFlags: 0
@@ -2279,7 +2280,7 @@ MonoBehaviour:
   forgotPasswordButton: {fileID: 2122041710}
   signUpButton: {fileID: 378822181}
   googleLoginButton: {fileID: 1743475917}
-  loginEndpoint: http://localhost:8080/api/login
+  loginEndpoint: https://spring-app-249115746984.asia-south1.run.app/user/login
 --- !u!1 &1693239626
 GameObject:
   m_ObjectHideFlags: 0

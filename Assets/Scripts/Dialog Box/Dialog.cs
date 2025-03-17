@@ -28,12 +28,24 @@ public class Dialog : MonoBehaviour
     private int eventIndex;
     private int messageIndex;
 
+    [SerializeField] private GoogleCloudTTS ttsService;
+    [SerializeField] private bool useTTS = true;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         dialogText.text = string.Empty;
         // StartDialog();
         dialogBox.transform.localScale = Vector3.zero;
+
+        if (useTTS && ttsService == null)
+        {
+            ttsService = GetComponent<GoogleCloudTTS>();
+            if (ttsService == null)
+            {
+                ttsService = gameObject.AddComponent<GoogleCloudTTS>();
+            }
+        }
 
         //Wait for the Rive widget to load before getting the state machine
         if (riveWidget != null)
@@ -60,6 +72,7 @@ public class Dialog : MonoBehaviour
 
         riveStateMachine = riveWidget.StateMachine;
     }
+  
 
     public IEnumerator StartDialogCoroutine()
     {
@@ -102,6 +115,12 @@ public class Dialog : MonoBehaviour
 
     IEnumerator TypeLine()
     {
+
+        if (useTTS && ttsService != null)
+        {
+            ttsService.Speak(events[eventIndex].messages[messageIndex]);
+        }
+
         foreach (char c in events[eventIndex].messages[messageIndex].ToCharArray())
         {
             dialogText.text += c;
@@ -113,6 +132,11 @@ public class Dialog : MonoBehaviour
 
     void NextLine()
     {
+        // Stop any ongoing speech
+        if (useTTS && ttsService != null)
+        {
+            ttsService.StopSpeaking();
+        }
         if (messageIndex < events[eventIndex].messages.Length - 1)
         {
             messageIndex++;
