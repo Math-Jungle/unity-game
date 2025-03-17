@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SequenceOftheNumberApplesScript : MonoBehaviour
+public class SequenceOftheNumberApplesScript : MonoBehaviour, IGameManager
 {
     public Rigidbody2D rigidbody2D;
     public int appleNumber; // The number displayed on the apple
@@ -107,7 +107,8 @@ public class SequenceOftheNumberApplesScript : MonoBehaviour
 
     void Victory()
     {
-        Debug.Log("You have successfully compleated the sequence number game");
+        EndGame();
+        Debug.Log("You have successfully completed the sequence number game");
         Invoke(nameof(ResetGame), 3f);
     }
 
