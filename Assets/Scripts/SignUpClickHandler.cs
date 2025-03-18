@@ -17,7 +17,7 @@ public class SignupClickHandler : MonoBehaviour
     [SerializeField] private Button googleLoginButton;
 
     [Header("Backend URL")]
-    [SerializeField] private string loginEndpoint = "http://localhost:8080/user/login";
+    [SerializeField] private string loginEndpoint = "https://spring-app-249115746984.asia-south1.run.app/user/login";
 
     private void Start()
     {
