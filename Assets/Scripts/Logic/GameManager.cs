@@ -25,9 +25,9 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         // Temporarily set tht jwt token
-        string jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFqYW5zYS4yMDIzMTEzM0BpaXQuYWMubGsiLCJpYXQiOjE3NDIxMzc2NDUsImV4cCI6MTc0MjIyNDA0NX0.URpZ8SREGZR0Wo8TMVWS4Ud4YkP819zrDrpB1UsPpQw";
-        PlayerPrefs.SetString("AuthToken", jwtToken);
-        PlayerPrefs.Save();
+        //string jwtToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmFqYW5zYS4yMDIzMTEzM0BpaXQuYWMubGsiLCJpYXQiOjE3NDIxMzc2NDUsImV4cCI6MTc0MjIyNDA0NX0.URpZ8SREGZR0Wo8TMVWS4Ud4YkP819zrDrpB1UsPpQw";
+        //PlayerPrefs.SetString("AuthToken", jwtToken);
+        //PlayerPrefs.Save();
 
         if (Instance == null)
         {

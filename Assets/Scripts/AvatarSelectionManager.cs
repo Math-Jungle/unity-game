@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class AvatarSelectionManager : MonoBehaviour
 {
-    // Six avatar buttons – assign these in the Inspector.
+    // Six avatar buttons ï¿½ assign these in the Inspector.
     public Button avatarButton1; // e.g., first avatar option
     public Button avatarButton2; // e.g., second avatar option
     public Button avatarButton3; // e.g., third avatar option
