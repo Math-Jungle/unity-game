@@ -28,6 +28,11 @@ public class GameOverScreen : MonoBehaviour
 
     }
 
+    public void HideGameOverScreen()
+    {
+        gameOverScreenTransform.localScale = Vector3.zero;
+    }
+
     // Method to set the score and calculate stars
     public void EndGame(int playerScore)
     {

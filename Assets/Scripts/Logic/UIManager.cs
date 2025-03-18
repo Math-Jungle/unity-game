@@ -52,6 +52,12 @@ public class UIManager : MonoBehaviour
             pauseScreenCanvas.SetActive(false);
         }
 
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.HideGameOverScreen();
+
+        }
+
         Debug.Log("UI Screens hidden for new scene.");
     }
 
@@ -63,6 +69,7 @@ public class UIManager : MonoBehaviour
         {
             pauseScreenCanvas.SetActive(true);
         }
+
     }
 
     public void ShowGameOverScreen(int score)

@@ -91,6 +91,7 @@ public class SignupClickHandler : MonoBehaviour
 
             // Store the JWT in PlayerPrefs (or a static variable, or both)
             PlayerPrefs.SetString("AuthToken", token);
+            Debug.Log($"JWT Token saved {token}");
             PlayerPrefs.Save();
 
             // Optionally store in a static variable for quick access:
