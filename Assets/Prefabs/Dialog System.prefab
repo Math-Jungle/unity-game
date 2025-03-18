@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 2599156894880561643}
   - component: {fileID: 8480594753378584135}
   - component: {fileID: 5472189800306943125}
+  - component: {fileID: 8831166799132526911}
   m_Layer: 5
   m_Name: Dialog Box
   m_TagString: Untagged
@@ -526,7 +527,27 @@ MonoBehaviour:
     - Hello World
     - In this game we are going to count apples
     animationTrigger: 0
-  textSpeed: 0.2
+  textSpeed: 0.1
   preTextDelay: 0.5
-  postTextDelay: 2
+  postTextDelay: 3
   riveWidget: {fileID: 7415155624698703461}
+  ttsService: {fileID: 8831166799132526911}
+  useTTS: 1
+--- !u!114 &8831166799132526911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456344461882583767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c03f27600e115cf4ca878fe3c2216ce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  apiKey: AIzaSyDwWbHpElOFsS3fnYgAlDDWnh6iYt2KINo
+  audioSource: {fileID: 0}
+  languageCode: en-US
+  voiceName: en-US-Neural2-D
+  pitch: 1.2
+  speakingRate: 1
