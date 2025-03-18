@@ -1,6 +1,9 @@
 name: Build Android
 
-on: [push, pull_request]
+on: 
+  push:
+     branches:
+      -Login-pages-Script
 
 jobs:
   buildAndroid:
