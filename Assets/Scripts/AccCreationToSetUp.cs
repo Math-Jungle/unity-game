@@ -8,6 +8,29 @@ public class AccCreationToSetUp : MonoBehaviour
     public TMP_InputField passwordInput;
     public TMP_InputField confirmPasswordInput;
 
+    private void Start()
+    {
+        // Load saved email
+        if (PlayerPrefs.HasKey("UserEmail"))
+            emailInput.text = PlayerPrefs.GetString("UserEmail");
+
+        // Load saved password (but don’t display the actual password)
+        if (PlayerPrefs.HasKey("UserPassword"))
+        {
+            string savedPassword = PlayerPrefs.GetString("UserPassword");
+            passwordInput.text = savedPassword;
+            confirmPasswordInput.text = savedPassword;
+
+            // Ensure the password fields stay in 'Password' mode
+            passwordInput.contentType = TMP_InputField.ContentType.Password;
+            confirmPasswordInput.contentType = TMP_InputField.ContentType.Password;
+
+            // Refresh the InputField to apply the settings
+            passwordInput.ForceLabelUpdate();
+            confirmPasswordInput.ForceLabelUpdate();
+        }
+    }
+
     public void OnNextButtonClicked()
     {
         string email = emailInput.text.Trim();
@@ -16,13 +39,13 @@ public class AccCreationToSetUp : MonoBehaviour
 
         if (IsValidEmail(email) && password == confirmPassword)
         {
-            // Save email and password for later use
+            // Save user data
             PlayerPrefs.SetString("UserEmail", email);
             PlayerPrefs.SetString("UserPassword", password);
             PlayerPrefs.Save();
 
-            // Ensure "setup" is the exact name of your child details scene.
-            SceneManager.LoadScene("setup");
+            // Load next scene
+            SceneTracker.LoadScene("setup");
         }
         else
         {

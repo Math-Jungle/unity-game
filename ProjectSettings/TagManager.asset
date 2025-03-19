@@ -47,5 +47,23 @@ TagManager:
   - name: Panda
     uniqueID: 530218355
     locked: 0
+  - name: BackGround
+    uniqueID: 1771480457
+    locked: 0
+  - name: Terrain
+    uniqueID: 3550838675
+    locked: 0
+  - name: Props
+    uniqueID: 985422611
+    locked: 0
+  - name: ForeGround
+    uniqueID: 3398447435
+    locked: 0
+  - name: UI
+    uniqueID: 263326745
+    locked: 0
+  - name: New Layer 7
+    uniqueID: 3735780743
+    locked: 0
   m_RenderingLayers:
   - Default
