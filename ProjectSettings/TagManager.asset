@@ -62,7 +62,7 @@ TagManager:
   - name: UI
     uniqueID: 263326745
     locked: 0
-  - name: New Layer 7
+  - name: AppleCountText
     uniqueID: 3735780743
     locked: 0
   m_RenderingLayers:
