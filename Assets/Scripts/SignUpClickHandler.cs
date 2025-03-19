@@ -16,6 +16,8 @@ public class SignupClickHandler : MonoBehaviour
     [SerializeField] private Button signUpButton;
     [SerializeField] private Button googleLoginButton;
 
+    [SerializeField] private TMP_Text errorText;
+
     [Header("Backend URL")]
     [SerializeField] private string loginEndpoint = "https://spring-app-249115746984.asia-south1.run.app/user/login";
 
@@ -58,9 +60,7 @@ public class SignupClickHandler : MonoBehaviour
         Debug.Log("Google Login clicked! Integrate your Google login logic here.");
     }
 
-    // -----------------------------
-    // Login Coroutine
-    // -----------------------------
+
     private IEnumerator LoginCoroutine(string email, string password)
     {
         // Create a JSON payload
@@ -77,30 +77,50 @@ public class SignupClickHandler : MonoBehaviour
         // Send request
         yield return request.SendWebRequest();
 
-        // Check for errors
+        // Clear any previous error message
+        if (errorText != null)
+            errorText.text = "";
+
         if (request.result == UnityWebRequest.Result.ConnectionError ||
             request.result == UnityWebRequest.Result.ProtocolError)
         {
             Debug.LogError($"Login Error: {request.error}\nResponse: {request.downloadHandler.text}");
+
+            // Check for 401 Unauthorized
+            if (request.responseCode == 401)
+            {
+                if (errorText != null)
+                {
+                    errorText.text = "Invalid email or password. Please try again.";
+                }
+            }
+            else
+            {
+                // Generic error handling for other status codes
+                if (errorText != null)
+                {
+                    errorText.text = $"Error {request.responseCode}: {request.downloadHandler.text}";
+                }
+            }
         }
         else
         {
-            // If login is successful, the backend returns a JWT in the response body
+            // 200 OK: login successful, backend returns JWT in the response
             string token = request.downloadHandler.text;
             Debug.Log($"Login successful! JWT token received: {token}");
 
-            // Store the JWT in PlayerPrefs (or a static variable, or both)
+            // Store JWT token
             PlayerPrefs.SetString("AuthToken", token);
-            Debug.Log($"JWT Token saved {token}");
             PlayerPrefs.Save();
 
-            // Optionally store in a static variable for quick access:
+            // Optionally store in a static variable for quick access
             // GlobalAuth.Token = token;
 
-            // Now load your home scene
+            // Load next scene
             SceneManager.LoadScene("Home");
         }
     }
+
 }
 
 [System.Serializable]
