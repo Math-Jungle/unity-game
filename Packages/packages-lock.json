@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "063bb896e77987e8ee2bcbd59d6df5afeb6d3378"
     },
+    "com.monitor1394.xcharts": {
+      "version": "https://github.com/XCharts-Team/XCharts.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "20da9dbe94e349860c950acb9236a5d26ef8cf9a"
+    },
     "com.unity.2d.animation": {
       "version": "10.1.4",
       "depth": 1,
