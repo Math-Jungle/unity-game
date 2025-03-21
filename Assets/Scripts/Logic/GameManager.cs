@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     private GameData gameData;
     private bool isSubmittingResults = false;
 
+    public UserData CurrentUserData { get; set; }
+
+
     void Awake()
     {
         // Temporarily set tht jwt token
@@ -89,7 +92,33 @@ public class GameManager : MonoBehaviour
             tokenExists = !string.IsNullOrEmpty(PlayerPrefs.GetString("AuthToken", ""));
 
         }
-
+        if (tokenExists && Application.internetReachability != NetworkReachability.NotReachable)
+        {
+            // Try to load user data from local storage
+            UserData localUserData = localDataManager.LoadUserData();
+            if (localUserData == null)
+            {
+                // No local user data found; fetch from backend
+                yield return StartCoroutine(backendDataManager.FetchUserData(jwtToken, (fetchedUserData) =>
+                {
+                    if (fetchedUserData != null)
+                    {
+                        Debug.Log("Fetched user data from backend: " + fetchedUserData.childName);
+                        CurrentUserData = fetchedUserData;
+                        localDataManager.SaveUserData(fetchedUserData);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Failed to fetch user data from backend.");
+                    }
+                }));
+            }
+            else
+            {
+                Debug.Log("User data loaded from local storage.");
+                CurrentUserData = localUserData;
+            }
+        }
 
         // Sync data if authenicated and online
         if (tokenExists && Application.internetReachability != NetworkReachability.NotReachable)

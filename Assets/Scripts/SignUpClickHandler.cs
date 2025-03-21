@@ -20,6 +20,7 @@ public class SignupClickHandler : MonoBehaviour
 
     [Header("Backend URL")]
     [SerializeField] private string loginEndpoint = "https://spring-app-249115746984.asia-south1.run.app/user/login";
+    [SerializeField] private string userDetailsEndpoint = "https://your-backend-url/user/details";
 
     private void Start()
     {
@@ -34,14 +35,13 @@ public class SignupClickHandler : MonoBehaviour
         string email = emailInput.text.Trim();
         string password = passwordInput.text.Trim();
 
-        // Basic validation
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
             Debug.LogWarning("Please enter both Email and Password.");
+            if (errorText != null) errorText.text = "Please enter both Email and Password.";
             return;
         }
 
-        // Send to backend
         StartCoroutine(LoginCoroutine(email, password));
     }
 
@@ -60,67 +60,101 @@ public class SignupClickHandler : MonoBehaviour
         Debug.Log("Google Login clicked! Integrate your Google login logic here.");
     }
 
-
     private IEnumerator LoginCoroutine(string email, string password)
     {
-        // Create a JSON payload
         LoginRequest requestData = new LoginRequest { email = email, password = password };
         string jsonData = JsonUtility.ToJson(requestData);
 
-        // Prepare the UnityWebRequest
         UnityWebRequest request = new UnityWebRequest(loginEndpoint, "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
 
-        // Send request
         yield return request.SendWebRequest();
 
-        // Clear any previous error message
         if (errorText != null)
-            errorText.text = "";
+            errorText.text = ""; // Clear old errors
 
         if (request.result == UnityWebRequest.Result.ConnectionError ||
             request.result == UnityWebRequest.Result.ProtocolError)
         {
             Debug.LogError($"Login Error: {request.error}\nResponse: {request.downloadHandler.text}");
-
-            // Check for 401 Unauthorized
             if (request.responseCode == 401)
             {
                 if (errorText != null)
-                {
                     errorText.text = "Invalid email or password. Please try again.";
-                }
             }
             else
             {
-                // Generic error handling for other status codes
                 if (errorText != null)
-                {
                     errorText.text = $"Error {request.responseCode}: {request.downloadHandler.text}";
-                }
             }
         }
         else
         {
-            // 200 OK: login successful, backend returns JWT in the response
+            // 200 OK
             string token = request.downloadHandler.text;
             Debug.Log($"Login successful! JWT token received: {token}");
 
-            // Store JWT token
+            // 1) Store JWT token
             PlayerPrefs.SetString("AuthToken", token);
             PlayerPrefs.Save();
 
-            // Optionally store in a static variable for quick access
-            // GlobalAuth.Token = token;
+            // 2) Immediately fetch user data with that token
+            yield return StartCoroutine(FetchUserDataCoroutine(token));
 
-            // Load next scene
+            // 3) Load Home scene
             SceneManager.LoadScene("Home");
         }
     }
 
+    // NEW: fetch user details (child name, avatarId, etc.) from the backend
+    private IEnumerator FetchUserDataCoroutine(string token)
+    {
+        UnityWebRequest request = UnityWebRequest.Get(userDetailsEndpoint);
+        request.SetRequestHeader("Authorization", "Bearer " + token);
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            string json = request.downloadHandler.text;
+            Debug.Log("Fetched user data JSON: " + json);
+
+            try
+            {
+                UserData userData = JsonUtility.FromJson<UserData>(json);
+                if (userData != null)
+                {
+                    Debug.Log($"User data: childName={userData.childName}, avatarId={userData.avatarId}");
+
+                    // 2a) Assign it to the GameManager so the Home scene can display it
+                    if (GameManager.Instance != null)
+                    {
+                        GameManager.Instance.CurrentUserData = userData;
+                        Debug.Log("Assigned user data to GameManager.");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No GameManager instance found to store user data!");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Failed to parse user data from JSON.");
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("Error parsing user data: " + e.Message);
+            }
+        }
+        else
+        {
+            Debug.LogError("Failed to fetch user data: " + request.error);
+        }
+    }
 }
 
 [System.Serializable]
