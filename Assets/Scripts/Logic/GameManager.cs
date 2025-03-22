@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
-=======
->>>>>>> Login-pages-Script
+//=======
+//>>>>>>> Login-pages-Script
 
 public class GameManager : MonoBehaviour
 {
