@@ -391,6 +391,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialog System
       objectReference: {fileID: 0}
+    - target: {fileID: 2027405344629218628, guid: 5ca5750a2ddcb7448ba5875b221c60a4, type: 3}
+      propertyPath: m_text
+      value: 'New Text
+
+        New Text
+
+        New Text'
+      objectReference: {fileID: 0}
     - target: {fileID: 3676555907681124651, guid: 5ca5750a2ddcb7448ba5875b221c60a4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2753,7 +2761,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b126d528fbf834193a3762db4444e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverScreen: {fileID: 0}
+  welcomeMessage: {fileID: 0}
+  avatarImage: {fileID: 0}
+  avatar1Sprite: {fileID: 0}
+  avatar2Sprite: {fileID: 0}
+  avatar3Sprite: {fileID: 0}
+  avatar4Sprite: {fileID: 0}
+  avatar5Sprite: {fileID: 0}
+  avatar6Sprite: {fileID: 0}
 --- !u!1 &1483948882
 GameObject:
   m_ObjectHideFlags: 0
