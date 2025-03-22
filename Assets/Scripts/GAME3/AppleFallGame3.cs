@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro; // Import TextMeshPro for UI text display
 
 public class AppleFallGame3 : MonoBehaviour
 {
@@ -17,8 +18,16 @@ public class AppleFallGame3 : MonoBehaviour
     public static int requiredRedApples;
     public static int requiredGreenApples;
 
-    // Flag to check if the question has been shown already
-    private static bool questionDisplayed = false;
+    // Reference to the Dialog script
+    public Dialog dialog;
+
+    // Sound effects for red and green apples
+    public AudioClip redAppleSound;
+    public AudioClip greenAppleSound;
+    private AudioSource audioSource;
+
+    // UI text element for displaying apple requirements
+    private static TMP_Text requirementText;
 
     void Start()
     {
@@ -27,11 +36,37 @@ public class AppleFallGame3 : MonoBehaviour
         initialPosition = transform.position;
         allApples.Add(this);
 
-        // Only display the question once at the beginning
-        if (!questionDisplayed)
+        // Initialize AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component not found on the apple!");
+        }
+
+        // Find the Dialog script if not assigned
+        if (dialog == null)
+        {
+            dialog = FindObjectOfType<Dialog>();
+            if (dialog == null)
+            {
+                Debug.LogError("Dialog script not found in the scene!");
+            }
+        }
+
+        // Find and assign the UI text element for displaying instructions
+        if (requirementText == null)
+        {
+            requirementText = GameObject.Find("RequirementText")?.GetComponent<TMP_Text>();
+            if (requirementText == null)
+            {
+                Debug.LogError("RequirementText UI element not found in the scene!");
+            }
+        }
+
+        // Start a new round only once at the beginning
+        if (allApples.Count == 1)
         {
             StartNewRound();
-            questionDisplayed = true;
         }
     }
 
@@ -49,12 +84,21 @@ public class AppleFallGame3 : MonoBehaviour
 
             // Update counters based on apple color
             if (appleColor == "Red")
+            {
                 redAppleClickedCount++;
+                PlaySound(redAppleSound); // Play sound for red apple
+            }
             else if (appleColor == "Green")
+            {
                 greenAppleClickedCount++;
+                PlaySound(greenAppleSound); // Play sound for green apple
+            }
 
             // Print the updated counters
             Debug.Log($"Clicked Red Apples: {redAppleClickedCount}, Clicked Green Apples: {greenAppleClickedCount}");
+
+            // Check if player has collected the required apples (but don't end the game yet)
+            CheckApplesCollected();
 
             // Ignore collisions with other apples
             Collider2D myCollider = GetComponent<Collider2D>();
@@ -88,11 +132,58 @@ public class AppleFallGame3 : MonoBehaviour
     // Start a new round with new random numbers
     public static void StartNewRound()
     {
-        // Randomly generate numbers of red and green apples to pick
+        // Reset apple counts for a new round
+        ResetCounts();
+
+        // Generate new requirements
         requiredRedApples = Random.Range(1, 9);  // 1 to 8 red apples
         requiredGreenApples = Random.Range(1, 8); // 1 to 7 green apples
 
-        // Display the new question in the console
-        Debug.Log($"Pick {requiredRedApples} red apples and {requiredGreenApples} green apples.");
+        // Update UI text with the new requirements
+        string instructionText = $"Pick {requiredRedApples} red apples and {requiredGreenApples} green apples.";
+        if (requirementText != null)
+        {
+            requirementText.text = instructionText;
+        }
+        else
+        {
+            Debug.LogWarning("RequirementText UI element is missing!");
+        }
+
+        // Display message in the console
+        Debug.Log(instructionText);
+
+        // Show a dialog box with new instructions
+        Dialog dialog = FindObjectOfType<Dialog>();
+        if (dialog != null)
+        {
+            dialog.RunEvent(2, () =>
+            {
+                Debug.Log("New round instructions shown.");
+            });
+        }
+    }
+
+    // Method to check if player collected correct apples (does NOT end the game automatically)
+    public static bool CheckApplesCollected()
+    {
+        if (redAppleClickedCount >= requiredRedApples && greenAppleClickedCount >= requiredGreenApples)
+        {
+            Debug.Log("Player has collected the required number of apples!");
+            return true;
+        }
+        return false;
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource or AudioClip is missing!");
+        }
     }
 }

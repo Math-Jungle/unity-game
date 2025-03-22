@@ -7,6 +7,6 @@ public class CongratulationsUI : MonoBehaviour
     public void OnLetsGoButtonClicked()
     {
         // Make sure "Home" is added to Build Settings and spelled exactly the same
-        SceneManager.LoadScene("Home");
+        SceneManager.LoadScene("login");
     }
 }

@@ -21,7 +21,7 @@ public class SetUpManagerToAvatar : MonoBehaviour
             PlayerPrefs.Save();
 
             // Ensure "avatar" is the exact name of your avatar selection scene.
-            SceneManager.LoadScene("avatar");
+            SceneTracker.LoadScene("avatar");
         }
         else
         {

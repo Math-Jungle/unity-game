@@ -50,6 +50,7 @@ public class PausePanel : MonoBehaviour
     {
         Debug.Log("Home method called");
         Time.timeScale = 1; // Ensure time scale is reset to normal
+        pausePanel.SetActive(false);
         SceneManager.LoadScene("Home");
     }
 }

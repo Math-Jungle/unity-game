@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class BackendDataManager : MonoBehaviour
 {
-    private readonly string sendDataUrl = "http://localhost:8080/dashboard/save-userdata";
-    private readonly string fetchDataUrl = "http://localhost:8080/dashboard/get-userdata";
+    private readonly string sendDataUrl = "https://spring-app-249115746984.asia-south1.run.app/dashboard/save-userdata";
+    private readonly string fetchDataUrl = "https://spring-app-249115746984.asia-south1.run.app/dashboard/get-userdata";
+    private readonly string validateTokenUrl = "https://spring-app-249115746984.asia-south1.run.app/user/verifyJWT";
+    private readonly string userdetails = "https://spring-app-249115746984.asia-south1.run.app/user/details";
     private bool isSendingData = false; // Flag to prevent multiple data sends
 
     // Send all of game data to the backend
@@ -144,5 +147,81 @@ public class BackendDataManager : MonoBehaviour
                 Debug.LogError("Unknown error: " + request.error);
                 break;
         }
+    }
+    public IEnumerator FetchUserData(string jwtToken, System.Action<UserData> onFetched)
+    {
+        if (string.IsNullOrEmpty(jwtToken))
+        {
+            Debug.LogError("No JWT Token found! Cannot fetch user data.");
+            onFetched?.Invoke(null);
+            yield break;
+        }       
+       
+
+        UnityWebRequest request = UnityWebRequest.Get(userdetails);
+        request.SetRequestHeader("Authorization", "Bearer " + jwtToken);
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            string json = request.downloadHandler.text;
+            if (string.IsNullOrEmpty(json) || json == "null")
+            {
+                Debug.LogWarning("Backend returned empty or null user data.");
+                onFetched?.Invoke(null);
+            }
+            else
+            {
+                try
+                {
+                    UserData userData = JsonUtility.FromJson<UserData>(json);
+                    onFetched?.Invoke(userData);
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogError("JSON parsing error (UserData): " + e.Message);
+                    onFetched?.Invoke(null);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Failed to fetch user data: " + request.error);
+            onFetched?.Invoke(null);
+        }
+    }
+
+    public IEnumerator VerifyToken(string jwtToken)
+    {
+        if (string.IsNullOrEmpty(jwtToken))
+        {
+            Debug.LogError("No JWT Token found! Cannot verify user.");
+            yield return false;
+            yield break;
+        }
+
+        UnityWebRequest request = UnityWebRequest.Get(validateTokenUrl);
+        request.SetRequestHeader("Authorization", "Bearer " + jwtToken);
+
+        Debug.Log("Verifying user token...");
+
+        yield return request.SendWebRequest();
+
+        bool isValid = request.result == UnityWebRequest.Result.Success;
+
+        if (isValid)
+        {
+            Debug.Log("User Verified");
+        }
+        else
+        {
+            Debug.Log("JWT Token invalid or verification failed");
+            // Clear invalid token
+            PlayerPrefs.DeleteKey("AuthToken");
+            PlayerPrefs.Save();
+        }
+
+        yield return isValid;
+
     }
 }

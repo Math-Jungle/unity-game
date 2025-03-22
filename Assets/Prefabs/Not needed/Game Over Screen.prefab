@@ -291,7 +291,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab830c7ea97ccee4184bb321f69bbcfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputBlocker: {fileID: 0}
+  score: 0
+  star_1_animator: {fileID: 4196318857282854260}
+  star_2_animator: {fileID: 5812832450322239343}
+  star_3_animator: {fileID: 2431151248861784522}
+  flareAnimator: {fileID: 993677963048203229}
+  flareStarsAnimator: {fileID: 8612076360431792221}
+  blurAnimator: {fileID: 6628845942645520538}
+  animationTriggerName: PlayAnim
+  startAnimationTriggerName: start
+  gameScoreUI: {fileID: 9116540695767430931}
+  gameOverScreenTransform: {fileID: 2320082594332884262}
+  loadingScenes: {fileID: 0}
 --- !u!114 &6578278846138468527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,12 +310,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222460067583471685}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9b2607f3b4e8d846bc2b01cab970ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: login
+  gameScore: 0
+  loadingScenes: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  gameOverScreenObject: {fileID: 0}
 --- !u!1 &1718323173616100481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,8 +1057,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6578278846138468527}
-        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
+      - m_Target: {fileID: 2106108989474671116}
+        m_TargetAssemblyTypeName: GameOverScreen, Assembly-CSharp
         m_MethodName: Home
         m_Mode: 1
         m_Arguments:
@@ -1175,9 +1189,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6578278846138468527}
-        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: NextLevel
+      - m_Target: {fileID: 2106108989474671116}
+        m_TargetAssemblyTypeName: GameOverScreen, Assembly-CSharp
+        m_MethodName: SceneLoader
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1615,8 +1629,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6578278846138468527}
-        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
+      - m_Target: {fileID: 2106108989474671116}
+        m_TargetAssemblyTypeName: GameOverScreen, Assembly-CSharp
         m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:

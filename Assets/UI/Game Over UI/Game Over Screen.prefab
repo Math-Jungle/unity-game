@@ -181,7 +181,6 @@ GameObject:
   - component: {fileID: 2320082594332884262}
   - component: {fileID: 1014181032434382788}
   - component: {fileID: 2106108989474671116}
-  - component: {fileID: 6578278846138468527}
   m_Layer: 5
   m_Name: Game Over Screen
   m_TagString: Untagged
@@ -266,22 +265,7 @@ MonoBehaviour:
   startAnimationTriggerName: start
   gameScoreUI: {fileID: 9116540695767430931}
   gameOverScreenTransform: {fileID: 2320082594332884262}
---- !u!114 &6578278846138468527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222460067583471685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9b2607f3b4e8d846bc2b01cab970ea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameScore: 0
   loadingScenes: {fileID: 0}
-  gameOverScreen: {fileID: 2106108989474671116}
-  gameOverScreenObject: {fileID: 1222460067583471685}
 --- !u!1 &1718323173616100481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,8 +1004,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6578278846138468527}
-        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
+      - m_Target: {fileID: 2106108989474671116}
+        m_TargetAssemblyTypeName: GameOverScreen, Assembly-CSharp
         m_MethodName: Home
         m_Mode: 1
         m_Arguments:
@@ -1152,9 +1136,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6578278846138468527}
-        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: SceneLoader
+      - m_Target: {fileID: 2106108989474671116}
+        m_TargetAssemblyTypeName: GameOverScreen, Assembly-CSharp
+        m_MethodName: NextGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1592,8 +1576,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6578278846138468527}
-        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
+      - m_Target: {fileID: 2106108989474671116}
+        m_TargetAssemblyTypeName: GameOverScreen, Assembly-CSharp
         m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:

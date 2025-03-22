@@ -1,11 +1,13 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
+
     public int score; // Default score (now private)
+    [Header("Animations")]
     public Animator star_1_animator;
     public Animator star_2_animator;
     public Animator star_3_animator;
@@ -15,8 +17,21 @@ public class GameOverScreen : MonoBehaviour
     public string animationTriggerName = "PlayAnim";
     public string startAnimationTriggerName = "start";
 
+    [Header("UI Components")]
     public TextMeshProUGUI gameScoreUI;
     public RectTransform gameOverScreenTransform;
+
+    public void Start()
+    {
+        CheckReferences();
+        gameOverScreenTransform.localScale = Vector3.zero; // Start with the scale set to zero
+
+    }
+
+    public void HideGameOverScreen()
+    {
+        gameOverScreenTransform.localScale = Vector3.zero;
+    }
 
     // Method to set the score and calculate stars
     public void EndGame(int playerScore)
@@ -44,15 +59,6 @@ public class GameOverScreen : MonoBehaviour
             Debug.Log("Game over screen animation completed.");
             StartCoroutine(PlayAnimation(playerScore));
         });
-
-
-
-    }
-
-    public void Start()
-    {
-        CheckReferences();
-        gameOverScreenTransform.localScale = Vector3.zero; // Start with the scale set to zero
 
     }
 
@@ -161,6 +167,36 @@ public class GameOverScreen : MonoBehaviour
         {
             Debug.Log("Score is less than 3000, no animation will be played.");
         }
+    }
+
+    /*
+        Game over screen button methods
+    */
+    public void NextLevel(string nextSceneName)
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(nextSceneName);
+    }
+
+    public void NextGame()
+    {
+        gameObject.SetActive(false);
+        Time.timeScale = 1f;
+        UIManager.instance.LoadNextGame(score);
+    }
+
+    public void RestartLevel()
+    {
+        Time.timeScale = 1f;
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+    }
+
+    public void Home()
+    {
+        Time.timeScale = 1f;
+        //SceneManager.LoadScene("Home");
+        UIManager.instance.LoadScene("Home");
     }
 
 }

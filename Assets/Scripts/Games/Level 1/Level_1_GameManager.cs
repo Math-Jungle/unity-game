@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Level_1_GameManager : MonoBehaviour, IGameManager
 {
     public Dialog dialog;
@@ -14,10 +13,23 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
     public float expectedReactionTime = 5f;
     private bool isGameOver = false; // Flag to prevent multiple calls to EndGame
 
+    // Sound-related variables
+    public AudioClip appleSelectSound; // Sound when the apple is touched
+    public AudioClip appleHitGroundSound; // Sound when the apple hits the ground
+    private AudioSource audioSource; // AudioSource for sound effects
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Initialize AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component not found on the GameManager!");
+        }
+
+        UIManager.instance.ShowUIScreens();
+
         dialog.RunEvent(0, () =>
         {
             StartGame();
@@ -44,6 +56,7 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
                     if (apple != null)
                     {
                         apple.OnTouched();
+                        PlaySound(appleSelectSound); // Play sound when the apple is touched
                     }
                 }
             }
@@ -54,20 +67,6 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
             EndGame();
         }
     }
-
-    public void StartGame()
-    {
-        Debug.Log("Game Started!");
-        startTime = Time.time;
-        lastTouchTime = Time.time;
-        gameScore = 0; // Reset score
-        reactionTimes.Clear(); // Clear previous reaction times
-        applesPicked = 0;
-    }
-
-
-    public void StartGameTimer()
-    { }
 
     public void RegisterAppleTouch()
     {
@@ -89,34 +88,46 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
         }
     }
 
+    public void StartGame()
+    {
+        Debug.Log("Game Started!");
+        startTime = Time.time;
+        lastTouchTime = Time.time;
+        gameScore = 0; // Reset score
+        reactionTimes.Clear(); // Clear previous reaction times
+        applesPicked = 0;
+    }
+
     public void EndGame()
     {
         isGameOver = true;
 
-
         endTime = Time.time;
         float gameDuration = endTime - startTime; // Calculate gameTime
-
-
 
         //Saving LevelData 
         GameManager.Instance.SubmitGameResults(gameScore, reactionTimes, gameDuration);
         Debug.Log($"Submitted results: Score: {gameScore}, ReactionTimes: {reactionTimes}, GameTime: {gameDuration}");
 
         //Sending game data to the backend
+    }
 
+    // Method to play a sound
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource or AudioClip is missing!");
+        }
+    }
 
-
-
-        // GameOverScreen gameOverScreen = FindFirstObjectByType<GameOverScreen>();
-        // if (gameOverScreen != null)
-        // {
-        //     gameOverScreen.EndGame(gameScore);
-        // }
-        // else
-        // {
-        //     Debug.LogError("GameOverScreen not found in the scene.");
-        // }
-
+    // Method to handle apple hitting the ground
+    public void OnAppleHitGround()
+    {
+        PlaySound(appleHitGroundSound); // Play sound when the apple hits the ground
     }
 }
