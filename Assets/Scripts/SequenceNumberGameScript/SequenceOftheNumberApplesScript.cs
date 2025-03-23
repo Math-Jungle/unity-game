@@ -11,6 +11,8 @@ public class SequenceOftheNumberApplesScript : MonoBehaviour, IGameManager
     public TextMeshProUGUI totalScore; // UI Text to display the score
     public AudioClip correctSound;
     public AudioClip wrongSound;
+    public AudioClip appleHitSound; // Sound when the apple hits the ground
+    private bool hasHitGround = false; // Track if the apple has hit the ground
     public Dialog dialogBox;
     private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
@@ -91,6 +93,15 @@ public class SequenceOftheNumberApplesScript : MonoBehaviour, IGameManager
         else
         {
             Debug.LogWarning("AudioSource or AudioClip is missing!");
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Play sound when the apple hits the ground
+        if (!hasHitGround && collision.gameObject.CompareTag("Ground"))
+        {
+            PlaySound(appleHitSound);
+            hasHitGround = true; // Ensure the sound plays only once
         }
     }
 
