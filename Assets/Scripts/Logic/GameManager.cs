@@ -73,6 +73,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public GameData GetGameData()
+    {
+        return gameData;
+    }
+
     private IEnumerator HandleAppStartup()
     {
         // Show loading indicator if available
