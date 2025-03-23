@@ -527,8 +527,8 @@ MonoBehaviour:
     - Hello World
     - In this game we are going to count apples
     animationTrigger: 0
-  textSpeed: 0.1
-  preTextDelay: 0.5
+  textSpeed: 0.05
+  preTextDelay: 1
   postTextDelay: 3
   riveWidget: {fileID: 7415155624698703461}
   ttsService: {fileID: 8831166799132526911}
