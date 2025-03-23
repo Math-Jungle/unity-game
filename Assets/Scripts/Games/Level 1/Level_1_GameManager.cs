@@ -11,22 +11,18 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
     private float lastTouchTime = 0f;
     private int applesPicked = 0;
     public float expectedReactionTime = 5f;
-    private bool isGameOver = false; // Flag to prevent multiple calls to EndGame
-
-    // Sound-related variables
-    public AudioClip appleSelectSound; // Sound when the apple is touched
-    public AudioClip appleHitGroundSound; // Sound when the apple hits the ground
-    private AudioSource audioSource; // AudioSource for sound effects
+    private bool isGameOver = false; // Flag to prevent multiple calls to EndGame  public AudioClip appleHitGroundSound; // Sound when the apple hits the ground
+    // private AudioSource audioSource; // AudioSource for sound effects
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Initialize AudioSource
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            Debug.LogError("AudioSource component not found on the GameManager!");
-        }
+        // // Initialize AudioSource
+        // audioSource = GetComponent<AudioSource>();
+        // if (audioSource == null)
+        // {
+        //     Debug.LogError("AudioSource component not found on the GameManager!");
+        // }
 
         UIManager.instance.ShowUIScreens();
 
@@ -56,7 +52,7 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
                     if (apple != null)
                     {
                         apple.OnTouched();
-                        PlaySound(appleSelectSound); // Play sound when the apple is touched
+
                     }
                 }
             }
@@ -91,6 +87,7 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
     public void StartGame()
     {
         Debug.Log("Game Started!");
+        // PlaySound();
         startTime = Time.time;
         lastTouchTime = Time.time;
         gameScore = 0; // Reset score
@@ -113,21 +110,16 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
     }
 
     // Method to play a sound
-    private void PlaySound(AudioClip clip)
-    {
-        if (audioSource != null && clip != null)
-        {
-            audioSource.PlayOneShot(clip);
-        }
-        else
-        {
-            Debug.LogWarning("AudioSource or AudioClip is missing!");
-        }
-    }
+    // private void PlaySound()
+    // {
+    //     if (audioSource != null)
+    //     {
+    //         audioSource.Play();
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning("AudioSource or AudioClip is missing!");
+    //     }
+    // }
 
-    // Method to handle apple hitting the ground
-    public void OnAppleHitGround()
-    {
-        PlaySound(appleHitGroundSound); // Play sound when the apple hits the ground
-    }
 }

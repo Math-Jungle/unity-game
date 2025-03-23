@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
-using TMPro; // Import TextMeshPro for UI text display
+using TMPro;// Import TextMeshPro for UI text display
+using UnityEngine.UI;
 
 public class AppleFallGame3 : MonoBehaviour
 {
@@ -28,9 +29,15 @@ public class AppleFallGame3 : MonoBehaviour
 
     // UI text element for displaying apple requirements
     private static TMP_Text requirementText;
+    public Button nextButton; // Reference to the Next Button
 
     void Start()
     {
+        // Showing the settings icon
+        UIManager.instance.ShowUIScreens();
+        // Disabling the next button
+        nextButton.interactable = false;
+
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         initialPosition = transform.position;
@@ -46,12 +53,9 @@ public class AppleFallGame3 : MonoBehaviour
         // Find the Dialog script if not assigned
         if (dialog == null)
         {
-            dialog = FindObjectOfType<Dialog>();
-            if (dialog == null)
-            {
-                Debug.LogError("Dialog script not found in the scene!");
-            }
+            Debug.LogError("Dialog script not found in the scene!");
         }
+
 
         // Find and assign the UI text element for displaying instructions
         if (requirementText == null)
@@ -130,7 +134,7 @@ public class AppleFallGame3 : MonoBehaviour
     }
 
     // Start a new round with new random numbers
-    public static void StartNewRound()
+    public void StartNewRound()
     {
         // Reset apple counts for a new round
         ResetCounts();
@@ -154,12 +158,13 @@ public class AppleFallGame3 : MonoBehaviour
         Debug.Log(instructionText);
 
         // Show a dialog box with new instructions
-        Dialog dialog = FindObjectOfType<Dialog>();
         if (dialog != null)
         {
-            dialog.RunEvent(2, () =>
+            dialog.RunEvent(1, () =>
             {
                 Debug.Log("New round instructions shown.");
+                // Make the next button interactable after showing the instructions
+                nextButton.interactable = true;
             });
         }
     }

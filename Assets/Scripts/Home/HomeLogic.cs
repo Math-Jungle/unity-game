@@ -54,7 +54,7 @@ public class HomeLogic : MonoBehaviour
 
     public void OnAvatarClicked()
     {
-        
+
         SceneManager.LoadScene("Dashboard");
     }
 
@@ -62,5 +62,10 @@ public class HomeLogic : MonoBehaviour
     public void GameMap()
     {
         SceneManager.LoadScene("game map");
+    }
+
+    public void Dashboard()
+    {
+        SceneManager.LoadScene("Dashboard");
     }
 }

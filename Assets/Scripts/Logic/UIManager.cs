@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            //ConfigureOrientation();
             SceneManager.sceneLoaded += OnSceneLoaded; // calls the OnSceneLoaded method everytime a new scene is loaded
 
             Debug.Log("UIManager instance created.");

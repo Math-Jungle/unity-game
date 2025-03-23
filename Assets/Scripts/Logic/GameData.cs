@@ -41,4 +41,16 @@ public class GameData
 
     }
 
+    public float GetTotalGameTime()
+    {
+        float totalGameTime = 0;
+
+        foreach (GameLevel level in gameLevels)
+        {
+            totalGameTime += level.gameTime;
+        }
+
+        return totalGameTime;
+    }
+
 }
