@@ -41,7 +41,7 @@ public class GameMap : MonoBehaviour
     public void Game5()
     {
         Debug.Log("Game 5 button Clicked");
-        UIManager.instance.LoadScene("Game 4");
+        UIManager.instance.LoadScene("ScaleGame");
     }
 
     public void Home()

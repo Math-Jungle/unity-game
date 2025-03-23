@@ -52,6 +52,13 @@ public class HomeLogic : MonoBehaviour
         }
     }
 
+    public void OnAvatarClicked()
+    {
+        
+        SceneManager.LoadScene("Dashboard");
+    }
+
+
     public void GameMap()
     {
         SceneManager.LoadScene("game map");
