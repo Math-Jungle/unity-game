@@ -491,6 +491,10 @@ PrefabInstance:
       propertyPath: preTextDelay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5472189800306943125, guid: 5ca5750a2ddcb7448ba5875b221c60a4, type: 3}
+      propertyPath: 'events.Array.data[0].messages.Array.data[0]'
+      value: 'Hello Partner. I am your partner panda. '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
