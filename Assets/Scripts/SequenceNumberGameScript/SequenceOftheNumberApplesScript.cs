@@ -11,47 +11,60 @@ public class SequenceOftheNumberApplesScript : MonoBehaviour, IGameManager
     public TextMeshProUGUI totalScore; // UI Text to display the score
     public AudioClip correctSound;
     public AudioClip wrongSound;
+    public AudioClip appleHitSound; // Sound when the apple hits the ground
+    private bool hasHitGround = false; // Track if the apple has hit the ground
     public Dialog dialogBox;
     private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
+    private static bool dialogIsRunning = false; // Track if the dialog box is running using a static variable
 
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        if (rigidbody2D == null){
+        if (rigidbody2D == null)
+        {
             Debug.LogError("Rigidbody2D is missing");
         }
         rigidbody2D.gravityScale = 0; // Prevent apples from falling initially
         audioSource = GetComponent<AudioSource>();
-        if (audioSource == null){
+        if (audioSource == null)
+        {
             Debug.LogWarning("AudioSource not found! Adding one.");
             audioSource = gameObject.AddComponent<AudioSource>();
         }
         spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null){
+        if (spriteRenderer == null)
+        {
             Debug.LogError("SpriteRenderer is missing!");
         }
         UIManager.instance.ShowUIScreens();
-        dialogBox.RunEvent(0, () =>{
-            StartGame();
-        });
+
+        if (dialogIsRunning == false)
+        {
+            dialogBox.RunEvent(0, () =>
+            {
+                Debug.Log("Dialog box is running");
+            });
+            dialogIsRunning = true; // Prevent multiple dialog box runs
+
+        }
     }
 
     void Update()
     {
-       foreach (Touch touch in Input.touches)
-       {
-        if (touch.phase == TouchPhase.Began)
+        foreach (Touch touch in Input.touches)
         {
-            Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
-
-            if (hit.collider != null && hit.collider.gameObject == gameObject)
+            if (touch.phase == TouchPhase.Began)
             {
-                HandleAppleTouch();
+                Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+
+                if (hit.collider != null && hit.collider.gameObject == gameObject)
+                {
+                    HandleAppleTouch();
+                }
             }
         }
-       } 
     }
 
     void HandleAppleTouch()
@@ -93,6 +106,15 @@ public class SequenceOftheNumberApplesScript : MonoBehaviour, IGameManager
             Debug.LogWarning("AudioSource or AudioClip is missing!");
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Play sound when the apple hits the ground
+        if (!hasHitGround && collision.gameObject.CompareTag("Ground"))
+        {
+            PlaySound(appleHitSound);
+            hasHitGround = true; // Ensure the sound plays only once
+        }
+    }
 
     void HighlightApple(Color color, float duration)
     {
@@ -114,10 +136,12 @@ public class SequenceOftheNumberApplesScript : MonoBehaviour, IGameManager
 
     void UpdateScore()
     {
-        if (totalScore != null){
+        if (totalScore != null)
+        {
             totalScore.text = $"Score - {score}";
         }
-        else {
+        else
+        {
             Debug.LogError("totalScore for TextMeshProUGUI is not assigned");
         }
     }
@@ -129,11 +153,13 @@ public class SequenceOftheNumberApplesScript : MonoBehaviour, IGameManager
         UpdateScore();
     }
 
-    public void StartGame(){
+    public void StartGame()
+    {
 
     }
 
-    public void EndGame(){
+    public void EndGame()
+    {
         GameManager.Instance.SubmitGameResults(score, null, 0);
     }
 }

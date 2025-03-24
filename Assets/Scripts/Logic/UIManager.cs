@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            //ConfigureOrientation();
             SceneManager.sceneLoaded += OnSceneLoaded; // calls the OnSceneLoaded method everytime a new scene is loaded
 
             Debug.Log("UIManager instance created.");
@@ -153,11 +154,11 @@ public class UIManager : MonoBehaviour
             case "Game 1":
                 return $"Sequence Number Game{mode}";
             case "Sequence Number Game":
-                return $"game3{mode}";
-            case "game3":
-                return $"game4{mode}";
-            case "game4":
-                return $"game5{mode}";
+                return $"BasketGame{mode}";
+            case "BasketGame":
+                return $"Game 3{mode}";
+            case "Game 3":
+                return $"Home";
             case "game5":
                 return $"game6{mode}";
             case "game6":
