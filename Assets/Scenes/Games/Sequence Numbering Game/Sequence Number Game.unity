@@ -224,9 +224,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 844743580}
     - target: {fileID: 5472189800306943125, guid: 5ca5750a2ddcb7448ba5875b221c60a4, type: 3}
-      propertyPath: 'events.Array.data[0].messages.Array.data[1]'
-      value: In this game we going to count the apples according to their number
+      propertyPath: events.Array.data[0].messages.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472189800306943125, guid: 5ca5750a2ddcb7448ba5875b221c60a4, type: 3}
+      propertyPath: 'events.Array.data[0].messages.Array.data[0]'
+      value: In this game we are going to count the apples according to their number
         sequence.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472189800306943125, guid: 5ca5750a2ddcb7448ba5875b221c60a4, type: 3}
+      propertyPath: 'events.Array.data[0].messages.Array.data[1]'
+      value: You only need to identify the specific number order of the apples and
+        click on them.
       objectReference: {fileID: 0}
     - target: {fileID: 5472189800306943125, guid: 5ca5750a2ddcb7448ba5875b221c60a4, type: 3}
       propertyPath: 'events.Array.data[0].messages.Array.data[2]'
@@ -1531,7 +1540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &873079062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2903,7 +2912,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: e8bcc751ae0744f87ac8e8bec4210e1a, type: 3}
   m_Resource: {fileID: 8300000, guid: e8bcc751ae0744f87ac8e8bec4210e1a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.474
+  m_Volume: 0.27
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3946,7 +3955,7 @@ PrefabInstance:
     - target: {fileID: 3976948899673893756, guid: b58f08040e584874ab5632cd47077adc, type: 3}
       propertyPath: dialogBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 844743582}
     - target: {fileID: 3976948899673893756, guid: b58f08040e584874ab5632cd47077adc, type: 3}
       propertyPath: totalScore
       value: 
@@ -4036,6 +4045,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1624441224}
     m_Modifications:
     - target: {fileID: 3706148941620705886, guid: cdcf2b15b8839474b8c09ef244831da4, type: 3}
+      propertyPath: dialogBox
+      value: 
+      objectReference: {fileID: 844743582}
+    - target: {fileID: 3706148941620705886, guid: cdcf2b15b8839474b8c09ef244831da4, type: 3}
       propertyPath: totalScore
       value: 
       objectReference: {fileID: 1927284684}
@@ -4123,7 +4136,7 @@ PrefabInstance:
     - target: {fileID: 7000542826944969796, guid: 2c27799c4233d4c4f9393b45cde78786, type: 3}
       propertyPath: dialogBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 844743582}
     - target: {fileID: 7000542826944969796, guid: 2c27799c4233d4c4f9393b45cde78786, type: 3}
       propertyPath: totalScore
       value: 
@@ -4255,7 +4268,7 @@ PrefabInstance:
     - target: {fileID: 7320411947298778825, guid: a90bc93e05984d84dbea972bc591999e, type: 3}
       propertyPath: dialogBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 844743582}
     - target: {fileID: 7320411947298778825, guid: a90bc93e05984d84dbea972bc591999e, type: 3}
       propertyPath: totalScore
       value: 
@@ -4299,7 +4312,7 @@ PrefabInstance:
     - target: {fileID: 1560278209395683826, guid: 226cc55e98888da438ac45ec79870e5a, type: 3}
       propertyPath: dialogBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 844743582}
     - target: {fileID: 1560278209395683826, guid: 226cc55e98888da438ac45ec79870e5a, type: 3}
       propertyPath: totalScore
       value: 
@@ -4391,7 +4404,7 @@ PrefabInstance:
     - target: {fileID: 1068575450905358642, guid: cb427636b4ea1f64eba305879c99294f, type: 3}
       propertyPath: dialogBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 844743582}
     - target: {fileID: 1068575450905358642, guid: cb427636b4ea1f64eba305879c99294f, type: 3}
       propertyPath: totalScore
       value: 
@@ -4483,7 +4496,7 @@ PrefabInstance:
     - target: {fileID: 2767810830070636027, guid: 40fe3c92d6a033b44b9159d6cd303c98, type: 3}
       propertyPath: dialogBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 844743582}
     - target: {fileID: 2767810830070636027, guid: 40fe3c92d6a033b44b9159d6cd303c98, type: 3}
       propertyPath: totalScore
       value: 
@@ -4573,6 +4586,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1624441224}
     m_Modifications:
     - target: {fileID: 871017627977082670, guid: 2bb119dea6180f34386a771cfedcf171, type: 3}
+      propertyPath: dialogBox
+      value: 
+      objectReference: {fileID: 844743582}
+    - target: {fileID: 871017627977082670, guid: 2bb119dea6180f34386a771cfedcf171, type: 3}
       propertyPath: totalScore
       value: 
       objectReference: {fileID: 1927284684}
@@ -4657,7 +4674,7 @@ PrefabInstance:
     - target: {fileID: 3779841298706315810, guid: 8a74f3cd4759717419fcf7d777b4b821, type: 3}
       propertyPath: dialogBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 844743582}
     - target: {fileID: 3779841298706315810, guid: 8a74f3cd4759717419fcf7d777b4b821, type: 3}
       propertyPath: totalScore
       value: 
@@ -4747,6 +4764,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1624441224}
     m_Modifications:
     - target: {fileID: 1671525555066720842, guid: 76e17d11f00a15d4cb28b60f8bf5bc92, type: 3}
+      propertyPath: dialogBox
+      value: 
+      objectReference: {fileID: 844743582}
+    - target: {fileID: 1671525555066720842, guid: 76e17d11f00a15d4cb28b60f8bf5bc92, type: 3}
       propertyPath: totalScore
       value: 
       objectReference: {fileID: 1927284684}
@@ -4826,7 +4847,7 @@ PrefabInstance:
     - target: {fileID: 7077686503470049297, guid: ab51f9ffde3e6e246b97afa0698ca125, type: 3}
       propertyPath: dialogBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 844743582}
     - target: {fileID: 7077686503470049297, guid: ab51f9ffde3e6e246b97afa0698ca125, type: 3}
       propertyPath: totalScore
       value: 
@@ -4958,7 +4979,7 @@ PrefabInstance:
     - target: {fileID: 8934834112252013694, guid: efdbfed84d14b3b4b963ce6facc3c35c, type: 3}
       propertyPath: dialogBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 844743582}
     - target: {fileID: 8934834112252013694, guid: efdbfed84d14b3b4b963ce6facc3c35c, type: 3}
       propertyPath: totalScore
       value: 

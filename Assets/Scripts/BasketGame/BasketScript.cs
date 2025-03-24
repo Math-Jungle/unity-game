@@ -18,7 +18,7 @@ public class BasketScript : MonoBehaviour
     private AudioSource audioSource; // AudioSource for sound effects
 
     private float startTime; // Track the start time of the level
-    
+
     private int calculatedScore = 0; // Store the calculated score
     private List<float> reactionTimes = new List<float>(); // Store reaction times
     private float lastAppleTime; // Store the last apple drop time
@@ -27,7 +27,7 @@ public class BasketScript : MonoBehaviour
     {
         if (dialog == null)
         {
-            dialog = FindObjectOfType<Dialog>();
+            dialog = FindFirstObjectByType<Dialog>();
             if (dialog == null)
             {
                 Debug.LogError("Dialog script not found in the scene!");
@@ -38,7 +38,7 @@ public class BasketScript : MonoBehaviour
         {
             // Subscribe to the dialog complete event
             dialog.OnDialogComplete += StartGameTimer;
-            dialog.RunEvent(1);
+            dialog.RunEvent(0);
             Debug.Log("Dialog started");
         }
         else
@@ -88,10 +88,10 @@ public class BasketScript : MonoBehaviour
             PlaySound(appleAddedToBasketSound);
 
             //Calculating the score with each iteration
-            
+
             Debug.Log("Basket has the required number of apples!");
             calculatedScore = CalculateScore(); // Calculate the score
-            
+
 
             // EndGame() will only be called when the "Next" button is clicked
 
@@ -137,67 +137,67 @@ public class BasketScript : MonoBehaviour
     }
 
     public int CalculateScore()
-{
-    requiredApples = 7; // Change this to the required number of apples displayed on the basket
-    int baseScore = 0;
-    int timeBonus = 0;
+    {
+        requiredApples = 7; // Change this to the required number of apples displayed on the basket
+        int baseScore = 0;
+        int timeBonus = 0;
 
-    // Calculate the difference between currentApples and requiredApples
-    int appleDifference = Mathf.Abs(currentApples - requiredApples);
+        // Calculate the difference between currentApples and requiredApples
+        int appleDifference = Mathf.Abs(currentApples - requiredApples);
 
-    // Assign baseScore based on the number of apples placed
-    if (currentApples == requiredApples) // Perfect score range (3 stars)
-    {
-        baseScore = 7000;
-    }
-    else if (currentApples == requiredApples - 1 || currentApples == requiredApples + 1) // Slightly off (2 stars)
-    {
-        baseScore = 5000;
-    }
-    else if (currentApples == requiredApples - 2 || currentApples == requiredApples + 2) // Further off (1 star)
-    {
-        baseScore = 3000;
-    }
-    else // Out of range (no stars or very low score)
-    {
-        baseScore = Mathf.Max(1000, 3000 - (appleDifference * 1000)); // Minimum 1000
-    }
+        // Assign baseScore based on the number of apples placed
+        if (currentApples == requiredApples) // Perfect score range (3 stars)
+        {
+            baseScore = 7000;
+        }
+        else if (currentApples == requiredApples - 1 || currentApples == requiredApples + 1) // Slightly off (2 stars)
+        {
+            baseScore = 5000;
+        }
+        else if (currentApples == requiredApples - 2 || currentApples == requiredApples + 2) // Further off (1 star)
+        {
+            baseScore = 3000;
+        }
+        else // Out of range (no stars or very low score)
+        {
+            baseScore = Mathf.Max(1000, 3000 - (appleDifference * 1000)); // Minimum 1000
+        }
 
-    // Calculate the time bonus only if apples were added
-    if (currentApples > 0)
-    {
-        timeBonus = CalculateTimeBonus();
-    }
+        // Calculate the time bonus only if apples were added
+        if (currentApples > 0)
+        {
+            timeBonus = CalculateTimeBonus();
+        }
 
-    // Ensure final score stays within the intended ranges
-    int finalScore = baseScore + timeBonus;
+        // Ensure final score stays within the intended ranges
+        int finalScore = baseScore + timeBonus;
 
-    if (currentApples == requiredApples)
-    {
-        finalScore = Mathf.Clamp(finalScore, 7000, 10000);
-    }
-    else if (currentApples == requiredApples - 1 || currentApples == requiredApples + 1)
-    {
-        finalScore = Mathf.Clamp(finalScore, 5000, 7000);
-    }
-    else if (currentApples == requiredApples - 2 || currentApples == requiredApples + 2)
-    {
-        finalScore = Mathf.Clamp(finalScore, 3000, 5000);
-    }
-    else
-    {
-        finalScore = Mathf.Max(1000, finalScore); // Prevents scores below 1000 for extreme cases
-    }
+        if (currentApples == requiredApples)
+        {
+            finalScore = Mathf.Clamp(finalScore, 7000, 10000);
+        }
+        else if (currentApples == requiredApples - 1 || currentApples == requiredApples + 1)
+        {
+            finalScore = Mathf.Clamp(finalScore, 5000, 7000);
+        }
+        else if (currentApples == requiredApples - 2 || currentApples == requiredApples + 2)
+        {
+            finalScore = Mathf.Clamp(finalScore, 3000, 5000);
+        }
+        else
+        {
+            finalScore = Mathf.Max(1000, finalScore); // Prevents scores below 1000 for extreme cases
+        }
 
-    // Debugging logs
-    Debug.Log($"Current Apples: {currentApples}");
-    Debug.Log($"Apple Difference: {appleDifference}");
-    Debug.Log($"Base Score: {baseScore}");
-    Debug.Log($"Time Bonus: {timeBonus}");
-    Debug.Log($"Final Score: {finalScore}");
+        // Debugging logs
+        Debug.Log($"Current Apples: {currentApples}");
+        Debug.Log($"Apple Difference: {appleDifference}");
+        Debug.Log($"Base Score: {baseScore}");
+        Debug.Log($"Time Bonus: {timeBonus}");
+        Debug.Log($"Final Score: {finalScore}");
 
-    return finalScore;
-}
+        return finalScore;
+    }
 
 
     public int CalculateTimeBonus()
