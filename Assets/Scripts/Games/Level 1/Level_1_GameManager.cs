@@ -11,18 +11,13 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
     private float lastTouchTime = 0f;
     private int applesPicked = 0;
     public float expectedReactionTime = 5f;
-    private bool isGameOver = false; // Flag to prevent multiple calls to EndGame  public AudioClip appleHitGroundSound; // Sound when the apple hits the ground
-    // private AudioSource audioSource; // AudioSource for sound effects
+    private bool isGameOver = false; // Flag to prevent multiple calls to EndGame
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // // Initialize AudioSource
-        // audioSource = GetComponent<AudioSource>();
-        // if (audioSource == null)
-        // {
-        //     Debug.LogError("AudioSource component not found on the GameManager!");
-        // }
+
 
         UIManager.instance.ShowUIScreens();
 
@@ -110,16 +105,5 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
     }
 
     // Method to play a sound
-    // private void PlaySound()
-    // {
-    //     if (audioSource != null)
-    //     {
-    //         audioSource.Play();
-    //     }
-    //     else
-    //     {
-    //         Debug.LogWarning("AudioSource or AudioClip is missing!");
-    //     }
-    // }
 
 }

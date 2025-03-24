@@ -26,11 +26,25 @@ public class GameOverScreen : MonoBehaviour
         CheckReferences();
         gameOverScreenTransform.localScale = Vector3.zero; // Start with the scale set to zero
 
+
     }
 
     public void HideGameOverScreen()
     {
         gameOverScreenTransform.localScale = Vector3.zero;
+
+        star_1_animator.SetTrigger("default"); // Set the star_1 animation to the last frame
+        star_1_animator.ResetTrigger(animationTriggerName);
+        star_2_animator.SetTrigger("default"); // Set the star_2 animation to the last frame
+        star_2_animator.ResetTrigger(animationTriggerName);
+        star_3_animator.SetTrigger("default"); // Set the star_3 animation to the last frame
+        star_3_animator.ResetTrigger(animationTriggerName);
+        flareAnimator.SetTrigger("default"); // Set the flare animation to the last frame
+        flareAnimator.ResetTrigger(startAnimationTriggerName);
+        flareStarsAnimator.SetTrigger("default"); // Set the flare stars animation to the last frame
+        flareStarsAnimator.ResetTrigger(startAnimationTriggerName);
+        //blurAnimator.SetTrigger("default"); // Set the blur animation to the last frame
+        blurAnimator.ResetTrigger(startAnimationTriggerName);
     }
 
     // Method to set the score and calculate stars

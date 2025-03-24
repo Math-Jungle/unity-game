@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11, y: -662}
+  m_AnchoredPosition: {x: -11, y: -819}
   m_SizeDelta: {x: 878.4798, y: 173.5773}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &52529131
@@ -287,7 +287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -141, y: -1377}
+  m_AnchoredPosition: {x: -141, y: -1198}
   m_SizeDelta: {x: 537.1586, y: 107.4317}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &137225144
@@ -740,6 +740,7 @@ MonoBehaviour:
   googleLoginButton: {fileID: 0}
   errorText: {fileID: 0}
   loginEndpoint: http://localhost:8080/api/login
+  userDetailsEndpoint: https://your-backend-url/user/details
 --- !u!114 &378822181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,7 +809,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b126d528fbf834193a3762db4444e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverScreen: {fileID: 0}
+  welcomeMessage: {fileID: 0}
+  avatarImage: {fileID: 0}
+  avatar1Sprite: {fileID: 0}
+  avatar2Sprite: {fileID: 0}
+  avatar3Sprite: {fileID: 0}
+  avatar4Sprite: {fileID: 0}
+  avatar5Sprite: {fileID: 0}
+  avatar6Sprite: {fileID: 0}
 --- !u!1 &402521018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,7 +1269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: -260}
+  m_AnchoredPosition: {x: 28, y: -368}
   m_SizeDelta: {x: 1157.3157, y: 198.7708}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1017452099
@@ -2213,7 +2221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: -13}
+  m_AnchoredPosition: {x: 28, y: -78}
   m_SizeDelta: {x: 1157.3157, y: 198.7708}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1529431212
@@ -2420,6 +2428,7 @@ MonoBehaviour:
   googleLoginButton: {fileID: 1743475917}
   errorText: {fileID: 1507329708}
   loginEndpoint: https://spring-app-249115746984.asia-south1.run.app/user/login
+  userDetailsEndpoint: https://your-backend-url/user/details
 --- !u!1 &1693239626
 GameObject:
   m_ObjectHideFlags: 0
@@ -2437,7 +2446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1693239627
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2513,7 +2522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1743475914
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2807,7 +2816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 348, y: -453}
+  m_AnchoredPosition: {x: 348, y: -594}
   m_SizeDelta: {x: 515.6721, y: 74.01}
   m_Pivot: {x: 0.49999997, y: 0.5}
 --- !u!114 &2122041708

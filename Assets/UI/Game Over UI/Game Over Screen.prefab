@@ -138,7 +138,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757144281125038442}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
+  weight: 0
   sharedProfile: {fileID: 11400000, guid: 5a807ff400b3f3e459d4c90a89a537bd, type: 2}
 --- !u!95 &6628845942645520538
 Animator:
@@ -265,7 +265,6 @@ MonoBehaviour:
   startAnimationTriggerName: start
   gameScoreUI: {fileID: 9116540695767430931}
   gameOverScreenTransform: {fileID: 2320082594332884262}
-  loadingScenes: {fileID: 0}
 --- !u!1 &1718323173616100481
 GameObject:
   m_ObjectHideFlags: 0
