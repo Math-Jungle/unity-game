@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class BasketScript : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class BasketScript : MonoBehaviour
     private AppleScript[] apples; // Array to store all apples in the scene
 
     public Dialog dialog; // Reference to the Dialog script
-
+    public Button confirmButton; // Reference to the Confirm button
     public AudioClip appleAddedToBasketSound; // Sound when an apple is added to the basket
     public AudioClip replaySound; // Sound when the replay button is clicked
     private AudioSource audioSource; // AudioSource for sound effects
@@ -25,6 +26,8 @@ public class BasketScript : MonoBehaviour
 
     private void Start()
     {
+        UIManager.instance.ShowUIScreens();
+        confirmButton.interactable = false; // Disable the Confirm button initially
         if (dialog == null)
         {
             dialog = FindFirstObjectByType<Dialog>();
@@ -38,7 +41,10 @@ public class BasketScript : MonoBehaviour
         {
             // Subscribe to the dialog complete event
             dialog.OnDialogComplete += StartGameTimer;
-            dialog.RunEvent(0);
+            dialog.RunEvent(0, () =>
+            {
+                confirmButton.interactable = true; // Enable the Confirm button);
+            });
             Debug.Log("Dialog started");
         }
         else
