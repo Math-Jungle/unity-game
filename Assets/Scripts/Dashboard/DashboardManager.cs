@@ -81,4 +81,9 @@ public class DashboardManager : MonoBehaviour
     {
         SceneManager.LoadScene("Home");
     }
+
+    public void Stats()
+    {
+        SceneManager.LoadScene("Stats");
+    }
 }

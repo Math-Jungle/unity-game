@@ -13,11 +13,9 @@ public class Level_1_GameManager : MonoBehaviour, IGameManager
     public float expectedReactionTime = 5f;
     private bool isGameOver = false; // Flag to prevent multiple calls to EndGame
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
 
         UIManager.instance.ShowUIScreens();
 
