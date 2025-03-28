@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
             }
 
             // Load the local game data
-            localDataManager.LoadGameData();
+            gameData = localDataManager.LoadGameData();
         }
 
         // Determining which scene to load based on the token status
