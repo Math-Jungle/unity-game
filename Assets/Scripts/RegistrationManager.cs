@@ -31,7 +31,7 @@ public class RegistrationManager : MonoBehaviour
         // Convert the request object to JSON
         string jsonData = JsonUtility.ToJson(req);
 
-        // Update the URL to your Spring Boot backend endpoint
+        
         string url = "https://spring-app-249115746984.asia-south1.run.app/api/register";
         UnityWebRequest www = new UnityWebRequest(url, "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);

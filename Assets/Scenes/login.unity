@@ -2428,7 +2428,7 @@ MonoBehaviour:
   googleLoginButton: {fileID: 1743475917}
   errorText: {fileID: 1507329708}
   loginEndpoint: https://spring-app-249115746984.asia-south1.run.app/user/login
-  userDetailsEndpoint: https://your-backend-url/user/details
+  userDetailsEndpoint: https://spring-app-249115746984.asia-south1.run.app/user/details
 --- !u!1 &1693239626
 GameObject:
   m_ObjectHideFlags: 0
