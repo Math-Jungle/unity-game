@@ -20,7 +20,7 @@ public class SignupClickHandler : MonoBehaviour
 
     [Header("Backend URL")]
     [SerializeField] private string loginEndpoint = "https://spring-app-249115746984.asia-south1.run.app/user/login";
-    [SerializeField] private string userDetailsEndpoint = "https://your-backend-url/user/details";
+    [SerializeField] private string userDetailsEndpoint = "https://spring-app-249115746984.asia-south1.run.app/user/details";
 
     private void Start()
     {
@@ -104,7 +104,10 @@ public class SignupClickHandler : MonoBehaviour
             // 2) Immediately fetch user data with that token
             yield return StartCoroutine(FetchUserDataCoroutine(token));
 
-            // 3) Load Home scene
+            // 3) Sync game data with the backend and load game data
+            StartCoroutine(GameManager.Instance.LoadGameData(token));
+
+            // 4) Load Home scene
             SceneManager.LoadScene("Home");
         }
     }

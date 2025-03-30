@@ -77,6 +77,10 @@ public class GameManager : MonoBehaviour
     {
         return gameData;
     }
+    public SyncManager GetSyncManager()
+    {
+        return syncManager;
+    }
 
     private IEnumerator HandleAppStartup()
     {
@@ -132,16 +136,7 @@ public class GameManager : MonoBehaviour
         // Sync data if authenicated and online
         if (tokenExists && Application.internetReachability != NetworkReachability.NotReachable)
         {
-            if (syncManager != null)
-            {
-                syncManager.SyncData(jwtToken);
-
-                // Give sync time to complete
-                yield return new WaitForSeconds(0.5f);
-            }
-
-            // Load the local game data
-            gameData = localDataManager.LoadGameData();
+            StartCoroutine(LoadGameData(jwtToken));
         }
 
         // Determining which scene to load based on the token status
@@ -151,6 +146,20 @@ public class GameManager : MonoBehaviour
         // Load the scene
         SceneManager.LoadScene(sceneToLoad);
 
+    }
+
+    public IEnumerator LoadGameData(string jwtToken)
+    {
+        if (syncManager != null)
+        {
+            syncManager.SyncData(jwtToken);
+
+            // Give sync time to complete
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        // Load the local game data
+        gameData = localDataManager.LoadGameData();
     }
 
     public void SubmitGameResults(int score, List<float> reactionTimes, float gameTime)
