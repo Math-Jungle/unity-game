@@ -1,12 +1,94 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using XCharts.Runtime;
 
 public class GameMap : MonoBehaviour
 {
+    List<GameLevel> gameLevels;
+
+    [System.Serializable]
+    private class GameButton
+    {
+        public string gameLevelName;
+        public Button button;
+        public StarDisplay starDisplay;
+    }
+
+    [Header("Game Buttons")]
+    [SerializeField] private GameButton[] gameButtons;
+
+    [Header("Star Thresholds")]
+    [SerializeField] private int[] starThresholds = { 3000, 5000, 7000 };
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameLevels = GameManager.Instance.GetGameData().gameLevels;
 
+        InitializeGameButtons();
     }
+
+    private void InitializeGameButtons()
+    {
+        if (gameButtons == null || gameButtons.Length == 0)
+        {
+            Debug.LogError("Game buttons are not assigned or empty.");
+            return;
+        }
+
+        foreach (GameButton gameButton in gameButtons)
+        {
+            if (gameButton == null || gameButton.button == null || gameButton.starDisplay == null)
+            {
+                Debug.LogError("Game button or its components are not assigned.");
+                continue;
+            }
+
+            // Get the star count based on the score
+            int starCount = GetStarCount(gameButton.gameLevelName);
+            // Display stars
+            gameButton.starDisplay.DisplayStars(starCount);
+        }
+    }
+
+    private int GetStarCount(string levelName)
+    {
+        if (gameLevels == null || gameLevels.Count == 0)
+        {
+            Debug.LogError("There is no game Levels to get scores.");
+            return 0;
+        }
+        // Find the game level by name
+        GameLevel gameLevel = gameLevels.Find(level => level.levelName == levelName);
+
+        if (gameLevel == null)
+        {
+            Debug.LogWarning("Game Level not found: " + levelName);
+            return 0;
+        }
+
+        int score = gameLevel.score;
+
+        // Calculate the star count based on the score
+        if (score >= starThresholds[2])
+        {
+            return 3; // 3 stars
+        }
+        else if (score >= starThresholds[1])
+        {
+            return 2; // 2 stars
+        }
+        else if (score >= starThresholds[0])
+        {
+            return 1; // 1 star
+        }
+        else
+        {
+            return 0; // No stars
+        }
+    }
+
+
 
     // Update is called once per frame
     void Update()
@@ -14,6 +96,9 @@ public class GameMap : MonoBehaviour
 
     }
 
+
+
+    // Buttons to load different game scenes
     public void Game1()
     {
         Debug.Log("Game 1 button Clicked");
