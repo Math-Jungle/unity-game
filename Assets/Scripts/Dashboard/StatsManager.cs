@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StatsManager : MonoBehaviour
 {
@@ -28,6 +29,11 @@ public class StatsManager : MonoBehaviour
         {
             Debug.LogError("Charts Controller is not assigned.");
         }
+    }
+
+    public void Dashboard()
+    {
+        SceneManager.LoadScene("Dashboard");
     }
 
 
