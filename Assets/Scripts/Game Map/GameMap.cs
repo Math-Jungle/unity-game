@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using XCharts.Runtime;
@@ -6,6 +7,7 @@ using XCharts.Runtime;
 public class GameMap : MonoBehaviour
 {
     List<GameLevel> gameLevels;
+    [SerializeField] private TextMeshProUGUI starCountText;
 
     [System.Serializable]
     private class GameButton
@@ -26,6 +28,7 @@ public class GameMap : MonoBehaviour
         gameLevels = GameManager.Instance.GetGameData().gameLevels;
 
         InitializeGameButtons();
+        SetStarCount();
     }
 
     private void InitializeGameButtons()
@@ -85,6 +88,16 @@ public class GameMap : MonoBehaviour
         else
         {
             return 0; // No stars
+        }
+    }
+
+    private void SetStarCount()
+    {
+        // Set the star count
+        if (starCountText != null)
+        {
+            int totalStars = GameManager.Instance.GetTotalStars();
+            starCountText.text = totalStars.ToString();
         }
     }
 

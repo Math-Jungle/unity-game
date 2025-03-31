@@ -7,6 +7,7 @@ public class HomeLogic : MonoBehaviour
 {
     [SerializeField] private TMP_Text welcomeMessage;
     [SerializeField] private Image avatarImage;
+    [SerializeField] private TMP_Text starCountText;
 
     [Header("Avatar Sprites")]
     [SerializeField] private Sprite avatar1Sprite;
@@ -36,6 +37,9 @@ public class HomeLogic : MonoBehaviour
             welcomeMessage.text = $"{childName}";
             SetAvatar(avatarId);
         }
+
+        // Set the star count
+        SetStarCount();
     }
 
     private void SetAvatar(string avatarId)
@@ -56,6 +60,11 @@ public class HomeLogic : MonoBehaviour
     {
 
         SceneManager.LoadScene("Dashboard");
+    }
+
+    private void SetStarCount()
+    {
+        starCountText.text = GameManager.Instance.GetTotalStars().ToString();
     }
 
 

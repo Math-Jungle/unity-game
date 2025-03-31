@@ -9,6 +9,7 @@ public class DashboardManager : MonoBehaviour
     [Header("UI Text Elements")]
     [SerializeField] private TextMeshProUGUI gameTimeText;
     [SerializeField] private TextMeshProUGUI gameLevelText;
+    [SerializeField] private TextMeshProUGUI StarCountText;
 
     [Header("Chart Components")]
     [SerializeField] private ChartController scoreChartController;
@@ -27,6 +28,7 @@ public class DashboardManager : MonoBehaviour
         // Set dashboard UI elements
         SetGameLevel();
         SetGameTime();
+        SetStarCount();
 
         // Initialize and update the chart
         if (scoreChartController != null)
@@ -73,6 +75,16 @@ public class DashboardManager : MonoBehaviour
         if (scoreChartController != null)
         {
             scoreChartController.UpdateChartWithGameData(gameData);
+        }
+    }
+
+    private void SetStarCount()
+    {
+        // Set the star count
+        if (StarCountText != null && gameData != null)
+        {
+            int totalStars = GameManager.Instance.GetTotalStars();
+            StarCountText.text = totalStars.ToString();
         }
     }
 

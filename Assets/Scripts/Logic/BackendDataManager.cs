@@ -87,12 +87,16 @@ public class BackendDataManager : MonoBehaviour
 
         UnityWebRequest request = UnityWebRequest.Get(fetchDataUrl);
         request.SetRequestHeader("Authorization", "Bearer " + jwtToken);
+        request.certificateHandler = new BypassCertificate(); // Accept all certificates for testing purposes
 
         yield return request.SendWebRequest();
 
         if (request.result == UnityWebRequest.Result.Success)
         {
             string json = request.downloadHandler.text;
+            Debug.Log("Fetched game data JSON: " + request.downloadHandler.text);
+            Debug.Log("Response Code: " + request.responseCode);
+            Debug.Log("Headers: " + request.GetResponseHeaders().ToString());
 
             if (string.IsNullOrEmpty(json) || json == "null")
             {
@@ -155,8 +159,8 @@ public class BackendDataManager : MonoBehaviour
             Debug.LogError("No JWT Token found! Cannot fetch user data.");
             onFetched?.Invoke(null);
             yield break;
-        }       
-       
+        }
+
 
         UnityWebRequest request = UnityWebRequest.Get(userdetails);
         request.SetRequestHeader("Authorization", "Bearer " + jwtToken);

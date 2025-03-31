@@ -208,6 +208,40 @@ public class GameManager : MonoBehaviour
         isSubmittingResults = false;
     }
 
+    public int GetTotalStars()
+    {
+        int totalStars = 0;
+        if (gameData == null || gameData.gameLevels == null)
+        {
+            Debug.LogWarning("GameData or gameLevels is null. Returning 0 stars.");
+            return 0;
+        }
+        if (gameData.gameLevels.Count == 0)
+        {
+            Debug.LogWarning("No game levels found. Returning 0 stars.");
+            // Maybe due to data not being fetched yet
+            return 0;
+        }
+
+        foreach (GameLevel level in gameData.gameLevels)
+        {
+            totalStars += GetStarsForLevel(GetScoreForLevel(level));
+        }
+        return totalStars;
+
+    }
+    private int GetStarsForLevel(int score)
+    {
+        // Assuming 3 stars for a perfect score, adjust as needed
+        if (score >= 7000) return 3;
+        if (score >= 5000) return 2;
+        if (score >= 3000) return 1;
+        return 0; // No stars for scores below 3000
+    }
+    private int GetScoreForLevel(GameLevel level)
+    {
+        return level.score;
+    }
 
     public void QuitGame()
     {
